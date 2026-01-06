@@ -1,168 +1,232 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>极限智芯（深圳）科技有限公司 | LimChip Co., Ltd.</title>
-<style>
-/* -------------------- 全局 -------------------- */
-* { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
-body { background-color:#0b0f1a; color:#fff; scroll-behavior: smooth;}
-a { text-decoration:none; color:inherit; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>极限智芯（深圳）科技有限公司 | LimChip Co., Ltd.</title>
+  <style>
+    /* 全局样式 */
+    * {margin:0; padding:0; box-sizing:border-box; font-family: "Segoe UI", sans-serif;}
+    body {background-color: #0b0f1a; color: #fff; scroll-behavior: smooth;}
+    a {text-decoration: none; color: inherit;}
+    h1,h2,h3 {margin-bottom: 10px;}
+    p {line-height: 1.6; margin-bottom: 15px;}
 
-/* -------------------- 顶部导航 -------------------- */
-header { position:fixed; top:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:10px 50px; background:rgba(11,15,26,0.85); z-index:1000;}
-.logo span { font-weight:bold; font-size:24px; background: linear-gradient(90deg,#1D9BF0,#0A77D5); -webkit-background-clip:text; color:transparent; text-shadow:0 0 5px rgba(29,155,240,0.5);}
-.nav-right { display:flex; align-items:center; gap:20px;}
-.nav-right a { padding:8px 12px; border-radius:5px; transition:0.3s;}
-.nav-right a:hover { background:rgba(29,155,240,0.2);}
-.nav-menu { display:flex; gap:25px;}
-.nav-menu a { cursor:pointer; font-weight:500; transition:0.3s;}
-.nav-menu a:hover { color:#1D9BF0;}
+    /* 导航栏 */
+    nav {
+      position: fixed; top: 0; left:0; width:100%; display:flex;
+      justify-content: space-between; align-items:center; padding:15px 50px;
+      background: rgba(11,15,26,0.85); z-index: 1000;
+    }
+    nav .logo {font-size: 28px; font-weight: bold; color: #1D9BF0;}
+    nav .menu {display:flex; align-items:center; gap:25px;}
+    nav .menu a {cursor:pointer; transition: 0.3s; font-weight:500;}
+    nav .menu a:hover {color:#1D9BF0;}
+    nav .language {position:relative; cursor:pointer;}
+    nav .language-dropdown {
+      position:absolute; top:30px; right:0; background:#1D9BF0; display:none; flex-direction:column;
+      border-radius:4px; overflow:hidden;
+    }
+    nav .language-dropdown div {padding:5px 10px; cursor:pointer;}
+    nav .language-dropdown div:hover {background:#0b0f1a;}
 
-/* -------------------- 语言下拉菜单 -------------------- */
-.lang-dropdown { position:relative; cursor:pointer; }
-.lang-btn { background:none; border:none; color:#fff; font-size:14px;}
-.lang-menu { display:none; position:absolute; right:0; background-color:#0b0f1a; border:1px solid rgba(255,255,255,0.1); border-radius:6px; overflow:hidden; z-index:1000;}
-.lang-menu div { padding:8px 12px; font-size:13px; }
-.lang-menu div:hover { background-color: rgba(29,155,240,0.1); }
-.lang-dropdown:hover .lang-menu { display:block; }
+    nav .consult-btn {
+      padding:6px 14px; background:#1D9BF0; border-radius:4px; margin-left:15px; cursor:pointer;
+      transition:0.3s;
+    }
+    nav .consult-btn:hover {background:#0a7ac0;}
 
-/* -------------------- Banner -------------------- */
-.banner { position:relative; width:100%; height:500px; background:linear-gradient(135deg,#0A0F20,#1D1F3A); overflow:hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;}
-.banner::before { content:""; position:absolute; top:0; left:-50%; width:200%; height:100%; background:repeating-linear-gradient(45deg, rgba(29,155,240,0.2) 0 2px, rgba(0,0,0,0) 2px 4px); animation:moveStripes 5s linear infinite; }
-@keyframes moveStripes { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
-.banner-title { font-size:48px; font-weight:bold; color:#1D9BF0; text-shadow:0 0 15px rgba(29,155,240,0.7); margin-bottom:10px;}
-.banner-subtitle { font-size:20px; color:#fff; text-shadow:0 0 10px rgba(255,255,255,0.3);}
+    /* 全屏板块 */
+    section {min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:0 50px; text-align:center; position:relative;}
+    .section-title {font-size: 42px; font-weight:bold; margin-bottom:20px;}
+    .section-subtitle {font-size: 20px; color:#aaa; margin-bottom:40px;}
 
-/* -------------------- 模块通用 -------------------- */
-.section { padding:100px 50px; }
-.section h2 { font-size:36px; color:#1D9BF0; margin-bottom:40px; text-align:center; }
-.cards { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
+    /* Banner */
+    #banner {position:relative; overflow:hidden;}
+    #banner h1 {font-size:60px; font-weight:bold; margin-bottom:20px;}
+    #banner p {font-size:24px; margin-bottom:30px;}
+    .banner-tags {display:flex; gap:15px; justify-content:center;}
+    .banner-tags span {padding:6px 12px; border:1px solid #1D9BF0; border-radius:20px; font-size:16px; animation: fadeIn 1s;}
+    /* Banner背景动态线条 */
+    #banner:before {
+      content:""; position:absolute; top:0; left:0; width:200%; height:200%;
+      background: linear-gradient(120deg, rgba(29,155,240,0.1) 25%, transparent 25%, transparent 50%, rgba(29,155,240,0.1) 50%, rgba(29,155,240,0.1) 75%, transparent 75%, transparent);
+      background-size: 40px 40px;
+      animation: moveBG 10s linear infinite;
+      z-index:-1;
+    }
 
-/* -------------------- 产品模块 -------------------- */
-.product-card { background: linear-gradient(145deg,#0F1A2C,#1D2B4A); border-radius:12px; padding:20px; color:#fff; width:250px; text-align:center; box-shadow:0 0 15px rgba(29,155,240,0.5); transition: transform 0.3s; }
-.product-card:hover { transform: translateY(-10px); }
-.product-icon { font-size:36px; margin-bottom:10px; }
-.product-title { font-weight:bold; font-size:20px; margin-bottom:10px; }
-.product-desc { font-size:14px; }
+    @keyframes moveBG {0% {background-position:0 0;} 100% {background-position:100px 100px;}}
 
-/* -------------------- 联系模块 -------------------- */
-.contact-info { text-align:center; font-size:16px; line-height:2; }
-.contact-info span { display:block; }
+    @keyframes fadeIn {from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
 
-/* -------------------- 响应式 -------------------- */
-@media(max-width:768px){
-  header{flex-direction:column; padding:10px;}
-  .nav-menu{flex-wrap:wrap; justify-content:center; gap:10px;}
-  .cards{flex-direction:column; align-items:center;}
-  .banner-title{font-size:36px;}
-  .banner-subtitle{font-size:16px;}
-}
-</style>
+    /* 卡片 */
+    .card-container {display:flex; flex-wrap:wrap; justify-content:center; gap:30px; max-width:1200px;}
+    .card {background:#11141f; padding:25px; border-radius:12px; width:280px; transition:0.3s; text-align:left;}
+    .card:hover {transform:translateY(-8px); box-shadow:0 8px 20px rgba(29,155,240,0.5);}
+    .card h3 {color:#1D9BF0; margin-bottom:10px;}
+
+    /* 联系方式 */
+    #contact .contact-info {display:flex; flex-direction:column; gap:15px;}
+    #contact .contact-info div {font-size:18px;}
+
+    /* 浮动按钮 */
+    #consult-btn {position:fixed; bottom:30px; right:30px; background:#1D9BF0; color:#fff; padding:12px 18px; border-radius:6px; cursor:pointer; z-index:1000; transition:0.3s;}
+    #consult-btn:hover {background:#0a7ac0;}
+
+    /* 响应式 */
+    @media (max-width:768px){
+      nav {padding:10px 20px;}
+      nav .menu {gap:15px;}
+      section {padding:0 20px;}
+      #banner h1 {font-size:40px;}
+      #banner p {font-size:18px;}
+      .card-container {flex-direction:column; align-items:center;}
+    }
+  </style>
 </head>
 <body>
 
-<!-- ================= 顶部导航 ================= -->
-<header>
-  <div class="logo"><span>LimChip</span></div>
-  <div class="nav-right">
-    <nav class="nav-menu">
-      <a href="#home" data-zh="首页" data-en="Home">首页</a>
-      <a href="#about" data-zh="关于我们" data-en="About Us">关于我们</a>
-      <a href="#products" data-zh="产品" data-en="Products">产品</a>
-      <a href="#quality" data-zh="品质服务" data-en="Quality Services">品质服务</a>
-      <a href="#contact" data-zh="联系" data-en="Contact">联系</a>
-    </nav>
-    <div class="lang-dropdown">
-      <button class="lang-btn">语言 ▼</button>
-      <div class="lang-menu">
-        <div onclick="setLang(true)">中文</div>
-        <div onclick="setLang(false)">English</div>
+  <!-- 导航栏 -->
+  <nav>
+    <div class="logo">LimChip</div>
+    <div class="menu">
+      <a href="#banner" data-key="home">首页</a>
+      <a href="#about" data-key="about">关于我们</a>
+      <a href="#products" data-key="products">产品</a>
+      <a href="#quality" data-key="quality">品质服务</a>
+      <a href="#contact" data-key="contact">联系</a>
+      <div class="language">中文
+        <div class="language-dropdown">
+          <div data-lang="zh">中文</div>
+          <div data-lang="en">English</div>
+        </div>
+      </div>
+      <div class="consult-btn">立即咨询</div>
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <section id="banner">
+    <h1 data-zh="极限智芯（深圳）科技有限公司" data-en="LimChip Co., Ltd.">极限智芯（深圳）科技有限公司</h1>
+    <p data-zh="专业电子元器件分销商，助力高效供应链" data-en="Professional Electronic Component Distributor, Boosting Efficient Supply Chain">专业电子元器件分销商，助力高效供应链</p>
+    <div class="banner-tags">
+      <span data-zh="全球采购" data-en="Global Procurement">全球采购</span>
+      <span data-zh="高效供应链" data-en="Efficient Supply Chain">高效供应链</span>
+      <span data-zh="品质保证" data-en="Quality Assurance">品质保证</span>
+    </div>
+  </section>
+
+  <!-- 关于我们 -->
+  <section id="about">
+    <h2 class="section-title" data-zh="关于我们" data-en="About Us">关于我们</h2>
+    <p class="section-subtitle" data-zh="极限智芯（深圳）科技有限公司是一家专业电子元器件分销商，致力于为电子制造企业提供高效的元器件采购及供应链解决方案。" data-en="LimChip Co., Ltd. is a professional electronic component distributor, dedicated to providing efficient procurement and supply chain solutions for electronics manufacturers.">
+      极限智芯（深圳）科技有限公司是一家专业电子元器件分销商，致力于为电子制造企业提供高效的元器件采购及供应链解决方案。
+    </p>
+    <div class="card-container">
+      <div class="card">
+        <h3 data-zh="全球客户" data-en="Global Clients">全球客户</h3>
+        <p data-zh="覆盖各大行业客户，响应迅速" data-en="Serving clients across industries with rapid response">覆盖各大行业客户，响应迅速</p>
+      </div>
+      <div class="card">
+        <h3 data-zh="专业团队" data-en="Professional Team">专业团队</h3>
+        <p data-zh="技术和采购团队紧密合作，确保供应链高效" data-en="Technical and procurement team working together to ensure efficient supply chain">技术和采购团队紧密合作，确保供应链高效</p>
+      </div>
+      <div class="card">
+        <h3 data-zh="快速响应" data-en="Quick Response">快速响应</h3>
+        <p data-zh="订单与供应链问题即时处理" data-en="Immediate handling of orders and supply chain issues">订单与供应链问题即时处理</p>
       </div>
     </div>
-    <a class="cta" href="mailto:sales@limchip.com">立即咨询</a>
-  </div>
-</header>
+  </section>
 
-<!-- ================= Banner ================= -->
-<section class="banner" id="home">
-  <h1 class="banner-title" data-zh="极限智芯（深圳）科技有限公司" data-en="LimChip Co., Ltd.">极限智芯（深圳）科技有限公司</h1>
-  <div class="banner-subtitle" data-zh="专业电子元器件分销商" data-en="Professional Electronic Component Distributor">专业电子元器件分销商</div>
-</section>
-
-<!-- ================= 关于我们 ================= -->
-<section class="section" id="about">
-  <h2 data-zh="关于我们" data-en="About Us">关于我们</h2>
-  <p data-zh="极限智芯（深圳）科技有限公司是一家专业的电子元器件分销商，致力于为电子制造企业提供高效的元器件采购与供应链解决方案。"
-     data-en="LimChip Co., Ltd. is a professional electronic component distributor, dedicated to providing efficient procurement and supply chain solutions for electronic manufacturers.">
-    极限智芯（深圳）科技有限公司是一家专业的电子元器件分销商，致力于为电子制造企业提供高效的元器件采购与供应链解决方案。
-  </p>
-</section>
-
-<!-- ================= 产品 ================= -->
-<section class="section" id="products">
-  <h2 data-zh="产品" data-en="Products">产品</h2>
-  <div class="cards">
-    <div class="product-card">
-      <div class="product-icon">💻</div>
-      <div class="product-title" data-zh="集成电路 (ICs)" data-en="Integrated Circuits (ICs)">集成电路 (ICs)</div>
-      <div class="product-desc" data-zh="高品质 IC 采购" data-en="High-quality IC procurement">高品质 IC 采购</div>
+  <!-- 产品 第一屏 -->
+  <section id="products">
+    <h2 class="section-title" data-zh="产品分类" data-en="Product Categories">产品分类</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3 data-zh="半导体芯片" data-en="Semiconductor Chips">半导体芯片</h3>
+        <p data-zh="覆盖计算、通信、控制等多领域" data-en="Covering computing, communication, and control applications">覆盖计算、通信、控制等多领域</p>
+      </div>
+      <div class="card">
+        <h3 data-zh="存储与模块" data-en="Storage & Modules">存储与模块</h3>
+        <p data-zh="可靠高效，适用于多行业应用" data-en="Reliable and efficient for multi-industry applications">可靠高效，适用于多行业应用</p>
+      </div>
+      <div class="card">
+        <h3 data-zh="电源与传感" data-en="Power & Sensors">电源与传感</h3>
+        <p data-zh="工业、消费及汽车电子解决方案" data-en="Solutions for industrial, consumer, and automotive electronics">工业、消费及汽车电子解决方案</p>
+      </div>
     </div>
-    <div class="product-card">
-      <div class="product-icon">🔋</div>
-      <div class="product-title" data-zh="分立半导体" data-en="Discrete Semiconductors">分立半导体</div>
-      <div class="product-desc" data-zh="涵盖各类分立元件" data-en="Various discrete components">涵盖各类分立元件</div>
-    </div>
-    <div class="product-card">
-      <div class="product-icon">⚡</div>
-      <div class="product-title" data-zh="电源管理" data-en="Power Management">电源管理</div>
-      <div class="product-desc" data-zh="高效电源解决方案" data-en="Efficient power solutions">高效电源解决方案</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= 品质服务 ================= -->
-<section class="section" id="quality">
-  <h2 data-zh="品质服务" data-en="Quality Services">品质服务</h2>
-  <div class="cards">
-    <div class="product-card">
-      <div class="product-icon">🛡️</div>
-      <div class="product-title" data-zh="严格质检" data-en="Strict QC">严格质检</div>
-      <div class="product-desc" data-zh="保证每个元器件品质可靠" data-en="Ensure every component is reliable">保证每个元器件品质可靠</div>
+  <!-- 产品 第二屏：品牌产品线 -->
+  <section id="product-lines">
+    <h2 class="section-title" data-zh="品牌产品线" data-en="Brand Product Lines">品牌产品线</h2>
+    <div class="card-container">
+      <div class="card"><h3>INTEL</h3><p>高性能处理器，广泛应用于 PC、服务器及嵌入式系统</p></div>
+      <div class="card"><h3>AMD</h3><p>多核高效能处理器，适用于桌面、工作站、游戏设备</p></div>
+      <div class="card"><h3>TI</h3><p>模拟与混合信号芯片，工业与消费电子广泛应用</p></div>
+      <div class="card"><h3>NXP</h3><p>汽车电子、通信及安全芯片解决方案</p></div>
+      <div class="card"><h3>MICRON</h3><p>高性能存储器及模块</p></div>
+      <div class="card"><h3>ONSEMI</h3><p>功率管理与传感器解决方案</p></div>
+      <div class="card"><h3>XILINX</h3><p>FPGA 可编程逻辑芯片</p></div>
+      <div class="card"><h3>ADI</h3><p>高精度模拟芯片、信号处理器</p></div>
+      <div class="card"><h3>INFINEON</h3><p>汽车及工业电子功率芯片</p></div>
+      <div class="card"><h3>GIGADEVICE (GD / 兆易创新)</h3><p>存储与微控制器方案</p></div>
+      <div class="card"><h3>ROCKCHIP</h3><p>嵌入式与消费电子处理器</p></div>
+      <div class="card"><h3>NCEPOWER（无锡新洁能）</h3><p>新能源电源管理芯片</p></div>
+      <div class="card"><h3>ALTRA</h3><p>高性能多核处理器</p></div>
     </div>
-    <div class="product-card">
-      <div class="product-icon">🔍</div>
-      <div class="product-title" data-zh="真伪检测" data-en="Authenticity Check">真伪检测</div>
-      <div class="product-desc" data-zh="防止假冒和次品" data-en="Prevent counterfeits and defective parts">防止假冒和次品</div>
+  </section>
+
+  <!-- 品质服务 -->
+  <section id="quality">
+    <h2 class="section-title" data-zh="品质服务" data-en="Quality Service">品质服务</h2>
+    <div class="card-container">
+      <div class="card"><h3>严格质检</h3><p>遵循标准化流程，确保元器件品质可靠</p></div>
+      <div class="card"><h3>真伪检测</h3><p>全流程检测，保证原厂正品</p></div>
+      <div class="card"><h3>资质认证</h3><p>符合国际标准及行业认证</p></div>
     </div>
-    <div class="product-card">
-      <div class="product-icon">📄</div>
-      <div class="product-title" data-zh="资质认证" data-en="Certifications">资质认证</div>
-      <div class="product-desc" data-zh="符合国际标准" data-en="Meet international standards">符合国际标准</div>
+  </section>
+
+  <!-- 联系方式 -->
+  <section id="contact">
+    <h2 class="section-title" data-zh="联系我们" data-en="Contact Us">联系我们</h2>
+    <div class="contact-info">
+      <div>邮箱: sales@limchip.com</div>
+      <div>地址: 中国 深圳</div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= 联系 ================= -->
-<section class="section" id="contact">
-  <h2 data-zh="联系" data-en="Contact">联系</h2>
-  <div class="contact-info">
-    <span data-zh="邮箱: sales@limchip.com" data-en="Email: sales@limchip.com">邮箱: sales@limchip.com</span>
-    <span data-zh="地址: 中国 深圳" data-en="Address: Shenzhen, China">地址: 中国 深圳</span>
-  </div>
-</section>
+  <!-- 浮动咨询按钮 -->
+  <div id="consult-btn">立即咨询</div>
 
-<script>
-// -------------------- 语言切换 --------------------
-let isChinese = true;
-function setLang(chinese){
-  isChinese = chinese;
-  document.querySelectorAll('[data-zh]').forEach(el=>{
-    el.textContent = isChinese ? el.dataset.zh : el.dataset.en;
-  });
-}
-</script>
+  <script>
+    // 平滑滚动
+    document.querySelectorAll('nav .menu a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+      });
+    });
 
+    // 语言切换
+    const langBtn = document.querySelector('.language');
+    const langDropdown = document.querySelector('.language-dropdown');
+    langBtn.addEventListener('click', ()=>{ langDropdown.style.display = langDropdown.style.display==='flex'?'none':'flex'; });
+    langDropdown.querySelectorAll('div').forEach(d=>{
+      d.addEventListener('click', ()=>{
+        const lang = d.dataset.lang;
+        document.querySelectorAll('[data-zh]').forEach(el=>{
+          el.innerText = el.dataset[lang];
+        });
+        langDropdown.style.display='none';
+      });
+    });
+
+    // 浮动按钮点击
+    document.getElementById('consult-btn').addEventListener('click', ()=>{
+      window.location.href = "mailto:sales@limchip.com";
+    });
+  </script>
 </body>
 </html>
