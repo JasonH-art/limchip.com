@@ -1,101 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LimChip Official Website</title>
-  <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#f9f9f9; scroll-behavior: smooth;}
-    header { background:#004080; color:white; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; position:fixed; top:0; width:100%; z-index:100; box-shadow:0 2px 6px rgba(0,0,0,0.3);}
-    header h1 { margin:0; font-size:24px; }
-    nav button, nav a { margin-left:10px; padding:5px 10px; cursor:pointer; border:none; border-radius:4px; background:none; color:white; text-decoration:none; font-size:14px; }
-    nav button.active, nav a.active { background:#ffcc00; color:black; }
-    main { padding-top:70px; }
-    .hero { height:100vh; background: url('images/hero.jpg') center/cover no-repeat; display:flex; flex-direction:column; justify-content:center; align-items:center; color:white; text-align:center; position:relative; overflow:hidden; }
-    .hero h1 { font-size:48px; margin:0; text-shadow: 2px 2px 6px rgba(0,0,0,0.5); opacity:0; transform: translateY(-30px); transition: all 1s ease; }
-    .hero p { font-size:20px; margin:10px 0 0; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); opacity:0; transform: translateY(30px); transition: all 1s ease 0.5s; }
-    section { padding:80px 20px; max-width:1000px; margin:auto; opacity:0; transform: translateY(40px); transition: all 0.8s ease; }
-    section img { max-width:100%; height:auto; display:block; margin:20px 0; border-radius:8px; }
-    .hidden { display:none; }
-    .fade-in { opacity:1 !important; transform: translateY(0) !important; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LimChip Co., Ltd.</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    /* 基础样式 */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Roboto', sans-serif; background:#0a2342; color:#fff; scroll-behavior: smooth; overflow-x:hidden; }
+
+    /* 顶部导航 */
+    nav { position:fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:20px 50px; background:rgba(15,60,110,0.95); z-index:1000; }
+    nav a { color:#fff; text-decoration:none; margin-left:20px; font-weight:700; cursor:pointer; }
+    nav a:hover { color:#00b0ff; }
+    .lang-btn { cursor:pointer; background:#00b0ff; border:none; padding:5px 15px; margin-left:10px; border-radius:5px; color:#fff; font-weight:700; transition:0.3s; }
+    .lang-btn.active { background:#fff; color:#0a2342; }
+
+    /* Hero Banner */
+    #home { display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:100vh; position:relative; overflow:hidden; padding:0 20px; }
+    #home h1 { font-size:3rem; margin-bottom:20px; color:#00b0ff; animation:fadeInUp 1s ease forwards; z-index:1; position:relative; }
+    #home p { font-size:1.2rem; margin-bottom:30px; animation:fadeInUp 1.2s ease forwards; z-index:1; position:relative; }
+    #home .cta-btn { background:#00b0ff; color:#fff; padding:10px 25px; border:none; border-radius:6px; font-size:1rem; font-weight:700; cursor:pointer; transition:0.3s; animation:fadeInUp 1.5s ease forwards; z-index:1; position:relative; }
+    #home .cta-btn:hover { background:#0090e0; }
+
+    /* 粒子背景 */
+    canvas { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; }
+
+    /* Section 样式 */
+    section { padding:100px 50px; min-height:80vh; opacity:0; transform:translateY(50px); transition:all 1s ease; }
+    section.active { opacity:1; transform:translateY(0); }
+    h2 { font-size:2rem; margin-bottom:20px; color:#00b0ff; }
+    p, li { font-size:1rem; margin-bottom:15px; line-height:1.6; }
+
+    /* 模块卡片 */
+    .cards { display:flex; flex-wrap:wrap; gap:30px; justify-content:center; margin-top:30px; }
+    .card { background:rgba(0,176,255,0.1); border-radius:12px; padding:20px; width:280px; transition:0.3s; text-align:center; }
+    .card:hover { transform:translateY(-10px) rotateZ(1deg); background:rgba(0,176,255,0.2); }
+    .card-icon { font-size:2rem; margin-bottom:15px; color:#00b0ff; animation:iconBounce 2s infinite; }
+
+    /* Footer */
+    footer { background:#0f3c6e; text-align:center; padding:30px 20px; font-size:0.9rem; margin-top:50px; }
+
+    /* 动画关键帧 */
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(50px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes iconBounce { 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-10px);} }
+
+    /* 响应式 */
+    @media(max-width:768px) { nav { flex-direction:column; align-items:flex-start; } nav a { margin:10px 0; } .cards { flex-direction:column; align-items:center; } }
+</style>
 </head>
 <body>
 
-<header>
-  <h1>LimChip Co., Ltd.</h1>
-  <nav>
-    <a href="#hero-en" class="nav-link active">Home</a>
-    <a href="#content-en" class="nav-link">About</a>
-    <button id="btn-en" class="active" onclick="setLang('en')">English</button>
-    <button id="btn-zh" onclick="setLang('zh')">中文</button>
-  </nav>
-</header>
+<!-- Navbar -->
+<nav>
+    <div><strong>LimChip</strong></div>
+    <div>
+        <a href="#home" data-en="Home" data-cn="首页">Home</a>
+        <a href="#about" data-en="About" data-cn="关于">About</a>
+        <a href="#services" data-en="Services" data-cn="服务">Services</a>
+        <a href="#highlights" data-en="Highlights" data-cn="优势">Highlights</a>
+        <a href="#contact" data-en="Contact" data-cn="联系我们">Contact</a>
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="cn">中文</button>
+    </div>
+</nav>
 
-<main>
-  <!-- 第一屏 大图 + 欢迎文字 -->
-  <section class="hero" id="hero-en">
-    <h1>Welcome to LimChip</h1>
-    <p>Your official website for electronic components and supply chain solutions</p>
-  </section>
-  <section class="hero hidden" id="hero-zh">
-    <h1>欢迎访问 极限智芯（深圳）科技有限公司</h1>
-    <p>电子元器件分销及供应链解决方案的官方网站</p>
-  </section>
+<!-- Hero Banner -->
+<section id="home">
+    <canvas id="particle-canvas"></canvas>
+    <h1 data-en="Welcome to LimChip Co., Ltd." data-cn="欢迎访问 极限智芯（深圳）科技有限公司">Welcome to LimChip Co., Ltd.</h1>
+    <p data-en="Your trusted partner for global electronic component distribution and supply chain solutions." 
+       data-cn="您值得信赖的电子元器件分销与全球供应链合作伙伴">Your trusted partner for global electronic component distribution and supply chain solutions.</p>
+    <button class="cta-btn" data-en="Learn More" data-cn="了解更多">Learn More</button>
+</section>
 
-  <!-- 公司介绍 -->
-  <section id="content-en">
-    <h2>About LimChip Co., Ltd.</h2>
-    <p>LimChip Co., Ltd. is a professional distributor of electronic components, dedicated to providing efficient procurement and supply chain solutions for electronic manufacturing enterprises.</p>
-    <img src="images/product1.jpg" alt="Electronic Components">
-    <p>We aim to simplify component sourcing and ensure reliable supply for our clients.</p>
-    <img src="images/product2.jpg" alt="Supply Chain Solutions">
-  </section>
+<!-- About -->
+<section id="about">
+    <h2 data-en="About LimChip" data-cn="关于我们">About LimChip</h2>
+    <p data-en="LimChip Co., Ltd. is a professional electronic components distributor and supply chain solutions provider headquartered in Shenzhen, China. We leverage a global network of suppliers to deliver authentic products, rapid sourcing, and efficient supply chain management for electronic manufacturing enterprises."
+       data-cn="极限智芯（深圳）科技有限公司是一家专业的电子元器件分销商及供应链解决方案提供商，总部位于中国深圳。我们依托全球可靠供应商网络，为电子制造企业提供正品保障、快速采购及高效供应链管理。">
+       LimChip Co., Ltd. is a professional electronic components distributor...
+    </p>
+    <div class="cards">
+        <div class="card">
+            <div class="card-icon">🌐</div>
+            <h3 data-en="Global Supplier Network" data-cn="全球供应商网络">Global Supplier Network</h3>
+            <p data-en="Thousands of trusted partners for authentic products" data-cn="数千家可信赖合作伙伴，确保正品">Thousands of trusted partners for authentic products</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3 data-en="Rapid Sourcing" data-cn="快速采购">Rapid Sourcing</h3>
+            <p data-en="Fast and efficient procurement for electronic manufacturing" data-cn="为电子制造企业提供快速高效的采购">Fast and efficient procurement for electronic manufacturing</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3 data-en="Quality Assurance" data-cn="品质保障">Quality Assurance</h3>
+            <p data-en="ISO-certified and anti-counterfeit systems" data-cn="ISO认证及防伪体系保障产品质量">ISO-certified and anti-counterfeit systems</p>
+        </div>
+    </div>
+</section>
 
-  <section id="content-zh" class="hidden">
-    <h2>关于 极限智芯（深圳）科技有限公司</h2>
-    <p>极限智芯（深圳）科技有限公司是一家专业的电子元器件分销商，致力于为电子制造企业提供高效的元器件采购与供应链解决方案。</p>
-    <img src="images/product1.jpg" alt="电子元器件">
-    <p>我们致力于简化元器件采购流程，确保客户供应链可靠高效。</p>
-    <img src="images/product2.jpg" alt="供应链解决方案">
-  </section>
-</main>
+<!-- Services -->
+<section id="services">
+    <h2 data-en="Our Services" data-cn="核心业务与服务">Our Services</h2>
+    <div class="cards">
+        <div class="card">
+            <div class="card-icon">🔹</div>
+            <h3 data-en="Authorized Distribution" data-cn="授权代理分销">Authorized Distribution</h3>
+            <p data-en="Franchised product lines for reliable sourcing" data-cn="品牌授权代理，确保可靠采购">Franchised product lines for reliable sourcing</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🔹</div>
+            <h3 data-en="Independent Broker Services" data-cn="独立分销服务">Independent Broker Services</h3>
+            <p data-en="Flexible sourcing for hard-to-find components" data-cn="灵活采购紧缺或难寻元器件">Flexible sourcing for hard-to-find components</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🔹</div>
+            <h3 data-en="Supply Chain Solutions" data-cn="供应链解决方案">Supply Chain Solutions</h3>
+            <p data-en="Inventory management, BOM support, cost optimization" data-cn="库存管理、BOM 配套、成本优化">Inventory management, BOM support, cost optimization</p>
+        </div>
+    </div>
+</section>
 
+<!-- Highlights -->
+<section id="highlights">
+    <h2 data-en="Our Strengths" data-cn="公司优势">Our Strengths</h2>
+    <ul>
+        <li data-en="20+ years experience in electronic components distribution" data-cn="20年以上电子元器件分销经验">20+ years experience in electronic components distribution</li>
+        <li data-en="5000+ global supplier partners ensuring authentic products" data-cn="5000+全球供应商，保障正品">5000+ global supplier partners ensuring authentic products</li>
+        <li data-en="Professional technical and supply chain team" data-cn="专业技术与供应链团队">Professional technical and supply chain team</li>
+        <li data-en="ISO & industry certifications" data-cn="ISO及行业认证">ISO & industry certifications</li>
+    </ul>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <h2 data-en="Contact Us" data-cn="联系我们">Contact Us</h2>
+    <p data-en="LimChip Co., Ltd. | Shenzhen, China | Email: info@limchip.com | Phone: +86-755-xxxx-xxxx" 
+       data-cn="极限智芯（深圳）科技有限公司 | 中国深圳 | 邮箱：info@limchip.com | 电话：+86-755-xxxx-xxxx">
+       LimChip Co., Ltd. | Shenzhen, China | Email: info@limchip.com | Phone: +86-755-xxxx-xxxx
+    </p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p data-en="© 2026 LimChip Co., Ltd. All rights reserved." data-cn="© 2026 极限智芯（深圳）科技有限公司 版权所有">© 2026 LimChip Co., Ltd. All rights reserved.</p>
+</footer>
+
+<!-- JavaScript -->
 <script>
-function setLang(lang) {
-  // 导航按钮样式
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-  document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+    // 语言切换
+    const langBtns = document.querySelectorAll('.lang-btn');
+    langBtns.forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            langBtns.forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+            const lang = btn.getAttribute('data-lang');
+            document.querySelectorAll('[data-en]').forEach(el=>{
+                el.textContent = el.getAttribute('data-'+lang);
+            });
+        });
+    });
 
-  // 第一屏切换
-  document.getElementById('hero-en').classList.toggle('hidden', lang !== 'en');
-  document.getElementById('hero-zh').classList.toggle('hidden', lang !== 'zh');
+    // 滚动触发动画
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){ entry.target.classList.add('active'); }
+        });
+    }, { threshold:0.1 });
+    sections.forEach(sec=>observer.observe(sec));
 
-  // 内容部分切换
-  document.getElementById('content-en').classList.toggle('hidden', lang !== 'en');
-  document.getElementById('content-zh').classList.toggle('hidden', lang !== 'zh');
+    // 粒子背景
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
 
-  // 导航滚动锚点更新
-  document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
-  document.querySelector(lang==='en'?'a[href="#hero-en"]':'a[href="#hero-zh"]').classList.add('active');
-}
+    window.addEventListener('resize', ()=>{
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+    });
 
-// 页面滚动动画
-function onScroll() {
-  document.querySelectorAll('section').forEach(sec=>{
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100) sec.classList.add('fade-in');
-  });
-  // 英文首页动画
-  const hero = document.querySelectorAll('#hero-en:not(.hidden) h1, #hero-en:not(.hidden) p');
-  hero.forEach(el=>el.classList.add('fade-in'));
-  const heroZh = document.querySelectorAll('#hero-zh:not(.hidden) h1, #hero-zh:not(.hidden) p');
-  heroZh.forEach(el=>el.classList.add('fade-in'));
-}
-window.addEventListener('scroll', onScroll);
-window.addEventListener('load', onScroll);
+    function initParticles(){
+        particles = [];
+        for(let i=0;i<100;i++){
+            particles.push({
+                x: Math.random()*w,
+                y: Math.random()*h,
+                r: Math.random()*2+1,
+                dx: (Math.random()-0.5)*1,
+                dy: (Math.random()-0.5)*1
+            });
+        }
+    }
+
+    function drawParticles(){
+        ctx.clearRect(0,0,w,h);
+        for(let p of particles){
+            ctx.beginPath();
+            ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+            ctx.fillStyle = 'rgba(0,176,255,0.7)';
+            ctx.fill();
+            p.x += p.dx;
+            p.y += p.dy;
+            if(p.x> w) p.x=0;
+            if(p.x<0) p.x=w;
+            if(p.y> h) p.y=0;
+            if(p.y<0) p.y=h;
+        }
+        requestAnimationFrame(drawParticles);
+    }
+
+    initParticles();
+    drawParticles();
 </script>
 
 </body>
 </html>
-
