@@ -1,246 +1,296 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LimChip Co., Ltd.</title>
+  <meta charset="UTF-8" />
 
-<!-- 样式 -->
-<style>
-:root{
-  --primary-color:#1D9BF0;
-  --bg-color:#f5f8fa;
-  --text-color:#333;
-  --nav-height:60px;
-  --font-family:'Segoe UI',sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:var(--font-family);}
-body{background:var(--bg-color);color:var(--text-color);scroll-behavior:smooth;}
-a{text-decoration:none;color:inherit;}
-header{background:var(--primary-color);height:var(--nav-height);display:flex;align-items:center;justify-content:space-between;padding:0 30px;color:#fff;position:sticky;top:0;z-index:100;}
-header .logo{font-weight:bold;font-size:1.4em;cursor:pointer;}
-nav ul{list-style:none;display:flex;align-items:center;}
-nav li{position:relative;margin-left:25px;cursor:pointer;transition:transform 0.3s;}
-nav li:hover{transform:translateY(-2px);}
-nav li ul{display:none;position:absolute;top:100%;left:0;background:#fff;color:#333;min-width:180px;box-shadow:0 5px 15px rgba(0,0,0,0.15);border-radius:5px;overflow:hidden;opacity:0;transition:all 0.4s ease;}
-nav li:hover>ul{display:block;opacity:1;transform:translateY(0);}
-nav li ul li{padding:12px 20px;white-space:nowrap;transition:background 0.3s;}
-nav li ul li:hover{background:#f0f0f0;}
-.lang-select{margin-left:20px;cursor:pointer;transition:transform 0.3s;}
-.lang-select:hover{transform:scale(1.1);}
+  <!-- 移动端自适应核心 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-.banner{position:relative;height:450px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;overflow:hidden;}
-#banner-content{position:relative;z-index:2;}
-.banner h1{font-size:3em;margin-bottom:15px;opacity:0;transform:translateY(20px);animation:bannerFade 1s forwards 0.5s;}
-.banner p{font-size:1.2em;opacity:0;transform:translateY(20px);animation:bannerFade 1s forwards 1s;}
-#particles-js{position:absolute;width:100%;height:100%;top:0;left:0;z-index:1;}
+  <title>LimChip | 极限智芯（深圳）科技有限公司</title>
 
-section{padding:60px 20px;max-width:1200px;margin:0 auto;opacity:0;transform:translateY(30px);transition: all 0.8s ease;}
-h2{color:var(--primary-color);margin-bottom:25px;}
-.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
-.product-card{background:#fff;padding:20px;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);transition: transform 0.3s, box-shadow 0.3s;}
-.product-card:hover{transform:translateY(-5px);box-shadow:0 6px 20px rgba(0,0,0,0.2);}
-.brand-carousel{display:flex;overflow:hidden;gap:20px;padding:20px 0;position:relative;}
-.brand-track{display:flex;animation:scrollBrands 20s linear infinite;}
-.brand{flex:0 0 auto;width:120px;height:60px;background:#fff;display:flex;align-items:center;justify-content:center;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);transition: transform 0.3s;}
-.brand:hover{transform:scale(1.1);}
-.contact{background:#e6f2ff;padding:40px;border-radius:10px;text-align:center;}
+  <style>
+    /* ================= 基础样式 ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
 
-/* Animations */
-@keyframes bannerFade{to{opacity:1;transform:translateY(0);}}
-@keyframes scrollBrands{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-</style>
+    body {
+      background: #0b0f1a;
+      color: #fff;
+      line-height: 1.6;
+    }
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ================= 顶部导航 ================= */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      background: rgba(11, 15, 26, 0.9);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1D9BF0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    nav li {
+      cursor: pointer;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    nav li:hover {
+      opacity: 1;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .lang-switch {
+      font-size: 13px;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    .lang-switch:hover {
+      opacity: 1;
+    }
+
+    .cta {
+      padding: 8px 16px;
+      background: #1D9BF0;
+      border-radius: 20px;
+      font-size: 13px;
+    }
+
+    /* ================= Banner ================= */
+    .banner {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(29,155,240,0.15), transparent 40%),
+        linear-gradient(120deg, #050814, #0b0f1a);
+      overflow: hidden;
+    }
+
+    /* 芯片光效动画 */
+    .banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(29,155,240,0.08) 0,
+        rgba(29,155,240,0.08) 1px,
+        transparent 1px,
+        transparent 40px
+      );
+      animation: scan 6s linear infinite;
+      opacity: 0.4;
+    }
+
+    @keyframes scan {
+      from { transform: translateX(-40px); }
+      to { transform: translateX(40px); }
+    }
+
+    .banner-content {
+      position: relative;
+      max-width: 800px;
+    }
+
+    .banner h1 {
+      font-size: 42px;
+      margin-bottom: 16px;
+    }
+
+    .banner p {
+      font-size: 18px;
+      opacity: 0.85;
+    }
+
+    /* ================= 通用 Section ================= */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 100px 24px;
+    }
+
+    section h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #1D9BF0;
+    }
+
+    section p {
+      max-width: 800px;
+      opacity: 0.85;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 24px;
+      border-radius: 12px;
+    }
+
+    /* ================= Footer ================= */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #050814;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    /* ================= 移动端 ================= */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      .banner h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Header -->
+<!-- ================= 顶部导航 ================= -->
 <header>
-<div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">LimChip</div>
-<nav>
-<ul>
-<li>公司 / About
-  <ul>
-    <li data-section="company-profile">公司简介 / Profile</li>
-    <li data-section="strengths">核心优势 / Strengths</li>
-    <li data-section="commitment">客户承诺 / Commitment</li>
-  </ul>
-</li>
-<li>产品 / Products
-  <ul>
-    <li data-section="ic">集成电路 / ICs</li>
-    <li data-section="discrete">分立 & 功能器件</li>
-    <li data-section="sensors">传感器 / Sensors</li>
-    <li data-section="connectors">互连 & 基础元件</li>
-    <li data-section="power">电源模块 / Power Modules</li>
-  </ul>
-</li>
-<li>行业应用 / Industries
-  <ul>
-    <li>消费电子 / Consumer</li>
-    <li>工业电子 / Industrial</li>
-    <li>汽车电子 / Automotive</li>
-    <li>通信电子 / Communication</li>
-    <li>医疗电子 / Medical</li>
-    <li>物联网 / IoT</li>
-  </ul>
-</li>
-<li>品质保证 / Quality
-  <ul>
-    <li>正品保障 / Authentic</li>
-    <li>全面检测 / Testing</li>
-    <li>可追溯资料 / Traceability</li>
-    <li>标准合规 / Compliance</li>
-    <li>快速响应 / Support</li>
-  </ul>
-</li>
-<li id="menu-contact">联系我们 / Contact</li>
-<li class="lang-select" id="lang-toggle">EN</li>
-</ul>
-</nav>
+  <div class="nav-container">
+    <div class="logo" onclick="scrollToSection('home')">LimChip</div>
+
+    <nav>
+      <ul>
+        <li onclick="scrollToSection('home')" data-zh="首页" data-en="Home">首页</li>
+        <li onclick="scrollToSection('about')" data-zh="关于我们" data-en="About">关于我们</li>
+        <li onclick="scrollToSection('products')" data-zh="产品" data-en="Products">产品</li>
+        <li onclick="scrollToSection('quality')" data-zh="品质服务" data-en="Quality">品质服务</li>
+        <li onclick="scrollToSection('contact')" data-zh="联系" data-en="Contact">联系</li>
+      </ul>
+    </nav>
+
+    <div class="nav-right">
+      <div class="lang-switch" onclick="toggleLang()">中文 / EN</div>
+      <a class="cta" href="mailto:sales@limchip.com">立即咨询</a>
+    </div>
+  </div>
 </header>
 
-<!-- Banner -->
-<div class="banner" id="banner">
-  <div id="particles-js"></div>
-  <div id="banner-content">
-    <h1 id="banner-title">极限智芯（深圳）科技有限公司</h1>
-    <p id="banner-desc">专业电子元器件分销商，助力高效供应链</p>
+<!-- ================= 首页 Banner ================= -->
+<div id="home" class="banner">
+  <div class="banner-content">
+    <h1 data-zh="极限智芯（深圳）科技有限公司" data-en="LimChip Co., Ltd.">
+      极限智芯（深圳）科技有限公司
+    </h1>
+    <p data-zh="专业电子元器件分销商，助力高效与可靠的供应链"
+       data-en="Professional electronic components distributor supporting reliable supply chains">
+      专业电子元器件分销商，助力高效与可靠的供应链
+    </p>
   </div>
 </div>
 
-<!-- Sections -->
-<section id="company-profile">
-<h2>公司简介 / Company Profile</h2>
-<p>极限智芯（深圳）科技有限公司是一家专业电子元器件分销商，为电子制造企业提供高效的元器件采购与供应链解决方案。诚信、专业、创新、客户至上，是我们的核心理念。</p>
+<!-- ================= 关于我们 ================= -->
+<section id="about">
+  <h2>关于我们</h2>
+  <p>
+    极限智芯（深圳）科技有限公司是一家专注于电子元器件分销与供应链服务的企业，
+    致力于为电子制造客户提供稳定、合规、可持续的元器件采购支持。
+  </p>
 </section>
 
-<section id="strengths">
-<h2>核心优势 / Strengths</h2>
-<ul>
-<li>专业团队提供采购与供应链方案</li>
-<li>与认证供应商合作确保正品与持续供应</li>
-<li>灵活定制服务满足中小企业需求</li>
-</ul>
-</section>
-
-<section id="commitment">
-<h2>客户承诺 / Customer Commitment</h2>
-<p>快速响应客户咨询、订单跟踪及售后服务，致力于建立长期合作关系。</p>
-</section>
-
+<!-- ================= 产品 ================= -->
 <section id="products">
-<h2>产品 / Products</h2>
-<div class="product-grid">
-<div class="product-card"><h3>集成电路 / ICs</h3><p>微控制器、逻辑芯片、存储、电源IC，智能设备必备。</p></div>
-<div class="product-card"><h3>分立 & 功能器件</h3><p>二极管、三极管、MOSFET、继电器、隔离器、射频模块。</p></div>
-<div class="product-card"><h3>传感器 / Sensors</h3><p>温度、压力、运动、环境传感器，助力智能控制与自动化。</p></div>
-<div class="product-card"><h3>互连 & 基础元件</h3><p>连接器、电阻、电容、电感，保证电路稳定安全。</p></div>
-<div class="product-card"><h3>电源模块 / Power</h3><p>AC/DC转换器、DC/DC模块、电池管理，高效稳定供电。</p></div>
-</div>
-
-<h2>品牌优势 / Featured Brands</h2>
-<div class="brand-carousel">
-<div class="brand-track">
-<div class="brand" title="INTEL: 全球领先芯片制造商">INTEL</div>
-<div class="brand" title="AMD: 高性能处理器与图形方案">AMD</div>
-<div class="brand" title="TI: 模拟与嵌入式方案专家">TI</div>
-<div class="brand" title="NXP: 汽车与物联网芯片">NXP</div>
-<div class="brand" title="MICRON: 存储及内存芯片">MICRON</div>
-<div class="brand" title="ONSEMI: 功率与传感器">ONSEMI</div>
-<div class="brand" title="XILINX: FPGA与可编程芯片">XILINX</div>
-<div class="brand" title="ADI: 高性能模拟芯片">ADI</div>
-<div class="brand" title="INFINEON: 功率与汽车电子">INFINEON</div>
-<div class="brand" title="GD: 兆易创新MCU与闪存">GD</div>
-<div class="brand" title="ROCKCHIP: 多媒体与嵌入式芯片">ROCKCHIP</div>
-<div class="brand" title="NCEPOWER: 电源管理芯片">NCEPOWER</div>
-<div class="brand" title="ALTRA: 高性能计算处理器">ALTRA</div>
-</div>
-</div>
+  <h2>产品</h2>
+  <div class="grid">
+    <div class="card">集成电路（ICs）</div>
+    <div class="card">分立半导体</div>
+    <div class="card">电路保护</div>
+    <div class="card">传感器</div>
+    <div class="card">连接器与互连</div>
+    <div class="card">电源与模块</div>
+  </div>
 </section>
 
-<section id="industries">
-<h2>行业应用 / Industries</h2>
-<ul>
-<li>消费电子 / Consumer Electronics</li>
-<li>工业电子 / Industrial Electronics</li>
-<li>汽车电子 / Automotive Electronics</li>
-<li>通信电子 / Communication Electronics</li>
-<li>医疗电子 / Medical Electronics</li>
-<li>物联网 / IoT</li>
-</ul>
-</section>
-
+<!-- ================= 品质服务 ================= -->
 <section id="quality">
-<h2>品质保证 / Quality Assurance</h2>
-<ul>
-<li>正品保障 / Authentic Components</li>
-<li>全面检测 / Comprehensive Testing</li>
-<li>可追溯资料 / Traceable Documentation</li>
-<li>标准合规 / Compliance</li>
-<li>快速响应 / Support</li>
-</ul>
+  <h2>品质服务</h2>
+  <p>
+    我们坚持真实来源、规范流程与责任交付，
+    注重长期合作关系，确保每一次交付都值得信赖。
+  </p>
 </section>
 
-<section class="contact" id="contact">
-<h2>联系我们 / Contact Us</h2>
-<p>邮箱：sales@limchip.com</p>
-<p>地址：中国 深圳 / Shenzhen, China</p>
+<!-- ================= 联系 ================= -->
+<section id="contact">
+  <h2>联系</h2>
+  <p>
+    邮箱：sales@limchip.com<br>
+    地址：中国 · 深圳
+  </p>
 </section>
 
-<!-- JS -->
+<footer>
+  © LimChip Co., Ltd.
+</footer>
+
 <script>
-// 平滑滚动导航
-document.querySelectorAll('nav li ul li').forEach(item=>{
-  item.onclick=()=>{
-    const section=document.getElementById(item.dataset.section);
-    if(section){section.scrollIntoView({behavior:'smooth'});}
-  };
-});
+  /* 平滑滚动 */
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
 
-// 中英文切换
-const langToggle=document.getElementById('lang-toggle');
-let lang='zh';
-const translations={
-  'zh':{'banner-title':'极限智芯（深圳）科技有限公司','banner-desc':'专业电子元器件分销商，助力高效供应链'},
-  'en':{'banner-title':'LimChip Co., Ltd.','banner-desc':'Professional electronic components distributor, enabling efficient supply chain'}
-};
-langToggle.onclick=()=>{
-  lang=lang==='zh'?'en':'zh';
-  document.getElementById('banner-title').innerText=translations[lang]['banner-title'];
-  document.getElementById('banner-desc').innerText=translations[lang]['banner-desc'];
-  langToggle.innerText=lang.toUpperCase();
-};
-
-// Scroll reveal
-const sections=document.querySelectorAll('section');
-window.addEventListener('scroll',()=>{
-  const trigger=window.innerHeight*0.85;
-  sections.forEach(sec=>{
-    const top=sec.getBoundingClientRect().top;
-    if(top<trigger){sec.style.opacity=1;sec.style.transform='translateY(0)';}
-  });
-});
-
-// Particles.js 初始化
-particlesJS("particles-js", {
-  "particles": {
-    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-    "color": { "value": "#1D9BF0" },
-    "shape": { "type": "circle" },
-    "opacity": { "value": 0.6, "random": true },
-    "size": { "value": 3, "random": true },
-    "line_linked": { "enable": true, "distance": 150, "color": "#1D9BF0", "opacity": 0.4, "width": 1 },
-    "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } },
-    "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.6 } }, "push": { "particles_nb": 4 } }
-  },
-  "retina_detect": true
-});
+  /* 中英文切换 */
+  let isChinese = true;
+  function toggleLang() {
+    isChinese = !isChinese;
+    document.querySelectorAll('[data-zh]').forEach(el => {
+      el.textContent = isChinese ? el.dataset.zh : el.dataset.en;
+    });
+  }
 </script>
 
 </body>
