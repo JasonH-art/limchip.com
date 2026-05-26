@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+                <svg width="150" height="60" viewBox="0 0 150 60" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M75 50 Q60 10 20 15 Q40 50 75 50 M75 50 Q90 25 115 30 Q105 55 75 50" fill="#4CAF50"></path>
+                    <text transform="matrix(1 0 0 1 75 42)" font-family="Arial Black, Helvetica, sans-serif" font-weight="900" font-size="28" fill="white" text-anchor="middle">RoHS</text>
+                </svg>
+            

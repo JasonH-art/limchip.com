@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 解决语言按钮里文字的闪烁 -->
+	<script>
+        (function() {
+            var supported = ['en', 'zh', 'ru', 'ko', 'es', 'vi'];
+            var langMap = { en: 'en', zh: 'zh-CN', ru: 'ru', ko: 'ko', es: 'es', vi: 'vi' };
+            var savedLang = 'en';
+            try {
+                savedLang = localStorage.getItem('limchip-language') || 'en';
+            } catch (error) {}
+            if (supported.indexOf(savedLang) === -1) savedLang = 'en';
+            document.documentElement.lang = langMap[savedLang] || 'en';
+            window.__INITIAL_LANG__ = savedLang;
+        })();
+    </script>
+	<link rel="icon" href="resources/logo-favicon.svg" type="image/svg+xml">
+    <title data-translate="page-services-title">Electronic Components Sourcing & BOM Procurement Services - LimChip</title>
+    <meta name="description" content="LimChip provides electronic components sourcing, BOM procurement, shortage support, obsolete part supply, long-term stock planning and global logistics for production customers.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.limchip.com/services.html">
+    <meta property="og:title" content="Electronic Components Sourcing & BOM Procurement Services - LimChip">
+    <meta property="og:description" content="Electronic components sourcing, BOM procurement, shortage support, obsolete part supply and global logistics.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.limchip.com/services.html">
+    <meta property="og:site_name" content="LimChip Co., LTD">
+    <meta property="og:image" content="https://www.limchip.com/resources/logopreview.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Electronic Components Sourcing & BOM Procurement Services - LimChip">
+    <meta name="twitter:description" content="BOM procurement, shortage support, obsolete part supply and global logistics for production customers.">
+    <meta name="twitter:image" content="https://www.limchip.com/resources/logopreview.png">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://www.limchip.com/services.html#webpage",
+            "url": "https://www.limchip.com/services.html",
+            "name": "Electronic Components Sourcing & BOM Procurement Services - LimChip",
+            "description": "Electronic components sourcing, BOM procurement, shortage support, obsolete part supply and global logistics.",
+            "isPartOf": { "@id": "https://www.limchip.com/#website" },
+            "about": { "@id": "https://www.limchip.com/#organization" }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.limchip.com/services.html#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.limchip.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.limchip.com/services.html" }
+            ]
+        }
+    ]
+}
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Chiron+Hei+HK:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 统一的CSS文件 -->
+    <link rel="stylesheet" href="style.css?v=20260525-placeholder1">
+	<link rel="stylesheet" href="pages.css?v=20260525-services2">
+    
+</head>
+<body id="services-p">
+	
+	
+<!-- Navigation 导航栏代码 -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="resources/logopreview.png" alt="LimChip Logo">
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="index.html" data-translate="nav-home">Home</a></li>
+            <li><a href="products.html" data-translate="nav-products">Products</a></li>
+            <li><a href="services.html" class="active" data-translate="nav-services">Services</a></li>
+            <li><a href="applications.html" data-translate="nav-applications">Applications</a></li>
+            <li><a href="about.html" data-translate="nav-about">About</a></li>
+            <li><a href="contact.html" data-translate="nav-contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="nav-part-search" id="navPartSearch">
+                <button type="button" class="nav-search-toggle" id="navSearchToggle" aria-label="Search component database" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <div class="nav-search-panel" id="navSearchPanel">
+                    <input type="search" id="navPartSearchInput" class="part-search-input" placeholder="Search part number..." data-translate-placeholder="nav-search-placeholder" autocomplete="off">
+                    <div id="navPartSearchResults" class="part-search-results nav-search-results"></div>
+                </div>
+            </div>
+            <div class="lang-toggle-wrapper" id="langToggle">
+                <span id="langText"></span>
+            </div>
+
+            <a href="mailto:sales@limchip.com" class="contact-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
+                     stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span data-translate="btn-contact">Contact Now</span>
+            </a>
+
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!---  Hero Section  区域 -->
+<section id="services-p" class="hero-section">
+    <div class="hero-bg-layer">
+        <img src="./resources/Hero-BG-Ref/Services-hero-background.webp" alt="Services Background">
+    </div>
+
+    <div id="services-animation-container" class="hero-3d-canvas"></div>
+
+
+    <div class="hero-content-layer">
+        <div class="hero-content">
+            <h1 class="hero-title" data-translate="services-hero-title">SUPPLY CHAIN INTELLIGENCE</h1>
+            <p class="hero-subtitle" data-translate="services-hero-subtitle">GLOBAL LOGISTICS NETWORK · REAL-TIME OPTIMIZATION</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="qc-lab-system">
+    <div class="qc-grid-overlay"></div>
+
+    <div class="container relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-20 fade-in-up">
+            <h2 class="section-title v-title" data-translate="services-qc-main-title">QUALITY & ASSURANCE</h2>
+            <div class="h-1.5 w-16 bg-blue-600 mx-auto mb-6 rounded-full"></div>
+            <p class="text-slate-600 v-subtitle leading-relaxed" data-translate="services-qc-subtitle">
+                完善的检测流程，严苛的系统管理，为打造零风险的元器件供应环境
+            </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8 items-stretch">
+            <div class="lg:w-[42%] fade-in-up">
+                <div class="qc-info-main-card">
+                    <h3 class="font-heading qc-dual-title">
+                        <span class="title-top" data-translate="services-qc-title-1">零缺陷品质</span>
+                        <span class="text-gradient" data-translate="services-qc-title-2">全流程实验室体系</span>
+                    </h3>
+                    <div class="blue-divider"></div>
+                    <p class="desc" data-translate="services-qc-desc">
+                        We have our own strict supplier qualification and material re-inspection system. We not only provide chips but also shield you from all potential supply chain risks through multi-dimensional physical and electrical performance tests.
+                    </p>
+
+                    <div class="qc-trust-badges flex flex-wrap gap-4 mt-auto">
+                        <div class="badge">ISO 9001</div>
+                        <div class="badge">AS6081</div>
+                        <div class="badge">MIL-STD-883</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:w-[58%] grid grid-cols-1 md:grid-cols-2 gap-5 fade-in-up">
+                <div class="qc-step-card group">
+                    <div class="qc-num">01</div>
+                    <h4 data-translate="qc-step1-h" class="font-bold text-slate-900 mb-2">外观一致性检测</h4>
+                    <p data-translate="qc-step1-p" class="text-slate-500 text-sm leading-relaxed">基于高倍显微镜的丝印、封装及原厂标签验证，识破二次翻新。</p>
+                    <div class="qc-progress-mini mt-6"><span></span></div>
+                </div>
+                <div class="qc-step-card group">
+                    <div class="qc-num">02</div>
+                    <h4 data-translate="qc-step2-h" class="font-bold text-slate-900 mb-2">X-Ray 结构探测</h4>
+                    <p data-translate="qc-step2-p" class="text-slate-500 text-sm leading-relaxed">核对框架、引线框架及晶圆尺寸一致性，排除空包与虚假芯片。</p>
+                    <div class="qc-progress-mini mt-6"><span></span></div>
+                </div>
+                <div class="qc-step-card group">
+                    <div class="qc-num">03</div>
+                    <h4 data-translate="qc-step3-h" class="font-bold text-slate-900 mb-2">Decap 开盖分析</h4>
+                    <p data-translate="qc-step3-p" class="text-slate-500 text-sm leading-relaxed">物理剥离封装，对比芯片内部 Die 标识与原厂数据库的一致性。</p>
+                    <div class="qc-progress-mini mt-6"><span></span></div>
+                </div>
+                <div class="qc-step-card group">
+                    <div class="qc-num">04</div>
+                    <h4 data-translate="qc-step4-h" class="font-bold text-slate-900 mb-2">电性能及失效应力</h4>
+                    <p data-translate="qc-step4-p" class="text-slate-500 text-sm leading-relaxed">在不同温度环境下验证参数指标，确保长期运行的稳定性。</p>
+                    <div class="qc-progress-mini mt-6"><span></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="qc-live-track mt-16 p-8 flex flex-wrap justify-between items-center gap-8 fade-in-up rounded-2xl">
+            <div class="track-item text-center">
+                <span class="label block mb-1 text-slate-400 text-xs" data-translate="qc-track-check">检测覆盖率</span>
+                <span class="val font-mono text-2xl font-bold">100% Full-Scan</span>
+            </div>
+            <div class="track-item text-center">
+                <span class="label block mb-1 text-slate-400 text-xs" data-translate="qc-track-origin">原厂可追溯</span>
+                <span class="val font-mono text-2xl font-bold">100% Traceable</span>
+            </div>
+            <div class="track-item text-center">
+                <span class="label block mb-1 text-slate-400 text-xs" data-translate="qc-track-standard">入库验证标准</span>
+                <span class="val font-mono text-2xl font-bold uppercase">Multi-Tier</span>
+            </div>
+            <div class="track-item text-center">
+                <span class="label block mb-1 text-slate-400 text-xs" data-translate="qc-track-service">质量保障体系</span>
+                <span class="val font-mono text-2xl font-bold">Life-Time Support</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="gsc-SUPPLY-CHAIN">
+    <div class="sc-grid-overlay"></div>
+    <div class="scaffold-background">
+        <div class="scaffold-text text-top">SUPPLY</div>
+        <div class="scaffold-text text-bottom">CHAIN</div>
+    </div>
+
+    <div class="content-container">
+        <header class="header-main-flex">
+            <div class="info-left">
+                <div class="qc-tag-v4" style="margin-bottom: 20px;">
+                    <span class="dot"></span>
+                    GLOBAL CHANNEL INTEGRATION
+                </div>
+                
+                <h2 class="hero-primary-title" data-translate="services-gsc-primary-title">
+                    全球供应链渠道
+                </h2>
+                
+                <h2 class="hero-secondary-title" style="margin-bottom: 30px;" data-translate="services-gsc-secondary-title">
+                    全球紧缺芯片 现货对冲交付方案
+                </h2>
+                
+                <p class="hero-description-text" data-translate="services-gsc-desc">
+                    整合 OEM 工厂带料、原厂及代理商渠道，以及客户/同行调货库存，实时匹配紧缺料件，实现可落地交付，保障生产线持续运转。
+                </p>
+            </div>
+
+            <div class="info-right">
+                <div class="scope-minimal-box">
+                    <span class="s-label" data-translate="services-gsc-core-scope">CORE SCOPE</span>
+                    <div class="s-list">
+                        <span data-translate="services-gsc-item1">CPU / MCU / MPU / DSP</span>
+                        <span data-translate="services-gsc-item2">FPGA / CPLD</span>
+                        <span data-translate="services-gsc-item3">Power / IGBT / SiC / GaN / PMIC</span>
+                        <span data-translate="services-gsc-item4">Analog & Signal Chain</span>
+                        <span data-translate="services-gsc-item5">DDR / NAND / NOR / EEPROM</span>
+                        <span data-translate="services-gsc-item6">RF / Wireless / Ethernet</span>
+                        <span data-translate="services-gsc-item7">Sensors / Protection</span>
+                        <span data-translate="services-gsc-item8">Clock & Timing</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="service-cards-grid">
+            <div class="service-card-modern">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <h3 class="card-h" data-translate="services-card1-title">多渠道现货库存对冲</h3>
+                <p class="card-p" data-translate="services-card1-desc">直连全球授权代理与 OEM/EMS 备料池，跨地域对冲调度，精准切入供应断点。</p>
+            </div>
+
+            <div class="service-card-modern">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline><path d="M12 2a10 10 0 1 0 10 10" opacity="0.3"></path></svg>
+                </div>
+                <h3 class="card-h" data-translate="services-card2-title">7×24h 极速响应交付</h3>
+                <p class="card-p" data-translate="services-card2-desc">全球滚动报价体系，数小时内反馈真实库存。支持自营仓当日直发，缩减风险窗口。</p>
+            </div>
+
+            <div class="service-card-modern">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                </div>
+                <h3 class="card-h" data-translate="services-card3-title">全流程质量合规防线</h3>
+                <p class="card-p" data-translate="services-card3-desc">严格执行来料分级检测与第三方权威复检，提供完整贸易单据，确保交付绝对合规。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Services Section -->
+  <section class="services-section">
+    <div class="container">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title" data-translate="services-section-services">核心服务</h2>
+            <div class="title-accent"></div> <p class="section-subtitle" data-translate="services-section-services-desc">一站式电子元器件供应链服务</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card fade-in-up">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                        <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>
+                    </svg>
+                </div>
+                <h3 class="service-title" data-translate="services-service1-title">全球采购</h3>
+                <p class="service-desc" data-translate="services-service1-desc">覆盖全球采购网络，确保供应链稳定可靠</p>
+            </div>
+            
+            <div class="service-card fade-in-up">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title" data-translate="services-service2-title">品质检测</h3>
+                <p class="service-desc" data-translate="services-service2-desc">严格品质检测流程，符合最高质量标准</p>
+            </div>
+            
+            <div class="service-card fade-in-up">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title" data-translate="services-service3-title">仓储物流</h3>
+                <p class="service-desc" data-translate="services-service3-desc">现代化仓储和高效物流，确保及时交付</p>
+            </div>
+            
+            <div class="service-card fade-in-up">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                    </svg>
+                </div>
+                <h3 class="service-title" data-translate="services-service4-title">技术支持</h3>
+                <p class="service-desc" data-translate="services-service4-desc">专业团队提供全方位技术咨询服务</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title font-heading" data-translate="services-section-process">服务流程</h2>
+                <p class="section-subtitle" data-translate="services-section-process-desc">标准化流程，确保服务质量</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-step fade-in-up">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title" data-translate="services-step1-title">需求确认</h4>
+                    <p class="step-desc" data-translate="services-step1-desc">详细了解客户需求</p>
+                </div>
+                
+                <div class="process-step fade-in-up">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title" data-translate="services-step2-title">方案制定</h4>
+                    <p class="step-desc" data-translate="services-step2-desc">制定最优解决方案</p>
+                </div>
+                
+                <div class="process-step fade-in-up">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title" data-translate="services-step3-title">采购执行</h4>
+                    <p class="step-desc" data-translate="services-step3-desc">全球采购优质产品</p>
+                </div>
+                
+                <div class="process-step fade-in-up">
+                    <div class="step-number">4</div>
+                    <h4 class="step-title" data-translate="services-step4-title">品质检测</h4>
+                    <p class="step-desc" data-translate="services-step4-desc">严格质量检测</p>
+                </div>
+                
+                <div class="process-step fade-in-up">
+                    <div class="step-number">5</div>
+                    <h4 class="step-title" data-translate="services-step5-title">交付服务</h4>
+                    <p class="step-desc" data-translate="services-step5-desc">及时安全交付</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="advantages-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title font-heading" data-translate="services-section-advantages">服务优势</h2>
+                <p class="section-subtitle" data-translate="services-section-advantages-desc">选择我们的理由</p>
+            </div>
+            
+            <div class="advantages-grid">
+                <div class="advantage-card fade-in-up">
+                    <h3 class="advantage-title" data-translate="services-advantage1-title">专业团队</h3>
+                    <p class="advantage-desc" data-translate="services-advantage1-desc">拥有多年行业经验的专业团队，深入了解客户需求，提供定制化解决方案。我们不仅提供产品，更提供专业的技术支持和咨询服务。</p>
+                </div>
+                
+                <div class="advantage-card fade-in-up">
+                    <h3 class="advantage-title" data-translate="services-advantage2-title">品质保证</h3>
+                    <p class="advantage-desc" data-translate="services-advantage2-desc">严格的质量控制体系，所有产品均来自原厂或授权代理商，确保100%正品。多重检测流程，确保产品质量符合最高标准。</p>
+                </div>
+                
+                <div class="advantage-card fade-in-up">
+                    <h3 class="advantage-title" data-translate="services-advantage3-title">快速响应</h3>
+                    <p class="advantage-desc" data-translate="services-advantage3-desc">24小时内响应客户需求，快速报价，及时交付。灵活的供应链体系，能够应对各种紧急需求，确保项目进度。</p>
+                </div>
+                
+                <div class="advantage-card fade-in-up">
+                    <h3 class="advantage-title" data-translate="services-advantage4-title">成本优化</h3>
+                    <p class="advantage-desc" data-translate="services-advantage4-desc">全球化的采购网络，为客户寻找最优价格。大批量采购优势，为客户提供具有竞争力的价格，降低采购成本。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer 占位符 -->
+    <div id="footer-container"></div>
+
+     <!-- Scripts -->
+	   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+<script src="language.js?v=20260525-lang1"></script>
+
+<script src="load-components.js?v=20260521-recover1"></script>
+
+<script src="scroll-utils.js?v=20260525-top1"></script>
+<script src="navbar-scroll.js?v=20260525-nav4"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script src="pages.js?v=20260521-recover1"></script>
+
+<script src="part-search.js?v=20260522-fix4"></script>
+<script src="main.js?v=20260525-motion1"></script>
+	
+</body>
+</html>

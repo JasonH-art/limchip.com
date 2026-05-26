@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- 解决语言按钮里文字的闪烁 -->
+	<script>
+        (function() {
+            var supported = ['en', 'zh', 'ru', 'ko', 'es', 'vi'];
+            var langMap = { en: 'en', zh: 'zh-CN', ru: 'ru', ko: 'ko', es: 'es', vi: 'vi' };
+            var savedLang = 'en';
+            try {
+                savedLang = localStorage.getItem('limchip-language') || 'en';
+            } catch (error) {}
+            if (supported.indexOf(savedLang) === -1) savedLang = 'en';
+            document.documentElement.lang = langMap[savedLang] || 'en';
+            window.__INITIAL_LANG__ = savedLang;
+        })();
+    </script>
+	<link rel="canonical" href="https://www.limchip.com/">
+	<link rel="icon" href="resources/logo-favicon.svg" type="image/svg+xml">
+	<title data-translate="page-home-title">LimChip Co., LTD | Electronic Components Distributor & IC Sourcing</title>
+   <meta name="description" content="LimChip Co., LTD is a professional electronic components distributor serving global OEM, ODM and EMS customers with original IC sourcing, spot stock, BOM procurement and supply chain support across Hong Kong, Shenzhen and Singapore.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:title" content="LimChip Co., LTD | Electronic Components Distributor & IC Sourcing">
+    <meta property="og:description" content="Professional electronic components distributor for original IC sourcing, spot stock, BOM procurement and global supply chain support.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.limchip.com/">
+    <meta property="og:site_name" content="LimChip Co., LTD">
+    <meta property="og:image" content="https://www.limchip.com/resources/logopreview.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="LimChip Co., LTD | Electronic Components Distributor & IC Sourcing">
+    <meta name="twitter:description" content="Original IC sourcing, spot stock, BOM procurement and global electronic components supply.">
+    <meta name="twitter:image" content="https://www.limchip.com/resources/logopreview.png">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://www.limchip.com/#organization",
+            "name": "LimChip Co., LTD",
+            "url": "https://www.limchip.com/",
+            "logo": "https://www.limchip.com/resources/logopreview.png",
+            "email": "sales@limchip.com",
+            "areaServed": ["Hong Kong", "Shenzhen", "Singapore", "Global"]
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://www.limchip.com/#website",
+            "url": "https://www.limchip.com/",
+            "name": "LimChip",
+            "publisher": { "@id": "https://www.limchip.com/#organization" },
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://www.limchip.com/part/index.html?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://www.limchip.com/#webpage",
+            "url": "https://www.limchip.com/",
+            "name": "LimChip Co., LTD | Electronic Components Distributor & IC Sourcing",
+            "description": "Professional electronic components distributor for original IC sourcing, spot stock, BOM procurement and global supply chain support.",
+            "isPartOf": { "@id": "https://www.limchip.com/#website" },
+            "about": { "@id": "https://www.limchip.com/#organization" }
+        }
+    ]
+}
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Chiron+Hei+HK:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 统一的CSS文件 -->
+    <link rel="stylesheet" href="style.css?v=20260525-placeholder1">
+    <link rel="stylesheet" href="pages.css?v=20260521-recover1"> 
+	
+</head>
+
+<body id="home-p">
+	
+     <!-- Navigation 导航栏代码 -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="resources/logopreview.png" alt="LimChip Logo">
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="index.html" class="active" data-translate="nav-home">Home</a></li>
+            <li><a href="products.html" data-translate="nav-products">Products</a></li>
+            <li><a href="services.html" data-translate="nav-services">Services</a></li>
+            <li><a href="applications.html" data-translate="nav-applications">Applications</a></li>
+            <li><a href="about.html" data-translate="nav-about">About</a></li>
+            <li><a href="contact.html" data-translate="nav-contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="nav-part-search" id="navPartSearch">
+                <button type="button" class="nav-search-toggle" id="navSearchToggle" aria-label="Search component database" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <div class="nav-search-panel" id="navSearchPanel">
+                    <input type="search" id="navPartSearchInput" class="part-search-input" placeholder="Search part number..." data-translate-placeholder="nav-search-placeholder" autocomplete="off">
+                    <div id="navPartSearchResults" class="part-search-results nav-search-results"></div>
+                </div>
+            </div>
+            <div class="lang-toggle-wrapper" id="langToggle">
+                <span id="langText"></span>
+            </div>
+
+            <a href="mailto:sales@limchip.com" class="contact-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
+                     stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span data-translate="btn-contact">Contact Now</span>
+            </a>
+
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- Full-screen Hero Section Hero区域-->
+<section id="home-p" class="hero-section" style="position: relative; overflow: hidden; background: #000; min-height: 100vh; display: flex; align-items: center;">
+    
+    <div class="video-background">
+        <video 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            poster="./resources/Hero-BG-Ref/home-background.webp">
+            <source src="./resources/Hero-BG-Ref/home-background.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="home-hero-bg hero-reveal" style="position: absolute; inset: 0; z-index: 1;">
+        <div id="banner-wrap">
+            <div class="grid-bg"></div>
+            <div class="particle-glow" id="glow1"></div>
+            <div class="particle-glow" id="glow2"></div>
+            <canvas id="luxCanvas"></canvas>
+        </div>
+    </div>
+
+    <div class="home-hero-content">
+        <div class="hero-container hero-reveal">
+            <div class="hero-content">
+                <h1 class="hero-title animate-hero">
+                   <span data-translate="hero-title-all">CONNECTING GLOBAL CHIPS</span>
+                </h1>
+                
+                <p class="hero-subtitle animate-hero" data-translate="hero-subtitle">Driving Smart Future</p>
+                
+                <p class="hero-description animate-hero" data-translate="hero-description">LimChip is dedicated to providing global clients with premium electronic components and superior supply chain solutions.</p>
+                
+                <div class="hero-part-search part-search-widget animate-hero" id="homePartSearch">
+                    <input type="search" id="homePartSearchInput" class="part-search-input" placeholder="Search part number, brand or category..." data-translate-placeholder="nav-search-placeholder" autocomplete="off">
+                    <div id="homePartSearchResults" class="part-search-results nav-search-results"></div>
+                </div>
+                                <div class="hero-actions animate-hero" style="margin-top: 32px;">
+                    <a href="about.html" class="home-btn-glass">
+                        <span data-translate="hero-btn-more">Learn More</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="lim-about-hero" id="about-intro">
+    <div class="container">
+        <div class="lim-hero-grid">
+            
+            <!-- 左侧文字区域（不含按钮） -->
+            <div class="lim-text-layout" data-aos="fade-right">
+                <div class="lim-meta">
+                    <span class="lim-year" data-translate="about-year">始于 2016</span>
+                    <span class="lim-divider"></span>
+                </div>
+                
+                <div class="lim-title-group">
+                    <span class="title-sub" data-translate="about-title-sub">专业的</span>
+                    <h2 class="title-main" data-translate="about-title-main">电子元器件<span class="text-accent">供应商</span></h2>
+                </div>
+                
+                <div class="lim-description">
+                    <p class="desc-primary" data-translate="about-desc-primary"><strong>极限智芯（LimChip）</strong>致力于为全球电子制造企业提供卓越的电子元器件供应解决方案。</p>
+                    <p class="desc-sub" data-translate="about-desc-sub">依托纵深全球的战略渠道与精密数字化管控，我们赋予客户打通原型研发至大规模量产的全生命周期采购能力。凭借卓越的货源组织力，我们系统性破解电子元器件供应瓶颈，为客户构建起稳健、高效且极具竞争力的芯片供应链支撑体系</p>
+                </div>
+                <!-- 原 .lim-action 已移除，按钮移至下方 -->
+            </div>
+
+            <!-- 右侧统计卡片区域（完全不变） -->
+            <div class="lim-stats-layout">
+                <div class="stats-refined-grid">
+                    
+                    <div class="stat-glass-card i1" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-header">
+                            <div class="val-group">
+                                <span class="num-prefix" data-translate="stat-clients-p">超过</span>
+                                <span class="stat-number" data-target="1000">0</span>
+                                <span class="num-suffix">+</span>
+                            </div>
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <div class="lbl" data-translate="stat-clients-l">服务客户</div>
+                    </div>
+
+                    <div class="stat-glass-card i2" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-header">
+                            <div class="val-group">
+                                <span class="num-prefix">＞</span>
+                                <span class="stat-number" data-target="10">0</span>
+                                <span class="num-suffix">Y</span>
+                            </div>
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <div class="lbl" data-translate="stat-exp-l">行业经验</div>
+                    </div>
+
+                    <div class="stat-glass-card i3" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-header">
+                            <div class="val-group">
+                                <span class="stat-number" data-target="200">0</span>
+                                <span class="num-suffix">+</span>
+                            </div>
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        </div>
+                        <div class="lbl" data-translate="stat-brands-l">合作品牌</div>
+                    </div>
+
+                    <div class="stat-glass-card i4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card-header">
+                            <div class="val-group">
+                                <span class="stat-number" data-target="24">0</span>
+                                <span class="num-suffix">H</span>
+                            </div>
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                        </div>
+                        <div class="lbl" data-translate="stat-response-l">极速响应</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 独立按钮：桌面端位于左侧下方，移动端自动沉底 -->
+            <a href="about.html" class="btn-pill-small" data-translate="about-btn-us">了解我们</a>
+        </div>
+    </div>
+</section>
+
+<section class="section-core-values" id="values-grid">
+    <div class="container">
+        <header class="v-header fade-in-up">
+          
+            <h2 class="v-title" data-translate="values-title">核心优势</h2>
+            <p class="v-subtitle" data-translate="values-subtitle">全方位的供应链保障体系</p>
+        </header>
+
+        <div class="v-cards-wrapper">
+            <div class="v-card fade-in-up">
+                <div class="v-icon-container">
+                    <svg class="v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3 data-translate="values-card-1-t">品质保障</h3>
+                <p data-translate="values-card-1-d">原厂渠道直供，全批次追溯，确保零缺陷交付。</p>
+            </div>
+
+            <div class="v-card active fade-in-up">
+                <div class="v-icon-container">
+                    <svg class="v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h3 data-translate="values-card-2-t">快速响应</h3>
+                <p data-translate="values-card-2-d">FAE技术团队待命，24小时内提供完整选型方案。</p>
+            </div>
+
+            <div class="v-card fade-in-up">
+                <div class="v-icon-container">
+                    <svg class="v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                </div>
+                <h3 data-translate="values-card-3-t">全球采购</h3>
+                <p data-translate="values-card-3-d">覆盖欧美日韩渠道，解决紧缺料与长尾料采购难题。</p>
+            </div>
+        </div>
+
+        <div class="v-bottom-bar fade-in-up">
+            <div class="v-stat">
+                <span class="v-num">10,000<span class="v-unit">+</span></span>
+                <span class="v-lbl" data-translate="values-stat-1">产品型号 Part#</span>
+            </div>
+            <div class="v-sep"></div>
+            <div class="v-stat">
+                <span class="v-num">ISO</span>
+                <span class="v-lbl" data-translate="values-stat-2">高标准质量体系</span>
+            </div>
+            <div class="v-sep"></div>
+            <div class="v-stat">
+                <span class="v-num">ERP/MES</span>
+                <span class="v-lbl" data-translate="values-stat-3">数字化供应链管理</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="section-products-unified" id="product-types">
+    <div class="global-bg-decor"></div>
+    
+    <div class="container relative-content">
+        <header class="v-header fade-in-up">
+            <span class="v-tag" data-translate="prod-cat-tag">PRODUCT CATEGORY</span>
+            <h2 class="v-title" data-translate="prod-cat-title">产品类型</h2>
+            <p class="v-subtitle" data-translate="prod-cat-subtitle">多维度覆盖电子元器件核心领域</p>
+        </header>
+
+        <div class="product-grid-layout">
+            <div class="p-card-item fade-in-up">
+                <div class="p-card-num">01</div>
+                <h4 data-translate="prod-cat-1-t">集成电路 (IC)</h4>
+                <p data-translate="prod-cat-1-d">高性能数字芯片、模拟芯片及电源管理 IC。</p>
+            </div>
+
+            <div class="p-card-item fade-in-up">
+                <div class="p-card-num">02</div>
+                <h4 data-translate="prod-cat-2-t">功率器件</h4>
+                <p data-translate="prod-cat-2-d">IGBT、MOSFET 及第三代半导体 SiC/GaN。</p>
+            </div>
+
+            <div class="p-card-item fade-in-up">
+                <div class="p-card-num">03</div>
+                <h4 data-translate="prod-cat-3-t">存储器件</h4>
+                <p data-translate="prod-cat-3-d">涵盖 DRAM、NAND Flash、SRAM 及各类工业级存储方案。</p>
+            </div>
+
+            <div class="p-card-item fade-in-up">
+                <div class="p-card-num">04</div>
+                <h4 data-translate="prod-cat-4-t">连接器</h4>
+                <p data-translate="prod-cat-4-d">高可靠性板对板、线对板连接器及各类工业标准接口。</p>
+            </div>
+
+            <div class="p-card-item fade-in-up">
+                <div class="p-card-num">05</div>
+                <h4 data-translate="prod-cat-5-t">被动元器件</h4>
+                <p data-translate="prod-cat-5-d">高可靠性电容、精密电阻及电感，保障系统稳定。</p>
+            </div>
+        </div>
+
+        <div class="v-more-action fade-in-up">
+            <a href="products.html" class="v-btn-more">
+                <span data-translate="btn-more-detail">更多详细...</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-brands" id="brand-lines">
+    <div class="container">
+        <header class="v-header">
+            <h2 class="v-title" data-translate="brand-title">产品线品牌</h2>
+        </header>
+    </div>
+
+<div class="brand-slider-wrapper">
+    <div class="brand-track">
+        <div class="brand-item"><img src="resources\brand-logos\Microchip.webp" alt="Microchip 微芯单片机"></div>
+        <div class="brand-item"><img src="resources\brand-logos\PanGo-CN.webp" alt="Pango 紫光同创国产FPGA"></div>
+        <div class="brand-item"><img src="resources\brand-logos\PanGo-EN.webp" alt="Pango 紫光同创国产FPGA"></div>
+        <div class="brand-item"><img src="resources\brand-logos\MPS.webp" alt="MPS 芯源系统电源芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\SG Micro.webp" alt="SG Micro 圣邦微电子模拟芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Nexperia.webp" alt="Nexperia 安世半导体分立器件"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Nvidia.webp" alt="Nvidia 英伟达AI计算芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Xilinx.webp" alt="Xilinx 赛灵思FPGA集成电路"></div>
+        <div class="brand-item"><img src="resources\brand-logos\SK-Hynix.webp" alt="SK-Hynix 海力士存储芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Samsung.webp" alt="Samsung 三星存储器"></div>
+        <div class="brand-item"><img src="resources\brand-logos\MICRON.webp" alt="Micron 美光存储芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\TI.webp" alt="TI 德州仪器模拟芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\ST.webp" alt="ST 意法半导体MCU"></div>
+        <div class="brand-item"><img src="resources\brand-logos\INFINEON.webp" alt="Infineon 英飞凌功率器件"></div>
+        <div class="brand-item"><img src="resources\brand-logos\ADI.webp" alt="ADI 亚德诺信号处理芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\onsemi.webp" alt="onsemi 安森美电源管理"></div>
+        <div class="brand-item"><img src="resources\brand-logos\ALTERA.webp" alt="Altera FPGA处理器"></div>
+        <div class="brand-item"><img src="resources\brand-logos\AMD.webp" alt="AMD 处理器与计算芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Broadcom.webp" alt="Broadcom 博通通信芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\GD.webp" alt="GigaDevice 兆易创新Flash存储"></div>
+        <div class="brand-item"><img src="resources\brand-logos\GMLOGO.webp" alt="GigaDevice 国民技术MCU芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Hisilicon.webp" alt="Hisilicon 海思半导体处理器"></div>
+        <div class="brand-item"><img src="resources\brand-logos\IDT.webp" alt="IDT 接口与时钟芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\INTEL.webp" alt="Intel 英特尔处理器"></div>
+        <div class="brand-item"><img src="resources\brand-logos\NXP.webp" alt="NXP 恩智浦汽车电子芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\REALTEK.webp" alt="Realtek 瑞昱网络控制器"></div>
+        <div class="brand-item"><img src="resources\brand-logos\rockchip.webp" alt="Rockchip 瑞芯微多媒体芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\VICOR.webp" alt="Vicor 电源模块"></div>
+
+        <div class="brand-item"><img src="resources\brand-logos\Microchip.webp" alt="Microchip 微芯单片机"></div>
+        <div class="brand-item"><img src="resources\brand-logos\PanGo-CN.webp" alt="Pango 紫光同创国产FPGA"></div>
+        <div class="brand-item"><img src="resources\brand-logos\PanGo-EN.webp" alt="Pango 紫光同创国产FPGA"></div>
+        <div class="brand-item"><img src="resources\brand-logos\MPS.webp" alt="MPS 芯源系统电源芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\SG Micro.webp" alt="SG Micro 圣邦微电子模拟芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Nexperia.webp" alt="Nexperia 安世半导体分立器件"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Nvidia.webp" alt="Nvidia 英伟达AI计算芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Xilinx.webp" alt="Xilinx 赛灵思FPGA集成电路"></div>
+        <div class="brand-item"><img src="resources\brand-logos\SK-Hynix.webp" alt="SK-Hynix 海力士存储芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Samsung.webp" alt="Samsung 三星存储器"></div>
+        <div class="brand-item"><img src="resources\brand-logos\MICRON.webp" alt="Micron 美光存储芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\TI.webp" alt="TI 德州仪器模拟芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\ST.webp" alt="ST 意法半导体MCU"></div>
+        <div class="brand-item"><img src="resources\brand-logos\INFINEON.webp" alt="Infineon 英飞凌功率器件"></div>
+        <div class="brand-item"><img src="resources\brand-logos\ADI.webp" alt="ADI 亚德诺信号处理芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\onsemi.webp" alt="onsemi 安森美电源管理"></div>
+        <div class="brand-item"><img src="resources\brand-logos\ALTERA.webp" alt="Altera FPGA处理器"></div>
+        <div class="brand-item"><img src="resources\brand-logos\AMD.webp" alt="AMD 处理器与计算芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Broadcom.webp" alt="Broadcom 博通通信芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\GD.webp" alt="GigaDevice 兆易创新Flash存储"></div>
+        <div class="brand-item"><img src="resources\brand-logos\GMLOGO.webp" alt="GigaDevice 国民技术MCU芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\Hisilicon.webp" alt="Hisilicon 海思半导体处理器"></div>
+        <div class="brand-item"><img src="resources\brand-logos\IDT.webp" alt="IDT 接口与时钟芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\INTEL.webp" alt="Intel 英特尔处理器"></div>
+        <div class="brand-item"><img src="resources\brand-logos\NXP.webp" alt="NXP 恩智浦汽车电子芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\REALTEK.webp" alt="Realtek 瑞昱网络控制器"></div>
+        <div class="brand-item"><img src="resources\brand-logos\rockchip.webp" alt="Rockchip 瑞芯微多媒体芯片"></div>
+        <div class="brand-item"><img src="resources\brand-logos\VICOR.webp" alt="Vicor 电源模块"></div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="v-more-action">
+            <a href="products.html" class="v-btn-more">
+                <span data-translate="btn-more">更多...</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-industry-unified" id="industry">
+    <div class="container">
+        <header class="v-header-center" data-aos="fade-up">
+            <h2 class="title-giant" data-translate="ind-title">行业解决方案</h2>
+        </header>
+
+        <div class="i-grid-layout">
+            <div class="i-card" data-aos="fade-up">
+                <div class="i-card-bg" style="background-image: url('resources/industry/auto.webp');"></div>
+                <div class="i-card-mask"></div>
+                <div class="i-card-content">
+                    <h3 data-translate="ind-card-1-t">汽车电子</h3>
+                    <p data-translate="ind-card-1-d">车规级 BMS、智能座舱及 ADAS 系统元器件支持。</p>
+                </div>
+            </div>
+            <div class="i-card" data-aos="fade-up" data-aos-delay="50">
+                <div class="i-card-bg" style="background-image: url('resources/industry/industrial.webp');"></div>
+                <div class="i-card-mask"></div>
+                <div class="i-card-content">
+                    <h3 data-translate="ind-card-2-t">工业控制</h3>
+                    <p data-translate="ind-card-2-d">智慧工厂、机器人、高性能 PLC、变频器及伺服驱动系统方案。</p>
+                </div>
+            </div>
+            <div class="i-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="i-card-bg" style="background-image: url('resources/industry/telecom.webp');"></div>
+                <div class="i-card-mask"></div>
+                <div class="i-card-content">
+                    <h3 data-translate="ind-card-3-t">通信设备</h3>
+                    <p data-translate="ind-card-3-d">5G 基站及物联网射频前端、光通信芯片。</p>
+                </div>
+            </div>
+            <div class="i-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="i-card-bg" style="background-image: url('resources/industry/medical.webp');"></div>
+                <div class="i-card-mask"></div>
+                <div class="i-card-content">
+                    <h3 data-translate="ind-card-4-t">医疗电子</h3>
+                    <p data-translate="ind-card-4-d">高精度成像系统、便携式诊断设备及监护仪。</p>
+                </div>
+            </div>
+            <div class="i-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="i-card-bg" style="background-image: url('resources/industry/consumer.webp');"></div>
+                <div class="i-card-mask"></div>
+                <div class="i-card-content">
+                    <h3 data-translate="ind-card-5-t">新消费电子</h3>
+                    <p data-translate="ind-card-5-d">智能穿戴、无人机、智能家居。</p>
+                </div>
+            </div>
+            <div class="i-card" data-aos="fade-up" data-aos-delay="250">
+                <div class="i-card-bg" style="background-image: url('resources/industry/energy.webp');"></div>
+                <div class="i-card-mask"></div>
+                <div class="i-card-content">
+                    <h3 data-translate="ind-card-6-t">新能源</h3>
+                    <p data-translate="ind-card-6-d">光伏逆变器、储能系统及充电桩核心功率器件。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="v-more-action" data-aos="fade-up">
+            <a href="applications.html" class="v-btn-more">
+                <span data-translate="btn-ind-detail">了解行业赋能详情</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="section-service-flow" id="service-flow">
+    <div class="container">
+        <header class="v-header-center" data-aos="fade-up">
+            <h2 class="title-giant text-white" data-translate="flow-title">标准化服务流程</h2>
+        </header>
+
+        <div class="flow-steps">
+            <div class="step-card" data-aos="fade-up">
+                <div class="step-num">01</div>
+                <div class="step-body">
+                    <h4 data-translate="flow-step-1-t">需求调研</h4>
+                    <p data-translate="flow-step-1-d">深度沟通应用场景，精准匹配型号需求与技术参数。</p>
+                </div>
+            </div>
+
+            <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-num">02</div>
+                <div class="step-body">
+                    <h4 data-translate="flow-step-2-t">方案验证</h4>
+                    <p data-translate="flow-step-2-d">提供样品支持与技术方案评估，确保元器件完美适配。</p>
+                </div>
+            </div>
+
+            <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-num">03</div>
+                <div class="step-body">
+                    <h4 data-translate="flow-step-3-t">物流交付</h4>
+                    <p data-translate="flow-step-3-d">全球供应链协同，原装正品顺丰直达，保障时效。</p>
+                </div>
+            </div>
+
+            <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-num">04</div>
+                <div class="step-body">
+                    <h4 data-translate="flow-step-4-t">售后支持</h4>
+                    <p data-translate="flow-step-4-d">24小时技术在线，提供长期的品质保障与供应链优化。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="section-final-cta-unified" id="contact-cta">
+    <div class="cta-bg-glow"></div>
+    
+    <div class="container">
+        <div class="cta-glass-card" data-aos="zoom-in">
+            <header class="v-header-center">
+                <span class="v-tag" data-translate="cta-tag">READY TO START?</span>
+                <h2 class="title-giant text-white" data-translate="cta-title">获得高效的芯片供应链服务</h2>
+                <p class="cta-desc" data-translate="cta-desc">无论是紧缺物料寻源，还是长期成本优化方案，我们的专家团队随时待命。</p>
+            </header>
+
+            <div class="cta-actions-group">
+                <a href="mailto:sales@LimChip.com" class="v-btn-primary">
+                    <span data-translate="cta-btn-submit">@提交需求</span>
+                    <i class="btn-icon">⚡</i>
+                </a>
+                <a href="contact.html" class="v-btn-outline">
+                    <span data-translate="cta-btn-contact">联系支持</span>
+                </a>
+            </div>
+
+            <div class="cta-footer-note">
+                <span data-translate="cta-note-1">专业快速响应</span>
+                <span class="separator">|</span>
+                <span data-translate="cta-note-2">原装正品保障</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <div id="footer-container"></div>
+
+                   <!-- Scripts -->
+	    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+        <script src="language.js?v=20260525-lang1"></script>
+        <script src="load-components.js?v=20260521-recover1"></script>
+        <script src="scroll-utils.js?v=20260525-top1"></script> 
+		<script src="navbar-scroll.js?v=20260525-nav4"></script>
+		<script src="pages.js?v=20260521-recover1"></script>
+        <script src="part-search.js?v=20260522-fix4"></script>
+<script src="main.js?v=20260525-motion1"></script>
+		
+
+	
+</body>
+</html>

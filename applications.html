@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 解决语言按钮里文字的闪烁 -->
+	<script>
+        (function() {
+            var supported = ['en', 'zh', 'ru', 'ko', 'es', 'vi'];
+            var langMap = { en: 'en', zh: 'zh-CN', ru: 'ru', ko: 'ko', es: 'es', vi: 'vi' };
+            var savedLang = 'en';
+            try {
+                savedLang = localStorage.getItem('limchip-language') || 'en';
+            } catch (error) {}
+            if (supported.indexOf(savedLang) === -1) savedLang = 'en';
+            document.documentElement.lang = langMap[savedLang] || 'en';
+            window.__INITIAL_LANG__ = savedLang;
+        })();
+    </script>
+	<link rel="icon" href="resources/logo-favicon.svg" type="image/svg+xml">
+    <title data-translate="page-apps-title">Electronics Applications | Automotive, Industrial & AI Component Sourcing - LimChip</title>
+    <meta name="description" content="LimChip supports automotive, industrial, AI computing, communications, medical, energy and high-reliability electronics applications with reliable component sourcing.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.limchip.com/applications.html">
+    <meta property="og:title" content="Electronics Applications | Automotive, Industrial & AI Component Sourcing - LimChip">
+    <meta property="og:description" content="Component sourcing support for automotive, industrial, AI computing, communications, medical, energy and high-reliability electronics.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.limchip.com/applications.html">
+    <meta property="og:site_name" content="LimChip Co., LTD">
+    <meta property="og:image" content="https://www.limchip.com/resources/logopreview.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Electronics Applications | Automotive, Industrial & AI Component Sourcing - LimChip">
+    <meta name="twitter:description" content="Electronic component sourcing for automotive, industrial, AI computing and high-reliability applications.">
+    <meta name="twitter:image" content="https://www.limchip.com/resources/logopreview.png">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://www.limchip.com/applications.html#webpage",
+            "url": "https://www.limchip.com/applications.html",
+            "name": "Electronics Applications | Automotive, Industrial & AI Component Sourcing - LimChip",
+            "description": "Component sourcing support for automotive, industrial, AI computing, communications, medical, energy and high-reliability electronics.",
+            "isPartOf": { "@id": "https://www.limchip.com/#website" },
+            "about": { "@id": "https://www.limchip.com/#organization" }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.limchip.com/applications.html#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.limchip.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Applications", "item": "https://www.limchip.com/applications.html" }
+            ]
+        }
+    ]
+}
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Chiron+Hei+HK:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=20260525-placeholder1">
+    <link rel="stylesheet" href="pages.css?v=20260521-recover1">
+</head>
+<body id="applications-p">
+	
+	
+<!-- Navigation 导航栏代码 -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="resources/logopreview.png" alt="LimChip Logo">
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="index.html" data-translate="nav-home">Home</a></li>
+            <li><a href="products.html" data-translate="nav-products">Products</a></li>
+            <li><a href="services.html" data-translate="nav-services">Services</a></li>
+            <li><a href="applications.html" class="active" data-translate="nav-applications">Applications</a></li>
+            <li><a href="about.html" data-translate="nav-about">About</a></li>
+            <li><a href="contact.html" data-translate="nav-contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="nav-part-search" id="navPartSearch">
+                <button type="button" class="nav-search-toggle" id="navSearchToggle" aria-label="Search component database" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <div class="nav-search-panel" id="navSearchPanel">
+                    <input type="search" id="navPartSearchInput" class="part-search-input" placeholder="Search part number..." data-translate-placeholder="nav-search-placeholder" autocomplete="off">
+                    <div id="navPartSearchResults" class="part-search-results nav-search-results"></div>
+                </div>
+            </div>
+            <div class="lang-toggle-wrapper" id="langToggle">
+                <span id="langText"></span>
+            </div>
+
+            <a href="mailto:sales@limchip.com" class="contact-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
+                     stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span data-translate="btn-contact">Contact Now</span>
+            </a>
+
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</nav>>
+</nav>
+
+         <!---  Hero Section  区域 -->
+<section id="applications-p" class="hero-section">
+    <div class="hero-bg-layer">
+        <img src="./resources/Hero-BG-Ref/Applications-hero-background1.webp" class="slide" alt="BG 1">
+        <img src="./resources/Hero-BG-Ref/Applications-hero-background2.webp" class="slide" alt="BG 2">
+    </div>
+	
+    <div id="apps-animation-container" class="hero-3d-canvas"></div>
+
+    <div class="hero-content-layer">
+        <div class="hero-content">
+            <h1 class="hero-title" data-translate="apps-hero-title">行业赋能</h1>
+            <p class="hero-subtitle" data-translate="apps-hero-subtitle">深耕半导体核心应用 · 为领域合作伙伴提供卓越价值</p>
+        </div>
+    </div>
+</section>
+
+
+
+   <section class="section apps-section">
+    <div class="container">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title" data-translate="apps-section-title">应用领域</h2>
+            <p class="section-subtitle">
+                <span data-translate="apps-section-subtitle1">深耕全球半导体黄金赛道</span>
+                <span class="chip-dot"></span>
+                <span data-translate="apps-section-subtitle2">精准赋能高价值应用场景</span>
+            </p>
+        </div>
+        
+        <div class="apps-grid">
+            <div class="app-card fade-in-up">
+                <div class="app-info-wrapper">
+                    <h3 class="app-title" data-translate="app-card1-title">汽车电子</h3>
+                    <div class="app-desc"><p data-translate="app-card1-desc">智能驾驶 (ADAS)、域控制器、三电系统、底盘安全与动力总成、车载环视系统、LED车灯控制，车内智能照明、信息娱乐仪表组。</p></div>
+                </div>
+                <div class="app-icon tech-icon-style">
+    <svg viewBox="0 0 64 64" fill="none"><path d="M54 38H10C8.4 38 7 36.6 7 35V29C7 27.4 8.4 26 10 26H54C55.6 26 57 27.4 57 29V35C57 36.6 55.6 38 54 38Z" fill="currentColor" fill-opacity="0.1"/><path d="M54 38H10C8.4 38 7 36.6 7 35V29C7 27.4 8.4 26 10 26H54C55.6 26 57 27.4 57 29V35C57 36.6 55.6 38 54 38Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M16 26L22 15H42L48 26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="40" r="6" fill="#fff" stroke="currentColor" stroke-width="2.5"/><circle cx="48" cy="40" r="6" fill="#fff" stroke="currentColor" stroke-width="2.5"/><path d="M35 24L29 31H33L31 38L37 31H33L35 24Z" fill="#0066ff" class="anim-glow-fast"/></svg>
+</div>
+            </div>
+
+            <div class="app-card fade-in-up">
+                <div class="app-info-wrapper">
+                    <h3 class="app-title" data-translate="app-card2-title">人工智能与AI算力</h3>
+                    <div class="app-desc"><p data-translate="app-card2-desc">AI 加速卡、数据中心服务器、高性能算力中心、边缘计算网关、HBM 存储阵列、NPU、液冷算力集群、云端训练芯片。</p></div>
+                </div>
+                <div class="app-icon tech-icon-style">
+                    <svg viewBox="0 0 64 64" fill="none"><rect x="14" y="14" width="40" height="40" rx="4" fill="currentColor" fill-opacity="0.1"/><rect x="12" y="12" width="40" height="40" rx="4" stroke="currentColor" stroke-width="2.5"/><path d="M12 24H52M12 40H52M24 12V52M40 12V52" stroke="currentColor" stroke-width="1" opacity="0.3"/><rect x="24" y="24" width="16" height="16" rx="2" fill="#0066ff" class="anim-pulse-tech"/></svg>
+                </div>
+            </div>
+
+            <div class="app-card fade-in-up">
+                <div class="app-info-wrapper">
+                    <h3 class="app-title" data-translate="app-card3-title">电力与能源</h3>
+                    <div class="app-desc"><p data-translate="app-card3-desc">光伏逆变器、风机主控板、超级充电桩、UPS、储能BMS电池管理系统、数字电源模组、智慧电网终端、电力专用光模块。</p></div>
+                </div>
+                <div class="app-icon tech-icon-style">
+                    <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1" stroke-dasharray="8 4" opacity="0.2"/><path d="M32 4L14 28H28L24 56L50 24H36L42 4H32Z" fill="currentColor" fill-opacity="0.1"/><path d="M32 4L14 28H28L24 56L50 24H36L42 4H32Z" stroke="currentColor" stroke-width="2.5"/><path d="M30 30l4-4" stroke="#0066ff" stroke-width="3" class="anim-glow-fast"/></svg>
+                </div>
+            </div>
+
+            <div class="app-card fade-in-up">
+                <div class="app-info-wrapper">
+                    <h3 class="app-title" data-translate="app-card4-title">工业电子</h3>
+                    <div class="app-desc"><p data-translate="app-card4-desc">电机驱动控制器、PLC控制器、工业PC、数据采集模块、嵌入式控制主板、工业显示器、精密检测仪器、工业以太网、激光测距模块、机器视觉相机。</p></div>
+                </div>
+                <div class="app-icon tech-icon-style">
+                    <svg viewBox="0 0 64 64" fill="none"><rect x="20" y="20" width="28" height="28" rx="2" fill="currentColor" fill-opacity="0.1"/><rect x="18" y="18" width="28" height="28" rx="2" stroke="currentColor" stroke-width="2.5"/><path d="M32 8V18M32 46V54M10 32H18M46 32H54" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="7" stroke="#0066ff" stroke-width="2.5" stroke-dasharray="3 3" class="anim-pulse-tech"/></svg>
+                </div>
+            </div>
+
+            <div class="app-card fade-in-up">
+                <div class="app-info-wrapper">
+                    <h3 class="app-title" data-translate="app-card5-title">通信电子</h3>
+                    <div class="app-desc"><p data-translate="app-card5-desc">宏基站、微基站、光传输网络设备、光模块、路由器、卫星通讯终端、基站射频模块、交换机、工业物联网网关、边缘接入点。</p></div>
+                </div>
+                <div class="app-icon tech-icon-style">
+                    <svg viewBox="0 0 64 64" fill="none"><path d="M12 52L32 42L52 52" stroke="currentColor" stroke-width="2.5"/><path d="M32 42V12" stroke="currentColor" stroke-width="2.5"/><path d="M22 24C22 24 27 18 32 18C37 18 42 24 42 24" stroke="#0066ff" stroke-width="2.5" class="anim-glow-fast"/><path d="M16 16C16 16 24 8 32 8C40 8 48 16 48 16" stroke="#0066ff" stroke-width="2" opacity="0.4"/></svg>
+                </div>
+            </div>
+
+            <div class="app-card fade-in-up">
+                <div class="app-info-wrapper">
+                    <h3 class="app-title" data-translate="app-card6-title">医疗电子</h3>
+                    <div class="app-desc"><p data-translate="app-card6-desc">数字化超声影像、监护仪、AED除颤仪、高精度分析仪、超声诊断仪、手术机器人、可穿戴医疗设备、图像处理主板、高速 ADC 采集板、核磁共振模组。</p></div>
+                </div>
+                <div class="app-icon tech-icon-style">
+                    <svg viewBox="0 0 64 64" fill="none"><rect x="12" y="16" width="40" height="32" rx="4" fill="currentColor" fill-opacity="0.1"/><rect x="12" y="16" width="40" height="32" rx="4" stroke="currentColor" stroke-width="2.5"/><path d="M12 32H20L24 22L32 42L36 32H52" stroke="#0066ff" stroke-width="2.5" class="anim-glow-fast"/></svg>
+                </div>
+            </div>
+
+            <div class="app-card fade-in-up">
+                <div class="app-info-wrapper">
+                    <h3 class="app-title" data-translate="app-card7-title">特种领域</h3>
+                    <div class="app-desc"><p data-translate="app-card7-desc">抗辐射航天载荷、宽温域工业控制器、高可靠信号链路、机载通信、雷达信号处理、加固嵌入式计算机、高精度导航模组、极端环境电源。</p></div>
+                </div>
+                <div class="app-icon tech-icon-style">
+                    <svg viewBox="0 0 64 64" fill="none"><path d="M32 54C32 54 12 46 12 14C12 14 32 6 32 6C32 6 52 14 52 14C52 46 32 54 32 54Z" fill="currentColor" fill-opacity="0.1"/><path d="M32 54C32 54 12 46 12 14C12 14 32 6 32 6C32 6 52 14 52 14C52 46 32 54 32 54Z" stroke="currentColor" stroke-width="2.5"/><path d="M32 18V42M20 30H44" stroke="#0066ff" stroke-width="3" opacity="0.6" class="anim-glow-fast"/></svg>
+                </div>
+            </div>
+
+            <div class="app-card fade-in-up">
+                <div class="app-info-wrapper">
+                    <h3 class="app-title" data-translate="app-card8-title">新消费电子</h3>
+                    <div class="app-desc"><p data-translate="app-card8-desc">智能可穿戴设备、运动相机、便携户外储能电源、AI 陪伴机器人、AR/VR 头显、智能家居、无人机、游戏主机控制器、智能感知模组。</p></div>
+                </div>
+    <div class="app-icon tech-icon-style"><svg viewBox="0 0 64 64" fill="none"><path d="M32 28L18 14M32 28L46 14M32 36L18 50M32 36L46 50" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><rect x="25" y="27" width="14" height="10" rx="2" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="4"/><circle cx="18" cy="14" r="5" stroke="currentColor" stroke-width="3"/><circle cx="46" cy="14" r="5" stroke="currentColor" stroke-width="3"/><circle cx="18" cy="50" r="5" stroke="currentColor" stroke-width="3"/><circle cx="46" cy="50" r="5" stroke="currentColor" stroke-width="3"/><path d="M15 14H21M43 14H49M15 50H21M43 50H49" stroke="#0066ff" stroke-width="4" stroke-linecap="round" class="anim-glow-fast"/></svg></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="section solution-carousel-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title" data-translate="sol-section-title">解决方案</h2>
+            <p class="section-subtitle">
+                <span data-translate="sol-section-subtitle1">全链路技术闭环架构</span>
+                <span class="chip-dot">|</span>
+                <span data-translate="sol-section-subtitle2">驱动数字化转型落地</span>
+            </p>
+        </div>
+
+        <div class="carousel-viewport">
+            <button class="sol-nav-btn prev" onclick="shiftSlide(-1)">❮</button>
+            <button class="sol-nav-btn next" onclick="shiftSlide(1)">❯</button>
+
+            <div class="carousel-inner" id="solInner">
+                <div class="solution-page active">
+                    <div class="sol-grid-focused">
+                        <div class="sol-visual" style="display: flex; flex-direction: column; background: #fff; height: 100%;">
+                            <div style="text-align: center; padding: 40px 40px 20px 40px;">
+                                <div style="background: #0066ff; color: #fff; padding: 6px 16px; border-radius: 4px; font-weight: bold; display: inline-block; margin-top: 20px;" data-translate="sol1-badge">AUTOMOTIVE LIGHTING</div>
+                                <p style="color: #666; font-size: 14px; margin-top: 10px;" data-translate="sol1-subtitle">LITIX™ 驱动与智能像素控制技术</p>
+                            </div>
+                            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: center; overflow: hidden; padding: 0 20px 20px 20px;">
+                                <img src="\resources\backgrounds\html-Apps\01-LEDdrive.webp" style="width: 100%; height: auto; max-height: 450px; object-fit: contain;" alt="LED Drive">
+                            </div>
+                        </div>
+                        <div class="sol-text">
+                            <span data-translate="sol1-category">Intelligence & Safety</span>
+                            <h3 data-translate="sol1-title">智慧汽车 LED 照明系统</h3>
+                            <p data-translate="sol1-desc">通过高精度驱动技术，赋予道路照明以“情感”与“交互”。我们的方案不仅提升了夜间行驶安全性，更通过自适应像素控制重新定义了外观语言。</p>
+                            <div class="tech-feature-grid">
+                                <div>
+                                    <strong data-translate="sol1-feature1-title">自适应像素控制</strong>
+                                    <p data-translate="sol1-feature1-desc">实现动态光矩阵控制。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol1-feature2-title">高能效驱动架构</strong>
+                                    <p data-translate="sol1-feature2-desc">LITIX™ Power 系列极致效率。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol1-feature3-title">可靠供电组合</strong>
+                                    <p data-translate="sol1-feature3-desc">汽车级 MOSFET 稳定工作。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol1-feature4-title">高度集成化设计</strong>
+                                    <p data-translate="sol1-feature4-desc">显著优化 PCB 空间。</p>
+                                </div>
+                            </div>
+                            <footer><strong data-translate="sol1-footer-label">核心价值：</strong> <span data-translate="sol1-footer-value">满足 AEC-Q100 标准，支持前装大灯及氛围照明。</span></footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-page">
+                    <div class="sol-grid-focused">
+                        <div class="sol-visual" style="display: flex; flex-direction: column; background: #fff; height: 100%;">
+                            <div style="text-align: center; padding: 40px 40px 20px 40px;">
+                                <div style="background: #0066ff; color: #fff; padding: 6px 16px; border-radius: 4px; font-weight: bold; display: inline-block; margin-top: 20px;" data-translate="sol2-badge">INDUSTRIAL AI</div>
+                                <p style="color: #666; font-size: 14px; margin-top: 10px;" data-translate="sol2-subtitle">边缘计算驱动的工业 4.0 闭环</p>
+                            </div>
+                            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: center; overflow: hidden; padding: 0 20px 20px 20px;">
+                                <img src="\resources\backgrounds\html-Apps\02-EdgeComputing.webp" style="width: 100%; height: auto; max-height: 450px; object-fit: contain;" alt="Industrial AI">
+                            </div>
+                        </div>
+                        <div class="sol-text">
+                            <span data-translate="sol2-category">Smart Manufacturing</span>
+                            <h3 data-translate="sol2-title">工业感知与边缘计算中心</h3>
+                            <p data-translate="sol2-desc">打破传统传感器的边界，将 AI 算法下沉至生产现场。实现毫秒级的实时异常检测与预测性维护，确保生产线无间断运行。</p>
+                            <div class="tech-feature-grid">
+                                <div>
+                                    <strong data-translate="sol2-feature1-title">低延迟边缘计算</strong>
+                                    <p data-translate="sol2-feature1-desc">本地化实时数据处理。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol2-feature2-title">多维传感器融合</strong>
+                                    <p data-translate="sol2-feature2-desc">构建数字孪生底座。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol2-feature3-title">AI 预测性维护</strong>
+                                    <p data-translate="sol2-feature3-desc">预防性更换关键部件。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol2-feature4-title">工业互联协议</strong>
+                                    <p data-translate="sol2-feature4-desc">支持 OPC-UA 与 TSN。</p>
+                                </div>
+                            </div>
+                            <footer><strong data-translate="sol2-footer-label">应用场景：</strong> <span data-translate="sol2-footer-value">智慧工厂、高精度协作机器人。</span></footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-page">
+                    <div class="sol-grid-focused">
+                        <div class="sol-visual" style="display: flex; flex-direction: column; background: #fff; height: 100%;">
+                            <div style="text-align: center; padding: 40px 40px 20px 40px;">
+                                <div style="background: #0066ff; color: #fff; padding: 6px 16px; border-radius: 4px; font-weight: bold; display: inline-block; margin-top: 20px;" data-translate="sol3-badge">EV POWERTRAIN</div>
+                                <p style="color: #666; font-size: 14px; margin-top: 10px;" data-translate="sol3-subtitle">极致功率密度驱动绿色出行</p>
+                            </div>
+                            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: center; overflow: hidden; padding: 0 20px 20px 20px;">
+                                <img src="\resources\backgrounds\html-Apps\03.webp" style="width: 100%; height: auto; max-height: 450px; object-fit: contain;" alt="EV">
+                            </div>
+                        </div>
+                        <div class="sol-text">
+                            <span data-translate="sol3-category">Electrification</span>
+                            <h3 data-translate="sol3-title">新能源动力总成系统方案</h3>
+                            <p data-translate="sol3-desc">通过优化 OBC、DC/DC 与牵引逆变器，大幅减轻系统重量，显著提升电动汽车的续航里程与充电速度。</p>
+                            <div class="tech-feature-grid">
+                                <div>
+                                    <strong data-translate="sol3-feature1-title">高效 OBC 转化</strong>
+                                    <p data-translate="sol3-feature1-desc">采用宽禁带半导体设计。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol3-feature2-title">高功率逆变控制</strong>
+                                    <p data-translate="sol3-feature2-desc">提升整车扭矩响应。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol3-feature3-title">系统级减重方案</strong>
+                                    <p data-translate="sol3-feature3-desc">助力优异的整车推重比。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol3-feature4-title">全栈传感器支持</strong>
+                                    <p data-translate="sol3-feature4-desc">高可靠的动力闭环反馈。</p>
+                                </div>
+                            </div>
+                            <footer><strong data-translate="sol3-footer-label">关键技术：</strong> <span data-translate="sol3-footer-value">融合 SiC/GaN 创新，支持 800V 高压架构。</span></footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-page">
+                    <div class="sol-grid-focused">
+                        <div class="sol-visual" style="display: flex; flex-direction: column; background: #fff; height: 100%;">
+                            <div style="text-align: center; padding: 40px 40px 20px 40px;">
+                                <div style="background: #0066ff; color: #fff; padding: 6px 16px; border-radius: 4px; font-weight: bold; display: inline-block; margin-top: 20px;" data-translate="sol4-badge">AI DATA CENTER</div>
+                                <p style="color: #666; font-size: 14px; margin-top: 10px;" data-translate="sol4-subtitle">从电网到芯片的“零损耗”追求</p>
+                            </div>
+                            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: center; overflow: hidden; padding: 0 20px 20px 20px;">
+                                <img src="\resources\backgrounds\html-Apps\04.webp" style="width: 100%; height: auto; max-height: 450px; object-fit: contain;" alt="Data Center">
+                            </div>
+                        </div>
+                        <div class="sol-text">
+                            <span data-translate="sol4-category">Sustainability</span>
+                            <h3 data-translate="sol4-title">数据中心与 AI 算力基座</h3>
+                            <p data-translate="sol4-desc">凭借对 Si、SiC 和 GaN 技术的掌握，为全球 AI 工厂提供稳定、高效的绿色能源链路，降低 PUE 损耗。</p>
+                            <div class="tech-feature-grid">
+                                <div>
+                                    <strong data-translate="sol4-feature1-title">48V 电力分配</strong>
+                                    <p data-translate="sol4-feature1-desc">大幅降低机架损耗。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol4-feature2-title">高性能算力供电</strong>
+                                    <p data-translate="sol4-feature2-desc">大电流、极速动态响应。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol4-feature3-title">绿色 PSU 设计</strong>
+                                    <p data-translate="sol4-feature3-desc">能效比提升至 98% 以上。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol4-feature4-title">硬件级安全存储</strong>
+                                    <p data-translate="sol4-feature4-desc">确保算力节点的完整性。</p>
+                                </div>
+                            </div>
+                            <footer><strong data-translate="sol4-footer-label">技术闭环：</strong> <span data-translate="sol4-footer-value">涵盖 ACDC/DCDC 转换，降低运营支出。</span></footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-page">
+                    <div class="sol-grid-focused">
+                        <div class="sol-visual" style="display: flex; flex-direction: column; background: #fff; height: 100%;">
+                            <div style="text-align: center; padding: 40px 40px 20px 40px;">
+                                <div style="background: #0066ff; color: #fff; padding: 6px 16px; border-radius: 4px; font-weight: bold; display: inline-block; margin-top: 20px;" data-translate="sol5-badge">MEDICAL IMAGING</div>
+                                <p style="color: #666; font-size: 14px; margin-top: 10px;" data-translate="sol5-subtitle">毫米级精度的数字放射诊疗技术</p>
+                            </div>
+                            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: center; overflow: hidden; padding: 0 20px 20px 20px;">
+                                <img src="\resources\backgrounds\html-Apps\05.webp" style="width: 100%; height: auto; max-height: 450px; object-fit: contain;" alt="Medical">
+                            </div>
+                        </div>
+                        <div class="sol-text">
+                            <span data-translate="sol5-category">Life Science</span>
+                            <h3 data-translate="sol5-title">数字放射成像与医学影像</h3>
+                            <p data-translate="sol5-desc">提供临床级的图像传感器与高精度 ADC 方案。支持从移动式 X 光机到高端 CT 的全系列设备设计。</p>
+                            <div class="tech-feature-grid">
+                                <div>
+                                    <strong data-translate="sol5-feature1-title">放射级图像传感</strong>
+                                    <p data-translate="sol5-feature1-desc">极低噪声、高动态范围。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol5-feature2-title">定制化 SoC/SiP</strong>
+                                    <p data-translate="sol5-feature2-desc">集成前端信号处理。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol5-feature3-title">医疗级 AFE 接口</strong>
+                                    <p data-translate="sol5-feature3-desc">精准生物电信号采集。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol5-feature4-title">长寿命周期保障</strong>
+                                    <p data-translate="sol5-feature4-desc">确保 15-20 年稳定供应。</p>
+                                </div>
+                            </div>
+                            <footer><strong data-translate="sol5-footer-label">合规基石：</strong> <span data-translate="sol5-footer-value">遵循 ISO 13485 标准，支持长期报批。</span></footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-page">
+                    <div class="sol-grid-focused">
+                        <div class="sol-visual" style="display: flex; flex-direction: column; background: #fff; height: 100%;">
+                            <div style="text-align: center; padding: 40px 40px 20px 40px;">
+                                <div style="background: #0066ff; color: #fff; padding: 6px 16px; border-radius: 4px; font-weight: bold; display: inline-block; margin-top: 20px;" data-translate="sol6-badge">TELECOM FPGA</div>
+                                <p style="color: #666; font-size: 14px; margin-top: 10px;" data-translate="sol6-subtitle">户外极端环境下的稳健通信方案</p>
+                            </div>
+                            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: center; overflow: hidden; padding: 0 20px 20px 20px;">
+                                <img src="\resources\backgrounds\html-Apps\06.webp" style="width: 100%; height: auto; max-height: 450px; object-fit: contain;" alt="Telecom">
+                            </div>
+                        </div>
+                        <div class="sol-text">
+                            <span data-translate="sol6-category">Connectivity</span>
+                            <h3 data-translate="sol6-title">通信 FPGA 平台电源管理</h3>
+                            <p data-translate="sol6-desc">为 5G 与无线基础设施提供智能功率级（SPS），确保在极端户外环境下具备出色的热性能与电源稳定性。</p>
+                            <div class="tech-feature-grid">
+                                <div>
+                                    <strong data-translate="sol6-feature1-title">智能多相驱动</strong>
+                                    <p data-translate="sol6-feature1-desc">满足大电流瞬态需求。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol6-feature2-title">紧凑型散热设计</strong>
+                                    <p data-translate="sol6-feature2-desc">提升布线密度与热管理。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol6-feature3-title">可重构电源导轨</strong>
+                                    <p data-translate="sol6-feature3-desc">适应多变的 5G 标准。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol6-feature4-title">电信级可靠性</strong>
+                                    <p data-translate="sol6-feature4-desc">内置稳健抗干扰保护。</p>
+                                </div>
+                            </div>
+                            <footer><strong data-translate="sol6-footer-label">应用定位：</strong> <span data-translate="sol6-footer-value">基站 AAU/BBU、卫星通信链路。</span></footer>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-page">
+                    <div class="sol-grid-focused">
+                        <div class="sol-visual" style="display: flex; flex-direction: column; background: #fff; height: 100%;">
+                            <div style="text-align: center; padding: 40px 40px 20px 40px;">
+                                <div style="background: #0066ff; color: #fff; padding: 6px 16px; border-radius: 4px; font-weight: bold; display: inline-block; margin-top: 20px;" data-translate="sol7-badge">AUTOMOTIVE BMS</div>
+                                <p style="color: #666; font-size: 14px; margin-top: 10px;" data-translate="sol7-subtitle">ASIL-D 级全栈电池安全监控</p>
+                            </div>
+                            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: center; overflow: hidden; padding: 0 20px 20px 20px;">
+                                <img src="\resources\backgrounds\html-Apps\07.webp" style="width: 100%; height: auto; max-height: 450px; object-fit: contain;" alt="BMS">
+                            </div>
+                        </div>
+                        <div class="sol-text">
+                            <span data-translate="sol7-category">Battery Safety</span>
+                            <h3 data-translate="sol7-title">汽车 BMS 电池管理系统</h3>
+                            <p data-translate="sol7-desc">实现了从电芯到电池包的全链路监控，通过隔离通信技术确保电气安全，优化电池全生命周期价值。</p>
+                            <div class="tech-feature-grid">
+                                <div>
+                                    <strong data-translate="sol7-feature1-title">ASIL-D 功能安全</strong>
+                                    <p data-translate="sol7-feature1-desc">遵循最高等级安全认证。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol7-feature2-title">精准 SoC/SoH 算法</strong>
+                                    <p data-translate="sol7-feature2-desc">实时监控电池健康状态。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol7-feature3-title">隔离通信拓扑</strong>
+                                    <p data-translate="sol7-feature3-desc">支持 ISO-UART 与无线 BLE。</p>
+                                </div>
+                                <div>
+                                    <strong data-translate="sol7-feature4-title">多电压平台兼容</strong>
+                                    <p data-translate="sol7-feature4-desc">覆盖 48V 至 800V 系统。</p>
+                                </div>
+                            </div>
+                            <footer><strong data-translate="sol7-footer-label">未来视野：</strong> <span data-translate="sol7-footer-value">支持电池护照与碳足迹追踪。</span></footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sol-dots" id="solDots">
+            <span class="s-dot active" onclick="jumpToSlide(0)"></span>
+            <span class="s-dot" onclick="jumpToSlide(1)"></span>
+            <span class="s-dot" onclick="jumpToSlide(2)"></span>
+            <span class="s-dot" onclick="jumpToSlide(3)"></span>
+            <span class="s-dot" onclick="jumpToSlide(4)"></span>
+            <span class="s-dot" onclick="jumpToSlide(5)"></span>
+            <span class="s-dot" onclick="jumpToSlide(6)"></span>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="section client-ecosystem">
+    <div class="bg-streamer-wrapper">
+        <div class="light-bar bar-1"></div>
+        <div class="light-bar bar-2"></div>
+        <div class="light-bar bar-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="client-header fade-in-up">
+            <h2 class="client-main-title" data-translate="client-main-title">我们服务的客户类型</h2>
+            <p class="client-subtitle" data-translate="client-subtitle">全生命周期技术赋能，连接芯片原厂与终端应用的桥梁</p>
+        </div>
+        
+        <div class="client-grid">
+            <div class="client-card fade-in-up">
+                <div class="client-icon icon-blue">🏢</div>
+                <div class="client-body">
+                    <h3 class="client-title" data-translate="client1-title">行业 OEM/ODM</h3>
+                    <p class="client-desc" data-translate="client1-desc">面向具备大规模生产能力的终端制造巨头。提供高可靠的前装级物料保障、全球供应链协同及严谨的品质追溯，确保高频交付下的产线稳定。</p>
+                </div>
+            </div>
+
+            <div class="client-card fade-in-up">
+                <div class="client-icon icon-green">🛠️</div>
+                <div class="client-body">
+                    <h3 class="client-title" data-translate="client2-title">方案商与 IDH 机构</h3>
+                    <p class="client-desc" data-translate="client2-desc">服务于专注于技术输出的设计机构。通过原厂参考设计授权与底层算法支持，协助工程师在立项之初实现最优选型，降低二次开发风险。</p>
+                </div>
+            </div>
+
+            <div class="client-card fade-in-up">
+                <div class="client-icon icon-orange">💎</div>
+                <div class="client-body">
+                    <h3 class="client-title" data-translate="client3-title">垂直行业领军者</h3>
+                    <p class="client-desc" data-translate="client3-desc">聚焦高精密仪器、高性能电源及医疗系统等高门槛领域品牌。配合其对极致性能的追求，提供长生命周期供应承诺及严苛环境下的验证方案。</p>
+                </div>
+            </div>
+
+            <div class="client-card fade-in-up">
+                <div class="client-icon icon-purple">🚀</div>
+                <div class="client-body">
+                    <h3 class="client-title" data-translate="client4-title">成长型初创企业</h3>
+                    <p class="client-desc" data-translate="client4-desc">助力机器人、低空经济及前沿硬件的早期研发团队。提供灵活的小批量采购方案与专家级技术顾问服务，加速创新产品从 Demo 走向验证量产。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section industry-insight-grid">
+    
+    <div class="insight-bg-decor">
+        <div class="insight-grid-pattern"></div>
+        <div class="insight-streamer"></div>
+    </div>
+
+    <div class="container insight-relative">
+        <div class="section-header insight-header-center fade-in-up">
+            <h2 class="section-title" data-translate="insight-title">领域专业性洞察</h2>
+            <p class="section-subtitle" data-translate="insight-subtitle">深度理解各行业芯片结构，预判并化解供应链风险</p>
+        </div>
+
+        <div class="insight-cards-container">
+            
+            <div class="insight-mini-card fade-in-up">
+                <div class="card-head">
+                    <span class="card-tag" data-translate="insight1-tag">Automotive</span>
+                    <h3 data-translate="insight1-title">汽车电子</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-segment">
+                        <label data-translate="insight1-challenge-label">● 行业挑战</label>
+                        <p data-translate="insight1-challenge-desc">车规级 MCU/功率器件长交期波动；AEC-Q100 认证批次风险；SiC/IGBT 产能结构性紧张。</p>
+                    </div>
+                    <div class="info-segment blue-theme">
+                        <label data-translate="insight1-support-label">○ 专项支持</label>
+                        <p data-translate="insight1-support-desc">整合原厂与授权资源，建立批次可追溯现货池，针对功率与 BMS 物料提供交期对冲方案。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-mini-card fade-in-up">
+                <div class="card-head">
+                    <span class="card-tag" data-translate="insight2-tag">AI Infrastructure</span>
+                    <h3 data-translate="insight2-title">AI与算力</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-segment">
+                        <label data-translate="insight2-challenge-label">● 行业挑战</label>
+                        <p data-translate="insight2-challenge-desc">GPU/HBM 资源周期性波动；48V 架构升级带来的电源结构变化；FPGA 高速接口供需不稳定。</p>
+                    </div>
+                    <div class="info-segment blue-theme">
+                        <label data-translate="insight2-support-label">○ 专项支持</label>
+                        <p data-translate="insight2-support-desc">联动服务器级电源与高速存储资源，针对核心算力与供电物料建立快速调拨与安全库存策略。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-mini-card fade-in-up">
+                <div class="card-head">
+                    <span class="card-tag" data-translate="insight3-tag">Industrial</span>
+                    <h3 data-translate="insight3-title">工业电子</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-segment">
+                        <label data-translate="insight3-challenge-label">● 行业挑战</label>
+                        <p data-translate="insight3-challenge-desc">工业 MCU 长生命周期保障；隔离器与工业 PHY 缺料风险；老型号 EOL 预警滞后。</p>
+                    </div>
+                    <div class="info-segment blue-theme">
+                        <label data-translate="insight3-support-label">○ 专项支持</label>
+                        <p data-translate="insight3-support-desc">建立工业长型号数据库，提供 EOL 预警、替代匹配及小批量长期稳定供给支持。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-mini-card fade-in-up">
+                <div class="card-head">
+                    <span class="card-tag" data-translate="insight4-tag">Energy & Power</span>
+                    <h3 data-translate="insight4-title">电力与新能源</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-segment">
+                        <label data-translate="insight4-challenge-label">● 行业挑战</label>
+                        <p data-translate="insight4-challenge-desc">SiC/GaN 模块产能分配不均；BMS 与功率驱动芯片涨价波动；800V 平台升级带来的器件替换。</p>
+                    </div>
+                    <div class="info-segment blue-theme">
+                        <label data-translate="insight4-support-label">○ 专项支持</label>
+                        <p data-translate="insight4-support-desc">通过功率器件专项资源整合与区域库存联动，为逆变器、储能平台提供交期缓冲方案。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-mini-card fade-in-up">
+                <div class="card-head">
+                    <span class="card-tag" data-translate="insight5-tag">Medical</span>
+                    <h3 data-translate="insight5-title">医疗电子</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-segment">
+                        <label data-translate="insight5-challenge-label">● 行业挑战</label>
+                        <p data-translate="insight5-challenge-desc">长生命周期供应需求（10–20 年）；高精度 ADC/AFE 料号集中度高；高可靠存储器交期不可控。</p>
+                    </div>
+                    <div class="info-segment blue-theme">
+                        <label data-translate="insight5-support-label">○ 专项支持</label>
+                        <p data-translate="insight5-support-desc">建立医疗级关键型号稳定供给网络，支持批次一致性追溯，针对报批需求提供长期备货规划。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-mini-card fade-in-up">
+                <div class="card-head">
+                    <span class="card-tag" data-translate="insight6-tag">Aero-Defense</span>
+                    <h3 data-translate="insight6-title">特种高可靠</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-segment">
+                        <label data-translate="insight6-challenge-label">● 行业挑战</label>
+                        <p data-translate="insight6-challenge-desc">抗辐照（Rad-Hard）等极端性能约束；国产化替代指标压力；老旧型号持续供应风险。</p>
+                    </div>
+                    <div class="info-segment blue-theme">
+                        <label data-translate="insight6-support-label">○ 专项支持</label>
+                        <p data-translate="insight6-support-desc">筛选全球宇航级资源，支持第三方权威机构检测，提供长达 20 年的批次一致性溯源与保障。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="section partners-slider-section">
+    <div class="container">
+        <div style="display: flex; align-items: center; margin-bottom: 25px; padding: 0 10px;">
+            <h3 style="font-size: 18px; font-weight: 700; color: #111; white-space: nowrap; margin-right: 20px; margin-bottom:0;" data-translate="partners-title">典型客户</h3>
+            <div style="height: 1px; background: #eee; width: 100%;"></div>
+        </div>
+        
+        <div class="logo-slider">
+           <div class="logo-track">
+    <div class="logo-item"><img src="resources/cust-logos/CRSR.webp" alt="CRSR"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Viasion.webp" alt="Viasion"></div>
+    <div class="logo-item"><img src="resources/cust-logos/DZ.webp" alt="DZ"></div>
+    <div class="logo-item"><img src="resources/cust-logos/cyw.webp" alt="cyw"></div>
+    <div class="logo-item"><img src="resources/cust-logos/dzrobot.webp" alt="dzrobot"></div>
+    <div class="logo-item"><img src="resources/cust-logos/EOOb.webp" alt="EOOb"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Jabil.webp" alt="Jabil"></div>
+    <div class="logo-item"><img src="resources/cust-logos/BYD.webp" alt="BYD"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Foxconn.webp" alt="Foxconn"></div>
+    <div class="logo-item"><img src="resources/cust-logos/USI.webp" alt="USI"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Advantech.webp" alt="Advantech"></div>
+    <div class="logo-item"><img src="resources/cust-logos/EDMI.webp" alt="EDMI"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Sungrow.webp" alt="Sungrow"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Pegatron.webp" alt="Pegatron"></div>
+    <div class="logo-item"><img src="resources/cust-logos/flextronics.webp" alt="flextronics"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Quanta.webp" alt="Quanta"></div>
+    <div class="logo-item"><img src="resources/cust-logos/tpv-tech.webp" alt="tpv-tech"></div>
+    <div class="logo-item"><img src="resources/cust-logos/gf.webp" alt="gf"></div>
+    <div class="logo-item"><img src="resources/cust-logos/klty.webp" alt="klty"></div>
+    <div class="logo-item"><img src="resources/cust-logos/rayto.webp" alt="rayto"></div>
+    <div class="logo-item"><img src="resources/cust-logos/mair.webp" alt="mair"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Wistron.webp" alt="Wistron"></div>
+    <div class="logo-item"><img src="resources/cust-logos/compal.webp" alt="compal"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Smtek.webp" alt="Smtek"></div>
+    <div class="logo-item"><img src="resources/cust-logos/peit.webp" alt="peit"></div>
+    <div class="logo-item"><img src="resources/cust-logos/SBS.webp" alt="SBS"></div>
+    <div class="logo-item"><img src="resources/cust-logos/CHENGCHENG-Kaifa.webp" alt="CHENGCHENG-Kaifa"></div>
+    <div class="logo-item"><img src="resources/cust-logos/TCLHX.webp" alt="TCLHX"></div>
+    <div class="logo-item"><img src="resources/cust-logos/wm.webp" alt="wm"></div>
+    <div class="logo-item"><img src="resources/cust-logos/yanx.webp" alt="yanx"></div>
+    <div class="logo-item"><img src="resources/cust-logos/zcc.webp" alt="zcc"></div>
+    <div class="logo-item"><img src="resources/cust-logos/zhim.webp" alt="zhim"></div>
+    <div class="logo-item"><img src="resources/cust-logos/scg.webp" alt="scg"></div>
+    
+    <div class="logo-item"><img src="resources/cust-logos/CRSR.webp" alt="CRSR"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Viasion.webp" alt="Viasion"></div>
+    <div class="logo-item"><img src="resources/cust-logos/DZ.webp" alt="DZ"></div>
+    <div class="logo-item"><img src="resources/cust-logos/cyw.webp" alt="cyw"></div>
+    <div class="logo-item"><img src="resources/cust-logos/dzrobot.webp" alt="dzrobot"></div>
+    <div class="logo-item"><img src="resources/cust-logos/EOOb.webp" alt="EOOb"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Jabil.webp" alt="Jabil"></div>
+    <div class="logo-item"><img src="resources/cust-logos/BYD.webp" alt="BYD"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Foxconn.webp" alt="Foxconn"></div>
+    <div class="logo-item"><img src="resources/cust-logos/USI.webp" alt="USI"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Advantech.webp" alt="Advantech"></div>
+    <div class="logo-item"><img src="resources/cust-logos/EDMI.webp" alt="EDMI"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Sungrow.webp" alt="Sungrow"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Pegatron.webp" alt="Pegatron"></div>
+    <div class="logo-item"><img src="resources/cust-logos/flextronics.webp" alt="flextronics"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Quanta.webp" alt="Quanta"></div>
+    <div class="logo-item"><img src="resources/cust-logos/tpv-tech.webp" alt="tpv-tech"></div>
+    <div class="logo-item"><img src="resources/cust-logos/gf.webp" alt="gf"></div>
+    <div class="logo-item"><img src="resources/cust-logos/klty.webp" alt="klty"></div>
+    <div class="logo-item"><img src="resources/cust-logos/rayto.webp" alt="rayto"></div>
+    <div class="logo-item"><img src="resources/cust-logos/mair.webp" alt="mair"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Wistron.webp" alt="Wistron"></div>
+    <div class="logo-item"><img src="resources/cust-logos/compal.webp" alt="compal"></div>
+    <div class="logo-item"><img src="resources/cust-logos/Smtek.webp" alt="Smtek"></div>
+    <div class="logo-item"><img src="resources/cust-logos/peit.webp" alt="peit"></div>
+    <div class="logo-item"><img src="resources/cust-logos/SBS.webp" alt="SBS"></div>
+    <div class="logo-item"><img src="resources/cust-logos/CHENGCHENG-Kaifa.webp" alt="CHENGCHENG-Kaifa"></div>
+    <div class="logo-item"><img src="resources/cust-logos/TCLHX.webp" alt="TCLHX"></div>
+    <div class="logo-item"><img src="resources/cust-logos/wm.webp" alt="wm"></div>
+    <div class="logo-item"><img src="resources/cust-logos/yanx.webp" alt="yanx"></div>
+    <div class="logo-item"><img src="resources/cust-logos/zcc.webp" alt="zcc"></div>
+    <div class="logo-item"><img src="resources/cust-logos/zhim.webp" alt="zhim"></div>
+    <div class="logo-item"><img src="resources/cust-logos/scg.webp" alt="scg"></div>
+</div>
+        </div>
+    </div>
+</section>
+
+
+
+    <div id="footer-container"></div>
+
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="language.js?v=20260525-lang1"></script>
+    <script src="load-components.js?v=20260521-recover1"></script>
+    <script src="scroll-utils.js?v=20260525-top1"></script>
+    <script src="navbar-scroll.js?v=20260525-nav4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="pages.js?v=20260521-recover1"></script>
+    <script src="part-search.js?v=20260522-fix4"></script>
+<script src="main.js?v=20260525-motion1"></script>
+</body>
+</html>

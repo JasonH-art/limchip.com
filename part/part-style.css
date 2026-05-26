@@ -1,0 +1,890 @@
+/* ============================================
+   part-style.css
+   所有样式限定在 .part-page 作用域内
+   已对主站 style.css 已知冲突全部加防御
+   ============================================ */
+
+/* ── 基础重置 ── */
+.part-page * {
+    box-sizing: border-box;
+}
+
+.part-page {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    padding: 40px;
+    background: #f9f9f9;
+    color: #333;
+}
+
+.part-page .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* ── 顶部栏 ── */
+.part-page .top-bar {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* 面包屑：强制横排，防止主站 .nav-links flex-column 干扰 */
+.part-page .top-bar .nav-links {
+    display: block !important;
+    flex-direction: unset !important;
+    gap: unset !important;
+    margin-bottom: 0 !important;
+    font-size: 14px;
+    color: #666;
+}
+
+.part-page .top-bar .nav-links a {
+    display: inline !important;
+    color: #666;
+    text-decoration: none;
+}
+
+.part-page .top-bar .nav-links a:hover {
+    color: #007bff;
+}
+
+/* 右侧区域 */
+.part-page .top-bar-right {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ── 公司信息栏 ── */
+.part-page .company-header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    background: #f0f7ff;
+    border-left: 4px solid #007bff;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.part-page .company-header-left {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px;
+}
+
+.part-page .company-logo {
+    height: 40px;
+    max-width: 150px;
+    width: auto;
+    display: block !important;
+    object-fit: contain;
+}
+
+.part-page .company-logo-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    flex: 0 0 auto;
+    text-decoration: none !important;
+}
+
+.part-page .company-info {
+    display: block !important;
+}
+
+.part-page .company-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 2px;
+    line-height: 1.3;
+}
+
+.part-page .company-tagline {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+    .part-page {
+        padding: 18px;
+    }
+
+    .part-page .container {
+        padding: 24px 18px;
+    }
+
+    .part-page .company-header-left,
+    .part-page .top-bar,
+    .part-page .top-bar-right {
+        align-items: flex-start !important;
+    }
+
+    .part-page .top-bar-right,
+    .part-page .search-wrap {
+        width: 100%;
+    }
+
+    .part-page .company-logo {
+        height: 34px;
+        max-width: 130px;
+    }
+
+    .part-page .search-wrap input,
+    .part-page .search-dropdown {
+        width: 100%;
+    }
+
+    .part-page .db-tools {
+        align-items: stretch !important;
+    }
+
+    .part-page .db-index-search,
+    .part-page .db-index-search input {
+        width: 100%;
+    }
+
+    .part-page .related-parts {
+        grid-template-columns: 1fr;
+    }
+
+    .part-page .brand-card-grid,
+    .part-page .part-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .part-page .seo-section table,
+    .part-page .spot-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .part-page .more-btn,
+    .part-page .rfq-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ── 搜索框 ── */
+.part-page .search-wrap {
+    position: relative;
+}
+
+.part-page .search-wrap input {
+    display: block !important;
+    padding: 7px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    width: 200px;
+    outline: none;
+    color: #333;
+    background: #fff;
+    box-shadow: none;
+}
+
+.part-page .search-wrap input:focus {
+    border-color: #007bff;
+}
+
+.part-page .search-wrap input::placeholder,
+.part-page .db-index-search input::placeholder {
+    color: rgba(100, 116, 139, 0.38);
+    opacity: 1;
+}
+
+.part-page .search-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 280px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.part-page .search-item {
+    display: block !important;
+    padding: 9px 14px;
+    font-size: 13px;
+    color: #007bff !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.part-page .search-item strong {
+    display: block;
+    font-family: monospace;
+    color: #0056b3;
+}
+
+.part-page .search-item span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.35;
+    margin-top: 2px;
+}
+
+.part-page .search-item:hover {
+    background: #f0f7ff;
+}
+
+.part-page .search-no-result {
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #999;
+}
+
+/* ── More / RFQ 按钮 ── */
+.part-page .more-btn {
+    display: inline-block !important;
+    padding: 7px 14px !important;
+    background: #007bff !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    border-radius: 4px;
+    font-size: 13px;
+    white-space: nowrap;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.part-page .more-btn:hover {
+    background: #0056b3 !important;
+    color: #fff !important;
+}
+
+/* ── Database Index 页样式 ── */
+.part-page .db-title {
+    font-family: sans-serif !important;
+    font-size: 24px;
+    color: #111;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 6px;
+}
+
+.part-page .db-subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.part-page .db-tools {
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: space-between !important;
+    gap: 16px;
+    padding: 14px 0 18px;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+}
+
+.part-page .db-index-search {
+    display: grid !important;
+    gap: 5px;
+    min-width: 240px;
+}
+
+.part-page .db-index-search label {
+    color: #555;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.part-page .db-index-search input {
+    display: block !important;
+    width: 260px;
+    max-width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #333;
+    background: #fff;
+    outline: none;
+}
+
+.part-page .db-index-search input:focus {
+    border-color: #007bff;
+}
+
+.part-page .brand-jump {
+    display: flex !important;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.part-page .brand-jump a {
+    display: inline-block !important;
+    padding: 6px 9px;
+    border: 1px solid #dde8f7;
+    border-radius: 4px;
+    color: #0056b3;
+    background: #f7fbff;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.part-page .brand-jump a:hover {
+    border-color: #007bff;
+    background: #eef7ff;
+}
+
+.part-page .db-no-results {
+    display: none;
+    margin: 16px 0 0;
+    padding: 12px 14px;
+    border: 1px solid #f0d6a4;
+    border-radius: 4px;
+    background: #fff8ec;
+    color: #7a5600;
+    font-size: 13px;
+}
+
+.part-page .db-search-results {
+    display: none !important;
+    margin-top: 18px;
+}
+
+.part-page .db-search-results.is-visible {
+    display: grid !important;
+}
+
+.part-page .db-entry-section {
+    margin-top: 28px;
+}
+
+.part-page .db-entry-section h2 {
+    margin: 0 0 12px;
+    color: #222;
+    font-size: 18px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 6px;
+}
+
+.part-page .db-section-note {
+    margin: 0 0 12px;
+    color: #666;
+    font-size: 13px;
+}
+
+.part-page .brand-card-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.part-page .brand-card,
+.part-page .part-card {
+    display: block !important;
+    border: 1px solid #dde8f7;
+    border-radius: 6px;
+    background: #fbfdff;
+    color: #333;
+    text-decoration: none !important;
+}
+
+.part-page .brand-card {
+    display: flex !important;
+    flex-direction: column;
+    position: relative;
+    min-height: 150px;
+    padding: 14px;
+}
+
+.part-page .brand-card-main {
+    display: block;
+    color: inherit;
+    text-decoration: none !important;
+}
+
+.part-page .brand-count-line {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border: 1px solid rgba(203, 213, 225, 0.55);
+    border-radius: 999px;
+    background: rgba(248, 251, 255, 0.72);
+    color: #b7c2cf;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    opacity: 0.72;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.part-page .brand-card:hover,
+.part-page .part-card:hover {
+    border-color: #007bff;
+    background: #f3f9ff;
+}
+
+.part-page .brand-card strong,
+.part-page .part-card strong {
+    display: block;
+    color: #0056b3;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.part-page .brand-card span,
+.part-page .part-card span {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    line-height: 1.45;
+    margin-top: 4px;
+}
+
+.part-page .brand-card em,
+.part-page .part-card em {
+    display: block;
+    color: #888;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 1.45;
+    margin-top: 8px;
+}
+
+.part-page .brand-card small,
+.part-page .brand-card .brand-part-links {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 10px;
+    color: #999;
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.part-page .brand-card small a {
+    display: inline-block;
+    max-width: 100%;
+    padding: 3px 6px;
+    border: 1px solid #edf2f7;
+    border-radius: 4px;
+    background: #fff;
+    color: #555;
+    font-family: monospace;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.part-page .brand-card small a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.part-page .part-card-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.part-page .part-card {
+    min-height: 128px;
+    padding: 14px;
+}
+
+.part-page .part-card strong {
+    font-family: monospace;
+    overflow-wrap: anywhere;
+}
+
+.part-page .db-compact-index {
+    padding-top: 4px;
+}
+
+.part-page .db-list-compact .db-more {
+    display: block !important;
+    color: #b8c2ce;
+    font-size: 11px;
+    font-style: normal;
+    line-height: 1.5;
+    opacity: 0.72;
+    border-bottom: none !important;
+    padding-top: 6px;
+}
+
+.part-page .db-list-compact .db-more a {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration-color: rgba(184, 194, 206, 0.38);
+    text-underline-offset: 2px;
+}
+
+.part-page .db-brand-name {
+    color: #007bff !important;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    border-left: 3px solid #007bff;
+    padding-left: 10px;
+}
+
+.part-page .brand-cat {
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+    margin-left: 6px;
+}
+
+.part-page .db-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 0 8px 0 !important;
+}
+
+.part-page .db-list li {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 7px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.part-page .db-list li a {
+    display: inline !important;
+    color: #444;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.part-page .db-list li a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.part-page .db-list li span {
+    display: inline !important;
+    font-family: sans-serif;
+    font-size: 12px;
+    color: #aaa;
+    font-weight: 400;
+    text-align: right;
+}
+
+.part-page .db-empty {
+    font-size: 13px !important;
+    color: #bbb;
+    font-style: italic;
+    border-bottom: none !important;
+    display: block !important;
+}
+
+.part-page .db-empty a {
+    color: #007bff !important;
+    font-family: sans-serif !important;
+    font-size: 13px !important;
+    font-style: normal;
+}
+
+/* ── 型号详情页：标题区 ── */
+.part-page h1 {
+    color: #111;
+    font-size: 28px;
+    margin-bottom: 5px;
+    font-family: monospace;
+}
+
+.part-page .brand {
+    color: #007bff;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.part-page .intro {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* ── SEO 内容区 ── */
+.part-page .seo-section {
+    font-size: 0.92em;
+    color: #555;
+}
+
+.part-page .seo-section h2 {
+    font-size: 18px;
+    color: #222;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+.part-page .seo-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.part-page .seo-section th,
+.part-page .seo-section td {
+    border: 1px solid #ddd;
+    padding: 10px 12px;
+    text-align: left;
+}
+
+.part-page .seo-section th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+}
+
+.part-page .seo-section ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.part-page .seo-section li {
+    margin-bottom: 6px;
+    display: block !important;
+    border-bottom: none !important;
+    justify-content: unset !important;
+}
+
+.part-page .related-parts {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 14px 0 8px;
+}
+
+.part-page .related-parts a {
+    display: block !important;
+    min-height: 104px;
+    padding: 14px;
+    border: 1px solid #dde8f7;
+    border-radius: 6px;
+    background: #fbfdff;
+    color: #333;
+    text-decoration: none;
+}
+
+.part-page .related-parts a:hover {
+    border-color: #007bff;
+    background: #f3f9ff;
+}
+
+.part-page .related-parts strong {
+    display: block;
+    color: #0056b3;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.part-page .related-parts span {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.part-page .faq-list {
+    display: grid !important;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.part-page .faq-list details {
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    background: #fff;
+    padding: 10px 12px;
+}
+
+.part-page .faq-list summary {
+    cursor: pointer;
+    color: #222;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.part-page .faq-list p {
+    margin: 8px 0 0;
+    color: #666;
+    font-size: 13px;
+}
+
+/* ── 询价区 ── */
+.part-page .rfq-box {
+    background: #e6f2ff;
+    border: 1px solid #b3d7ff;
+    padding: 25px;
+    border-radius: 6px;
+    margin-top: 35px;
+    animation: part-pulse-border 2s infinite;
+}
+
+.part-page .rfq-box h3 {
+    margin-top: 0;
+    color: #004085;
+    font-size: 1.3em;
+}
+
+/* ── 库存明细表 ── */
+.part-page .spot-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background: #fff;
+}
+
+.part-page .spot-table th,
+.part-page .spot-table td {
+    border: 1px solid #cce5ff;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.part-page .spot-table th {
+    background-color: #d1e7ff;
+    color: #004085;
+    font-weight: bold;
+}
+
+.part-page .spot-table .qty {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* ── 询价按钮 ── */
+.part-page .rfq-btn {
+    display: inline-block !important;
+    background: #007bff !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-top: 10px;
+    border: none !important;
+}
+
+.part-page .rfq-btn:hover {
+    background: #0056b3 !important;
+    color: #fff !important;
+}
+
+/* ── 呼吸灯动画 ── */
+@keyframes part-pulse-border {
+    0%   { border-color: #b3d7ff; box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4); }
+    70%  { border-color: #007bff; box-shadow: 0 0 0 10px rgba(0, 123, 255, 0); }
+    100% { border-color: #b3d7ff; box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+}
+
+@media (max-width: 640px) {
+    .part-page {
+        padding: 18px;
+    }
+
+    .part-page .container {
+        padding: 24px 18px;
+    }
+
+    .part-page .company-header,
+    .part-page .company-header-left,
+    .part-page .top-bar,
+    .part-page .top-bar-right {
+        align-items: stretch !important;
+    }
+
+    .part-page .company-header-left,
+    .part-page .top-bar,
+    .part-page .top-bar-right {
+        width: 100%;
+    }
+
+    .part-page .top-bar-right,
+    .part-page .search-wrap {
+        width: 100%;
+    }
+
+    .part-page .company-logo {
+        height: 34px;
+        max-width: 130px;
+    }
+
+    .part-page .search-wrap input,
+    .part-page .search-dropdown {
+        width: 100%;
+    }
+
+    .part-page .db-tools {
+        align-items: stretch !important;
+    }
+
+    .part-page .db-index-search,
+    .part-page .db-index-search input {
+        width: 100%;
+    }
+
+    .part-page .brand-card-grid,
+    .part-page .part-card-grid,
+    .part-page .related-parts {
+        grid-template-columns: 1fr !important;
+    }
+
+    .part-page .db-search-results.is-visible {
+        display: grid !important;
+    }
+
+    .part-page .seo-section table,
+    .part-page .spot-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .part-page .more-btn,
+    .part-page .rfq-btn {
+        display: block !important;
+        width: 100%;
+        text-align: center;
+    }
+}

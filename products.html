@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- 解决语言按钮里文字的闪烁 -->
+	<script>
+        (function() {
+            var supported = ['en', 'zh', 'ru', 'ko', 'es', 'vi'];
+            var langMap = { en: 'en', zh: 'zh-CN', ru: 'ru', ko: 'ko', es: 'es', vi: 'vi' };
+            var savedLang = 'en';
+            try {
+                savedLang = localStorage.getItem('limchip-language') || 'en';
+            } catch (error) {}
+            if (supported.indexOf(savedLang) === -1) savedLang = 'en';
+            document.documentElement.lang = langMap[savedLang] || 'en';
+            window.__INITIAL_LANG__ = savedLang;
+        })();
+    </script>
+	<link rel="icon" href="resources/logo-favicon.svg" type="image/svg+xml">
+    <title data-translate="page-products-title">Electronic Components Products | FPGA, Memory, MCU & IC Supply - LimChip</title>
+    <meta name="description" content="Explore LimChip electronic component supply categories including FPGA, CPLD, memory, MCU, analog, power, interface and hard-to-find semiconductor parts from global brands.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.limchip.com/products.html">
+    <meta property="og:title" content="Electronic Components Products | FPGA, Memory, MCU & IC Supply - LimChip">
+    <meta property="og:description" content="Explore FPGA, CPLD, memory, MCU, analog, power, interface and hard-to-find semiconductor part supply categories.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.limchip.com/products.html">
+    <meta property="og:site_name" content="LimChip Co., LTD">
+    <meta property="og:image" content="https://www.limchip.com/resources/logopreview.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Electronic Components Products | FPGA, Memory, MCU & IC Supply - LimChip">
+    <meta name="twitter:description" content="Electronic component supply categories from global semiconductor brands.">
+    <meta name="twitter:image" content="https://www.limchip.com/resources/logopreview.png">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://www.limchip.com/products.html#webpage",
+            "url": "https://www.limchip.com/products.html",
+            "name": "Electronic Components Products | FPGA, Memory, MCU & IC Supply - LimChip",
+            "description": "Explore FPGA, CPLD, memory, MCU, analog, power, interface and hard-to-find semiconductor part supply categories.",
+            "isPartOf": { "@id": "https://www.limchip.com/#website" },
+            "about": { "@id": "https://www.limchip.com/#organization" }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.limchip.com/products.html#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.limchip.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.limchip.com/products.html" }
+            ]
+        }
+    ]
+}
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Chiron+Hei+HK:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+	<!-- 在head中添加 -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- 统一的CSS文件 -->
+    <link rel="stylesheet" href="style.css?v=20260525-placeholder1">
+	<link rel="stylesheet" href="pages.css?v=20260525-prod1">
+</head>
+<body id="products-p">
+	
+	<!-- Navigation 导航栏代码 -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="resources/logopreview.png" alt="LimChip Logo">
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="index.html" data-translate="nav-home">Home</a></li>
+            <li><a href="products.html" class="active" data-translate="nav-products">Products</a></li>
+            <li><a href="services.html" data-translate="nav-services">Services</a></li>
+            <li><a href="applications.html" data-translate="nav-applications">Applications</a></li>
+            <li><a href="about.html" data-translate="nav-about">About</a></li>
+            <li><a href="contact.html" data-translate="nav-contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="nav-part-search" id="navPartSearch">
+                <button type="button" class="nav-search-toggle" id="navSearchToggle" aria-label="Search component database" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <div class="nav-search-panel" id="navSearchPanel">
+                    <input type="search" id="navPartSearchInput" class="part-search-input" placeholder="Search part number..." data-translate-placeholder="nav-search-placeholder" autocomplete="off">
+                    <div id="navPartSearchResults" class="part-search-results nav-search-results"></div>
+                </div>
+            </div>
+            <div class="lang-toggle-wrapper" id="langToggle">
+                <span id="langText"></span>
+            </div>
+
+            <a href="mailto:sales@limchip.com" class="contact-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
+                     stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span data-translate="btn-contact">Contact Now</span>
+            </a>
+
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+            <!---  Hero Section  区域 -->
+<section id="products-p" class="hero-section"> 
+    <div class="hero-bg-layer">
+        <img src="./resources/Hero-BG-Ref/Products-hero-background.webp" alt="Products Background">
+    </div>
+
+    <div id="chip-canvas-container" class="hero-3d-canvas"></div>
+
+    <div class="hero-content-layer">
+        <div class="hero-content">
+            <h1 class="hero-title" data-translate="products-hero-title">产品中心</h1>
+            <p class="hero-subtitle" data-translate="products-hero-subtitle">混合分销 · 快速响应</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="section products">
+    <div class="container">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title font-heading" data-translate="products-section-categories">产品类型</h2>
+            <p class="section-subtitle">
+                <span data-translate="products-section-subtitle1">全线覆盖电子元器件</span>
+                <span class="chip-dot"></span>
+                <span data-translate="products-section-subtitle2">为您的供应链提供一站式支持</span>
+            </p>
+        </div>
+        
+        <div class="product-list-container">
+		
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-mcu-title">微控制器与处理器</h3>
+                <span class="product-subtitle-en" data-translate="prod-mcu-subtitle">Microcontrollers & Processors</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-mcu-tag1">汽车电子 BMS 电池管理系统</span>
+                <span data-translate="prod-mcu-tag2">PLC / 工业人机界面 (HMI)</span>
+                <span data-translate="prod-mcu-tag3">AI算力&机器人</span>
+                <span data-translate="prod-mcu-tag4">光伏串式逆变器控制</span>
+                <span data-translate="prod-mcu-tag5">主控制板卡</span>
+                <span data-translate="prod-mcu-tag6">通信基站&边缘通信网关</span>
+                <span data-translate="prod-mcu-tag7">高可靠性医疗监护仪</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-mcu-desc">高性能 32 位双核 MCU、超低功耗 MSP 系列单片机、工业级异构多核处理器 (MPU)、SoC 系统级计算芯片、专用数字信号处理器 (DSP)、Arm 微控制器、车规级MCU；各类CPU处理器 。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-mcu-spec1-label">核心架构</span>
+                <span class="spec-value" data-translate="prod-mcu-spec1-value">Arm® / RISC-V / DSP 混合架构</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-mcu-spec2-label">计算性能</span>
+                <span class="spec-value" data-translate="prod-mcu-spec2-value">Ultra-Low Power 至 2.0GHz+</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-mcu-spec3-label">集成外设</span>
+                <span class="spec-value" data-translate="prod-mcu-spec3-value">16-bit ADC / CAN-FD / PWM</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-mcu-tag">运算核心</span>
+    </div>
+</div>
+
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="7" y="7" width="10" height="10" rx="1"/>
+                <path d="M10 10h4v4h-4z"/>
+                <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+                <path d="M7 2v2M17 2v2M7 20v2M17 20v2"/>
+                <path d="M2 7h2M2 17h2M20 7h2M20 17h2"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-asicfpga-title">专用芯片 (ASIC/FPGA)</h3>
+                <span class="product-subtitle-en" data-translate="prod-asicfpga-subtitle">Custom ICs & Programmable Logic</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-asicfpga-tag1">5G 基站波束成形</span>
+                <span data-translate="prod-asicfpga-tag2">边缘 AI 视觉处理</span>
+                <span data-translate="prod-asicfpga-tag3">高频交易 (HFT) 加速</span>
+                <span data-translate="prod-asicfpga-tag4">4K/8K 视频编解码</span>
+                <span data-translate="prod-asicfpga-tag5">工业机器人运动控制</span>
+                <span data-translate="prod-asicfpga-tag6">航天与防务模拟原型</span>
+                <span data-translate="prod-asicfpga-tag7">医疗影像实时增强</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-asicfpga-desc">现场可编程逻辑门阵列 (FPGA)、系统级嵌入式 SoC FPGA、复杂可编程逻辑器件 (CPLD)、模块系统 (SoM/SOM)、定制化 ASIC 方案、高性能 FPGA 加速卡及配套开发评估套件。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-asicfpga-spec1-label">核心特性</span>
+                <span class="spec-value" data-translate="prod-asicfpga-spec1-value">低延迟并行处理 / 动态配置</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-asicfpga-spec2-label">加速能力</span>
+                <span class="spec-value" data-translate="prod-asicfpga-spec2-value">集成 AI 引擎 / 硬核 DSP 单元</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-asicfpga-spec3-label">硬件接口</span>
+                <span class="spec-value" data-translate="prod-asicfpga-spec3-value">高速收发器 / PCIe Gen5 / DDR5</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-asicfpga-tag">可编程逻辑</span>
+    </div>
+</div>
+
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+                <path d="M9 4v16M15 4v16M4 9h16M4 15h16"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-memory-title">存储芯片</h3>
+                <span class="product-subtitle-en" data-translate="prod-memory-subtitle">Memory & Data Storage</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-memory-tag1">高性能 DDR5/LPDDR5X</span>
+                <span data-translate="prod-memory-tag2">汽车系统大容量和高可靠存储</span>
+                <span data-translate="prod-memory-tag3">工业控制器嵌入式 eMMC 方案</span>
+                <span data-translate="prod-memory-tag4">人工智能大模型 HBM 高带宽存储</span>
+                <span data-translate="prod-memory-tag5">固态硬盘 (SSD) 核心控制器与颗粒</span>
+                <span data-translate="prod-memory-tag6">低功耗 IoT 设备 SPI Nor Flash</span>
+                <span data-translate="prod-memory-tag7">工业 PLC 与 HMI 嵌入式闪存方案</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-memory-desc">动态随机存取存储器 (DRAM)、NAND Flash 闪存、串行/并行 Nor Flash、嵌入式多媒体存储卡 (eMMC)、通用闪存存储 (UFS)、非易失性存储 (EEPROM)、以及高可靠性车规级与工业级存储模块。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-memory-spec1-label">存取带宽</span>
+                <span class="spec-value" data-translate="prod-memory-spec1-value">高达 8.5Gbps+ / 支持多通道并行</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-memory-spec2-label">可靠性</span>
+                <span class="spec-value" data-translate="prod-memory-spec2-value">ECC 纠错引擎 / 10万次+ 擦写寿命</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-memory-spec3-label">工作温度</span>
+                <span class="spec-value" data-translate="prod-memory-spec3-value">满足 -40°C 至 125°C 严苛环境</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-memory-tag">数据底座</span>
+    </div>
+</div>
+
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M12 8l-4 4h8l-4 4"/>
+                <path d="M8 5v2m8-2v2M5 12h2m10 0h2M8 17v2m8-2v2"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-poweric-title">电源 PowerIC</h3>
+                <span class="product-subtitle-en" data-translate="prod-poweric-subtitle">Advanced Power Management</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-poweric-tag1">汽车动力电池管理系统 (BMS)</span>
+                <span data-translate="prod-poweric-tag2">自适应远光灯 (ADB) 矩阵控制</span>
+                <span data-translate="prod-poweric-tag3">FPGA & 算力处理器核心供电</span>
+                <span data-translate="prod-poweric-tag4">48V 轻混与高压 DC-DC 转换</span>
+                <span data-translate="prod-poweric-tag5">氮化镓 (GaN) 极速快充与谐振电源</span>
+                <span data-translate="prod-poweric-tag6">工业机器人多路驱动与保护</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-poweric-desc">高集成 PMIC、SBC 系统基础芯片、多电芯监控与平衡 IC、高速栅极驱动器、智能功率模块 (IPM)、高效能 MOSFET/IGBT、LED 驱动及第三代半导体 (GaN/SiC) 功率器件。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-poweric-spec1-label">转换效能</span>
+                <span class="spec-value" data-translate="prod-poweric-spec1-value">最高 99% 峰值效率 / 极低静态功耗</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-poweric-spec2-label">瞬态响应</span>
+                <span class="spec-value" data-translate="prod-poweric-spec2-value">极速电压调节 (VTT/Core) / 零过冲控制</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-poweric-spec3-label">功率密度</span>
+                <span class="spec-value" data-translate="prod-poweric-spec3-value">高频 GaN 架构 / 极致小型化系统封装</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-poweric-tag">核心动力</span>
+    </div>
+</div>
+
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 8v8M8 12h8"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-sensor-title">传感器</h3>
+                <span class="product-subtitle-en" data-translate="prod-sensor-subtitle">Comprehensive Sensing Solutions</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-sensor-tag1">高像素 CMOS 图像识别与视觉系统</span>
+                <span data-translate="prod-sensor-tag2">MEMS 惯性测量单元 (IMU) 导航</span>
+                <span data-translate="prod-sensor-tag3">工业级高精度温湿度监控网络</span>
+                <span data-translate="prod-sensor-tag4">毫米波雷达 (Radar) 避障与探测</span>
+                <span data-translate="prod-sensor-tag5">转向及节气门磁性位置感测</span>
+                <span data-translate="prod-sensor-tag6">环境空气质量 (VOC) 与压力感测</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-sensor-desc">CMOS 图像传感器 (CIS)、MEMS 压力与加速度计、温湿度传感器芯片、磁性开关与位置传感器、毫米波雷达 SoC、硅基麦克风、气体/水质感测模块及 3D ToF 测距芯片。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-sensor-spec1-label">感知维度</span>
+                <span class="spec-value" data-translate="prod-sensor-spec1-value">视觉、运动、环境、位置全息感测</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-sensor-spec2-label">测量精度</span>
+                <span class="spec-value" data-translate="prod-sensor-spec2-value">±0.1°C 温控精度 / 亚微米级位移</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-sensor-spec3-label">集成方案</span>
+                <span class="spec-value" data-translate="prod-sensor-spec3-value">多传感器融合模块 (IMU+GNSS+)</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-sensor-tag">感知前端</span>
+    </div>
+</div>
+
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-automotive-title">车规级专用芯片</h3>
+                <span class="product-subtitle-en" data-translate="prod-automotive-subtitle">Automotive Qualified ICs</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-automotive-tag1">自动驾驶 (ADAS) 域控制器 SoC</span>
+                <span data-translate="prod-automotive-tag2">新能源动力总成 (VVCU) 核心控制</span>
+                <span data-translate="prod-automotive-tag3">线控底盘 (转向/制动) 安全驱动</span>
+                <span data-translate="prod-automotive-tag4">车载高速骨干网 (Ethernet/CAN-XL)</span>
+                <span data-translate="prod-automotive-tag5">智能座舱 SoC 与高算力芯片供电</span>
+                <span data-translate="prod-automotive-tag6">功能安全级监控与看门狗芯片</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-automotive-desc">符合 AEC-Q100 标准的微控制器 (MCU)、系统基础芯片 (SBC)、车规级 ASIC、车载以太网收发器、功能安全电源管理芯片、及满足高等级 ASIL 标准的感知与驱动 IC。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-automotive-spec1-label">功能安全</span>
+                <span class="spec-value" data-translate="prod-automotive-spec1-value">全面符合 ISO 26262 ASIL-B/D 认证</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-automotive-spec2-label">可靠性等级</span>
+                <span class="spec-value" data-translate="prod-automotive-spec2-value">AEC-Q100 Grade 0/1 (-40°C~150°C)</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-automotive-spec3-label">生命周期</span>
+                <span class="spec-value" data-translate="prod-automotive-spec3-value">15年+ 长期供货保障 / 零缺陷质量管理</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-automotive-tag">车载核心</span>
+    </div>
+</div>
+
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 5v14M5 12h14"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-adcdac-title">数据转换器 (ADC/DAC)</h3>
+                <span class="product-subtitle-en" data-translate="prod-adcdac-subtitle">Data Converters & AFE</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-adcdac-tag1">5G 基站射频收发 (RF Transceiver)</span>
+                <span data-translate="prod-adcdac-tag2">高端医疗影像 (CT/MRI) 模拟前端</span>
+                <span data-translate="prod-adcdac-tag3">工业自动化数字电位器控制</span>
+                <span data-translate="prod-adcdac-tag4">光学监控 CCD/CIS 成像信号链</span>
+                <span data-translate="prod-adcdac-tag5">高带宽示波器高速采样系统</span>
+                <span data-translate="prod-adcdac-tag6">航空航天级精密电压基准转换</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-adcdac-desc">模数转换器 (ADC)、数模转换器 (DAC)、射频收发器 (RFIC)、精密与高速转换核心、数字电位器、隔离式 ADC、医疗模拟前端 (AFE) 及集成型精密数据采集系统。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-adcdac-spec1-label">转换速度</span>
+                <span class="spec-value" data-translate="prod-adcdac-spec1-value">GSPS 级超高速采样 / 高带宽支持</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-adcdac-spec2-label">转换精度</span>
+                <span class="spec-value" data-translate="prod-adcdac-spec2-value">24-bit+ 极致分辨率 / 纳伏级噪声下限</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-adcdac-spec3-label">集成特性</span>
+                <span class="spec-value" data-translate="prod-adcdac-spec3-value">内置隔离保护 / 集成数字化滤波引擎</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-adcdac-tag">模数边界</span>
+    </div>
+</div>
+
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-interface-title">接口芯片</h3>
+                <span class="product-subtitle-en" data-translate="prod-interface-subtitle">Interface & Connectivity</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-interface-tag1">车载高速串行器/解串器 (SerDes)</span>
+                <span data-translate="prod-interface-tag2">工业 4.0 自动化 IO-Link 互联</span>
+                <span data-translate="prod-interface-tag3">高性能视频传输 (HDMI/DisplayPort)</span>
+                <span data-translate="prod-interface-tag4">超高速数据中心 PCIe/SATA/SAS 链路</span>
+                <span data-translate="prod-interface-tag5">USB Type-C 与电力传输 (PD) 系统</span>
+                <span data-translate="prod-interface-tag6">长距离 RS-485/422 工业抗干扰通信</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-interface-desc">CAN/LIN 收发器、RS-232/485 多协议 IC、以太网 PHY、高速视频接口 (MIPI/LVDS)、I2C/SPI 开关与电平转换、USB 控制器、高速串行器 (FPD-Link/V3Link) 及系统基础芯片 (SBC)。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-interface-spec1-label">传输带宽</span>
+                <span class="spec-value" data-translate="prod-interface-spec1-value">支持超高速 16Gbps+ / 4K/8K 视频链路</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-interface-spec2-label">协议兼容</span>
+                <span class="spec-value" data-translate="prod-interface-spec2-value">全协议覆盖 (CAN-FD / USB4 / PCIe Gen5)</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-interface-spec3-label">信号完整性</span>
+                <span class="spec-value" data-translate="prod-interface-spec3-value">集成重定时器 (Retimer) 与先进 ESD 防护</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-interface-tag">互联互通</span>
+    </div>
+</div>
+
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12a7 7 0 0 1 14 0M8.5 12a3.5 3.5 0 0 1 7 0"/>
+                <circle cx="12" cy="12" r="1"/>
+                <path d="M2 12h2M20 12h2M12 2v2M12 20v2"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-rf-title">射频、微波与毫米波</h3>
+                <span class="product-subtitle-en" data-translate="prod-rf-subtitle">RF, Microwave & Millimeter Wave</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-rf-tag1">航空航天与防务 (ADEF) 雷达系统</span>
+                <span data-translate="prod-rf-tag2">5G/6G 通信基站与软件定义无线电 (SDR)</span>
+                <span data-translate="prod-rf-tag3">卫星通信 (Satcom) 波束成形阵列</span>
+                <span data-translate="prod-rf-tag4">100GHz+ 超高频测试与测量仪器</span>
+                <span data-translate="prod-rf-tag5">电子战 (EW) 与宽带信号干扰</span>
+                <span data-translate="prod-rf-tag6">工业自动化机器人与毫米波感测</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-rf-desc">PLL 频率合成器、RF ADC/DAC、混合信号前端 (MxFE®)、高功率 GaN 放大器、射频开关/混频器/衰减器、多通道波束成形器、电压频率转换器 (VFC) 及 VCO 振荡器。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-rf-spec1-label">频谱覆盖</span>
+                <span class="spec-value" data-translate="prod-rf-spec1-value">从 DC 至 100 GHz+ 全频段覆盖</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-rf-spec2-label">集成技术</span>
+                <span class="spec-value" data-translate="prod-rf-spec2-value">集成数字信号处理 (DSP) 的 MxFE® 方案</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-rf-spec3-label">制造工艺</span>
+                <span class="spec-value" data-translate="prod-rf-spec3-value">先进 GaN / GaAs / SiGe / SOI 工艺</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-rf-tag">天线到比特</span>
+    </div>
+</div>
+
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m2 7 10 5 10-5"/>
+                <path d="m2 17 10-5 10 5"/>
+                <path d="M12 2v20"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-discrete-title">分立器件与功率半导体</h3>
+                <span class="product-subtitle-en" data-translate="prod-discrete-subtitle">Power Discretes, MOSFET & IGBT</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-discrete-tag1">新能源汽车牵引逆变器 (Inverter)</span>
+                <span data-translate="prod-discrete-tag2">工业机器人伺服驱动与电机控制</span>
+                <span data-translate="prod-discrete-tag3">光伏发电与风能储能 (ESS) 转换</span>
+                <span data-translate="prod-discrete-tag4">数据中心高功率密度电源模块</span>
+                <span data-translate="prod-discrete-tag5">轨道交通高压电力牵引系统</span>
+                <span data-translate="prod-discrete-tag6">消费电子 PD 快充与家电变频控制</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-discrete-desc">高效能功率 MOSFET、IGBT 单管及模块、碳化硅 (SiC) / 氮化镓 (GaN) 功率器件、智能功率模块 (IPM)、整流二极管、晶闸管、ESD 保护器件及小信号三极管。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-discrete-spec1-label">耐压等级</span>
+                <span class="spec-value" data-translate="prod-discrete-spec1-value">从 20V 低压至 6500V+ 超高压覆盖</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-discrete-spec2-label">开关性能</span>
+                <span class="spec-value" data-translate="prod-discrete-spec2-value">极低导通电阻 (Rds(on)) / 超快切换速度</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-discrete-spec3-label">封装散热</span>
+                <span class="spec-value" data-translate="prod-discrete-spec3-value">先进双面散热封装 / 高可靠性压力接触模块</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-discrete-tag">功率基石</span>
+    </div>
+</div>
+
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 7h-9m3 10h5s2 0 2-2V9s0-2-2-2M9 17H4s-2 0-2-2V9s0-2 2-2h5"/>
+                <line x1="12" y1="4" x2="12" y2="20"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-connector-title">连接器</h3>
+                <span class="product-subtitle-en" data-translate="prod-connector-subtitle">Connectors & Interconnects</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-connector-tag1">新能源汽车高压大电流连接 (HV)</span>
+                <span data-translate="prod-connector-tag2">车载高速以太网与 FAKRA 射频连接</span>
+                <span data-translate="prod-connector-tag3">工业机器人高柔性伺服电机接口</span>
+                <span data-translate="prod-connector-tag4">数据中心 112G/224G 高速背板连接</span>
+                <span data-translate="prod-connector-tag5">航空航天级防腐蚀圆形电连接器</span>
+                <span data-translate="prod-connector-tag6">医疗级高插拔寿命精密接口</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-connector-desc">板对板 (BTB) 连接器、线对板连接器、高速背板连接器、圆形/矩形工业连接器、车载高压互锁 (HVIL) 插件、RF 同轴连接器、光纤连接器及定制化线束组件。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-connector-spec1-label">电气性能</span>
+                <span class="spec-value" data-translate="prod-connector-spec1-value">低接触电阻 / 支持 1000V+ 高压绝缘</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-connector-spec2-label">信号速率</span>
+                <span class="spec-value" data-translate="prod-connector-spec2-value">支持 PAM4 技术 / 极低插入损耗</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-connector-spec3-label">环境防护</span>
+                <span class="spec-value" data-translate="prod-connector-spec3-value">IP68/IP69K 防水等级 / 抗高频振动</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-connector-tag">稳固互联</span>
+    </div>
+</div>
+
+<div class="product-row-card">
+    <div class="product-row-left">
+        <div class="product-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a2 2 0 0 1-2.83-2.83l-3.94 3.6z"/>
+                <path d="M10.8 4.8L8.8 6.8a2 2 0 0 0 0 2.83l2.4 2.4a2 2 0 0 0 2.83 0l2-2"/>
+                <path d="M19 11l-4 4"/>
+                <path d="m5 19 3-3"/>
+                <path d="M14 4L5 13a2 2 0 0 0 0 2.83l2.17 2.17L10 21a2 2 0 0 0 2.83 0l9-9"/>
+            </svg>
+        </div>
+
+        <div class="product-text-box">
+            <div class="product-title-group">
+                <h3 class="product-title font-heading" data-translate="prod-devtools-title">开发工具与生态</h3>
+                <span class="product-subtitle-en" data-translate="prod-devtools-subtitle">Development Tools & Ecosystem</span>
+            </div>
+            
+            <div class="tech-capability-tags">
+                <span data-translate="prod-devtools-tag1">AURIX™ & S32 核心评估套件</span>
+                <span data-translate="prod-devtools-tag2">MATLAB / Simulink 模型化开发</span>
+                <span data-translate="prod-devtools-tag3">边缘计算 AI 算法快速部署</span>
+                <span data-translate="prod-devtools-tag4">功能安全 (ISO 26262) 验证工具</span>
+                <span data-translate="prod-devtools-tag5">数字孪生与在线系统仿真</span>
+                <span data-translate="prod-devtools-tag6">无线射频 (SDR) 设计与验证平台</span>
+            </div>
+
+            <p class="product-description">
+                <strong class="desc-lead" data-translate="prod-including">包含品类：</strong>
+                <span data-translate="prod-devtools-desc">评估板 (EVB) 与设计套件、集成开发环境 (IDE)、硬件仿真器、嵌入式软件库 (SDK)、配置工具 (Configurator)、在线交互式仿真器及开发者社区支持。</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="product-row-right">
+        <div class="spec-matrix">
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-devtools-spec1-label">开发加速</span>
+                <span class="spec-value" data-translate="prod-devtools-spec1-value">图形化配置 / 自动化代码生成</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-devtools-spec2-label">兼容性</span>
+                <span class="spec-value" data-translate="prod-devtools-spec2-value">支持主流第三方编译器 (IAR/Keil)</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-label" data-translate="prod-devtools-spec3-label">设计资源</span>
+                <span class="spec-value" data-translate="prod-devtools-spec3-value">丰富的参考设计 (Reference Design)</span>
+            </div>
+        </div>
+        <span class="product-tag" data-translate="prod-devtools-tag">研发赋能</span>
+    </div>
+</div>
+    </div>
+</section>
+
+<section class="brands-section-wrapper">
+    <div class="brand-watermark">PARTNERS</div>
+
+    <div class="brands-content-container">
+        
+        <div class="main-title-block fade-in-up">
+            <h2 class="main-title" data-translate="brand-main-title">产品品牌</h2>
+            <div class="main-title-line"></div>
+        </div>
+
+        <div class="brand-group fade-in-up">
+            <div class="group-info">
+                <div class="group-badge" data-translate="brand-global-badge">Global</div>
+                <h3 class="group-name" data-translate="brand-global-name">国际品牌<span class="u-line"></span></h3>
+                <p class="group-desc" data-translate="brand-global-desc">世界知名半导体品牌芯片产品，专注原厂渠道，建立长期稳定的战略合作关系。</p>
+            </div>
+            
+  <div class="brands-grid">
+    <div class="brand-item"><h4>TI</h4><p data-translate="brand-global-ti-desc">模拟芯片 电源芯片</p></div>
+    <div class="brand-item"><h4>ST</h4><p data-translate="brand-global-st-desc">微控制器 传感器</p></div>
+    <div class="brand-item"><h4>Infineon</h4><p data-translate="brand-global-infineon-desc">功率器件 车规芯片</p></div>
+    <div class="brand-item"><h4>ADI</h4><p data-translate="brand-global-adi-desc">数据转换 射频芯片</p></div>
+	<div class="brand-item"><h4>NXP</h4><p data-translate="brand-global-nxp-desc">车载MCU 接口芯片</p></div>
+    <div class="brand-item"><h4>Altera</h4><p data-translate="brand-global-altera-desc">FPGA CPLD器件</p></div>
+	<div class="brand-item"><h4>Xilinx</h4><p data-translate="brand-global-xilinx-desc">FPGA SOC</p></div>
+	<div class="brand-item"><h4>SK-Hynix</h4><p data-translate="brand-global-sk-desc">存储芯片 DRAM</p></div>
+    <div class="brand-item"><h4>Samsung</h4><p data-translate="brand-global-samsung-desc">存储器 闪存芯片</p></div>
+    <div class="brand-item"><h4>Micron</h4><p data-translate="brand-global-micron-desc">存储芯片 DDR eMMC</p></div>
+	<div class="brand-item"><h4>Nvidia</h4><p data-translate="brand-global-nvidia-desc">GPU AI计算显存</p></div>
+	<div class="brand-item"><h4>AMD</h4><p data-translate="brand-global-amd-desc">CPU 计算平台</p></div>
+	<div class="brand-item"><h4>Intel</h4><p data-translate="brand-global-intel-desc">CPU 网卡芯片</p></div>
+    <div class="brand-item"><h4>Microchip</h4><p data-translate="brand-global-microchip-desc">MCU 模拟器件</p></div>
+    <div class="brand-item"><h4>MPS</h4><p data-translate="brand-global-mps-desc">电源管理</p></div>
+    <div class="brand-item"><h4>Nexperia</h4><p data-translate="brand-global-nexperia-desc">分立器件 逻辑芯片</p></div>   
+    <div class="brand-item"><h4>onsemi</h4><p data-translate="brand-global-onsemi-desc">MOSFET 驱动芯片</p></div>
+    <div class="brand-item"><h4>Broadcom</h4><p data-translate="brand-global-broadcom-desc">网络通信 射频连接</p></div>
+    <div class="brand-item"><h4>Realtek</h4><p data-translate="brand-global-realtek-desc">声卡网卡 控制芯片</p></div>
+    <div class="brand-item"><h4>Vicor</h4><p data-translate="brand-global-vicor-desc">高密度 电源模块</p></div>
+</div>
+        </div>
+
+        <div class="brand-group fade-in-up" style="margin-top: 100px;">
+            <div class="group-info">
+                <div class="group-badge" style="color: #e60012;" data-translate="brand-domestic-badge">Domestic Innovation</div>
+                <h3 class="group-name" data-translate="brand-domestic-name">国产品牌<span class="u-line" style="background: #e60012;"></span></h3>
+                <p class="group-desc" data-translate="brand-domestic-desc">深耕国产芯片供应链，助力中国芯崛起，提供高性价比的国产替代方案。</p>
+            </div>
+            
+            <div class="brands-grid">
+                <div class="brand-item domestic"><h4>Hisilicon</h4><p data-translate="brand-domestic-hisilicon-desc">海思半导体</p></div>
+                <div class="brand-item domestic"><h4>GigaDevice</h4><p data-translate="brand-domestic-gigadevice-desc">兆易创新</p></div>
+                <div class="brand-item domestic"><h4>SGMICRO</h4><p data-translate="brand-domestic-sgmicro-desc">圣邦微电子</p></div>
+                <div class="brand-item domestic"><h4>Rockchip</h4><p data-translate="brand-domestic-rockchip-desc">瑞芯微</p></div>
+                <div class="brand-item domestic"><h4>longsys</h4><p data-translate="brand-domestic-longsys-desc">江波龙存储</p></div>
+                <div class="brand-item domestic"><h4>Allwinner</h4><p data-translate="brand-domestic-allwinner-desc">全志科技</p></div>
+                <div class="brand-item domestic"><h4>PanGo</h4><p data-translate="brand-domestic-pango-desc">紫光同创FPGA</p></div>
+                <div class="brand-item domestic"><h4>Yangjie</h4><p data-translate="brand-domestic-yangjie-desc">扬杰电子</p></div>
+                <div class="brand-item domestic"><h4>UNISOC</h4><p data-translate="brand-domestic-unisoc-desc">紫光展锐</p></div>
+                <div class="brand-item domestic"><h4>3PEAK</h4><p data-translate="brand-domestic-3peak-desc">思瑞浦模拟</p></div>
+                <div class="brand-item domestic"><h4>Nuvoton</h4><p data-translate="brand-domestic-nuvoton-desc">新唐科技</p></div>
+                <div class="brand-item domestic"><h4>MediaTek</h4><p data-translate="brand-domestic-mediatek-desc">联发科 MTK</p></div>
+				<div class="brand-item domestic"><h4>Macronix</h4><p data-translate="brand-domestic-macronix-desc">旺宏電子</p></div>
+				<div class="brand-item domestic"><h4>Nanya</h4><p data-translate="brand-domestic-nanya-desc">南亚科技 </p></div>
+				<div class="brand-item domestic"><h4>Winbond</h4><p data-translate="brand-domestic-winbond-desc">华邦电子 </p></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="logo-scroller-section">
+        <div class="scroller-title-wrap">
+            <div class="scroller-line"></div>
+            <span data-translate="brand-scroller-title">PRODUCT BRAND</span>
+            <div class="scroller-line"></div>
+        </div>
+        
+        <div class="logo-slider">
+    <div class="slider-overlay-left"></div>
+    <div class="slider-overlay-right"></div>
+
+<div class="logo-track">
+    <div class="logo-slide"><img src="resources/brand-logos/TI.webp" alt="TI - Texas Instruments 德州仪器 - 模拟芯片、电源管理、嵌入式处理器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/ST.webp" alt="ST - STMicroelectronics 意法半导体 - MCU、功率器件、传感器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/INFINEON.webp" alt="Infineon - 英飞凌 - 功率半导体、IGBT、汽车电子"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/ADI.webp" alt="ADI - Analog Devices 亚德诺 - 高性能模拟芯片、信号链、ADC/DAC"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/NXP.webp" alt="NXP - 恩智浦 - 车规级芯片、安全连接、MCU"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/ALTERA.webp" alt="Altera - 阿尔特拉 - FPGA、可编程逻辑器件"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Xilinx.webp" alt="Xilinx - 赛灵思 - FPGA、自适应计算平台"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/SK-Hynix.webp" alt="SK-Hynix - SK海力士 - DRAM、NAND Flash、存储器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Samsung.webp" alt="Samsung - 三星电子 - 存储芯片、DDR、晶圆代工"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/MICRON.webp" alt="Micron - 美光 - 内存、闪存、固态存储"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Nvidia.webp" alt="Nvidia - 英伟达 - GPU、AI计算芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/AMD.webp" alt="AMD - 超威半导体 - CPU、GPU、服务器芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/INTEL.webp" alt="Intel - 英特尔 - 处理器、数据中心芯片、FPGA"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Microchip.webp" alt="Microchip - 微芯科技 - 单片机、模拟芯片、存储控制"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/MPS.webp" alt="MPS - 芯源系统 - 电源管理IC、DC-DC转换器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Nexperia.webp" alt="Nexperia - 安世半导体 - 分立器件、逻辑芯片、Mosfet"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/onsemi.webp" alt="onsemi - 安森美 - 功率器件、图像传感器、碳化硅"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Broadcom.webp" alt="Broadcom - 博通 - 网络通信芯片、宽带连接"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/REALTEK.webp" alt="Realtek - 瑞昱 - 网开芯片、音频编解码器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/VICOR.webp" alt="Vicor - 维科 - 高密度电源模块、电源转换器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Hisilicon.webp" alt="Hisilicon - 海思 - 麒麟/鲲鹏处理器、多媒体SoC"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/GD.webp" alt="GD - 兆易创新 - NOR Flash、MCU、存储器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/SG Micro.webp" alt="SGMICRO - 圣邦微电子 - 模拟芯片、运算放大器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/rockchip.webp" alt="Rockchip - 瑞芯微 - 智能应用处理器、AIoT芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/longsys.webp" alt="longsys - 江波龙 - 嵌入式存储、SSD、存储卡"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Allwinner.webp" alt="Allwinner - 全志科技 - 应用处理器SoC、智能硬件芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/PanGo-CN.webp" alt="PanGo - 紫光同创 - 国产FPGA、可编程逻辑芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Yangjie.webp" alt="Yangjie - 扬杰科技 - 二极管、整流桥、功率模块"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/UNISOC.webp" alt="UNISOC - 紫光展锐 - 移动通信芯片、物联网SoC"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/3peak.webp" alt="3PEAK - 思瑞浦 - 信号链IC、电源管理IC"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Nuvoton.webp" alt="Nuvoton - 新唐科技 - MCU微控制器、音频芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/MediaTek.webp" alt="MediaTek - 联发科 - 天玑系列手机芯片、无线连接"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Macronix.webp" alt="Macronix - 旺宏电子 - ROM、NOR/NAND Flash"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Nanya.webp" alt="Nanya - 南亚科技 - DRAM、内存芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Winbond.webp" alt="Winbond - 华邦电子 - 特种存储器、DRAM、Flash"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/IDT.webp" alt="IDT - Integrated Device Technology (Renesas) - 混合信号集成电路、定时器件"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/PanGo-EN.webp" alt="PanGo - 紫光同创 - FPGA可编程逻辑芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/GMLOGO.webp" alt="Nations - 国民技术 - 通用MCU、安全芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/TDK.webp" alt="TDK - 东电化 - 电容器、电感器、磁性元件"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Renesas.webp" alt="Renesas - 瑞萨电子 - MCU、模拟芯片、功率器件"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Cypress.webp" alt="Cypress - 赛普拉斯 (英飞凌) - 存储器、MCU、USB控制"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/ROHM.webp" alt="ROHM - 罗姆半导体 - 功率器件、SiC、模拟芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/MAXIM.webp" alt="Maxim - 美信 (ADI) - 模拟信号、电源管理、接口芯片"></div>
+
+    <div class="logo-slide"><img src="resources/brand-logos/TI.webp" alt="TI - Texas Instruments 德州仪器 - 模拟芯片、电源管理、嵌入式处理器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/ST.webp" alt="ST - STMicroelectronics 意法半导体 - MCU、功率器件、传感器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/INFINEON.webp" alt="Infineon - 英飞凌 - 功率半导体、IGBT、汽车电子"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/ADI.webp" alt="ADI - Analog Devices 亚德诺 - 高性能模拟芯片、信号链、ADC/DAC"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/NXP.webp" alt="NXP - 恩智浦 - 车规级芯片、安全连接、MCU"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/ALTERA.webp" alt="Altera - 阿尔特拉 - FPGA、可编程逻辑器件"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Xilinx.webp" alt="Xilinx - 赛灵思 - FPGA、自适应计算平台"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/SK-Hynix.webp" alt="SK-Hynix - SK海力士 - DRAM、NAND Flash、存储器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Samsung.webp" alt="Samsung - 三星电子 - 存储芯片、DDR、晶圆代工"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/MICRON.webp" alt="Micron - 美光 - 内存、闪存、固态存储"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Nvidia.webp" alt="Nvidia - 英伟达 - GPU、AI计算芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/AMD.webp" alt="AMD - 超威半导体 - CPU、GPU、服务器芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/INTEL.webp" alt="Intel - 英特尔 - 处理器、数据中心芯片、FPGA"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Microchip.webp" alt="Microchip - 微芯科技 - 单片机、模拟芯片、存储控制"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/MPS.webp" alt="MPS - 芯源系统 - 电源管理IC、DC-DC转换器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Nexperia.webp" alt="Nexperia - 安世半导体 - 分立器件、逻辑芯片、Mosfet"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/onsemi.webp" alt="onsemi - 安森美 - 功率器件、图像传感器、碳化硅"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Broadcom.webp" alt="Broadcom - 博通 - 网络通信芯片、宽带连接"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/REALTEK.webp" alt="Realtek - 瑞昱 - 网开芯片、音频编解码器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/VICOR.webp" alt="Vicor - 维科 - 高密度电源模块、电源转换器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Hisilicon.webp" alt="Hisilicon - 海思 - 麒麟/鲲鹏处理器、多媒体SoC"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/GD.webp" alt="GD - 兆易创新 - NOR Flash、MCU、存储器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/SG Micro.webp" alt="SGMICRO - 圣邦微电子 - 模拟芯片、运算放大器"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/rockchip.webp" alt="Rockchip - 瑞芯微 - 智能应用处理器、AIoT芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/longsys.webp" alt="longsys - 江波龙 - 嵌入式存储、SSD、存储卡"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Allwinner.webp" alt="Allwinner - 全志科技 - 应用处理器SoC、智能硬件芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/PanGo-CN.webp" alt="PanGo - 紫光同创 - 国产FPGA、可编程逻辑芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Yangjie.webp" alt="Yangjie - 扬杰科技 - 二极管、整流桥、功率模块"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/UNISOC.webp" alt="UNISOC - 紫光展锐 - 移动通信芯片、物联网SoC"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/3peak.webp" alt="3PEAK - 思瑞浦 - 信号链IC、电源管理IC"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Nuvoton.webp" alt="Nuvoton - 新唐科技 - MCU微控制器、音频芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/MediaTek.webp" alt="MediaTek - 联发科 - 天玑系列手机芯片、无线连接"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Macronix.webp" alt="Macronix - 旺宏电子 - ROM、NOR/NAND Flash"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Nanya.webp" alt="Nanya - 南亚科技 - DRAM、内存芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Winbond.webp" alt="Winbond - 华邦电子 - 特种存储器、DRAM、Flash"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/IDT.webp" alt="IDT - Integrated Device Technology (Renesas) - 混合信号集成电路、定时器件"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/PanGo-EN.webp" alt="PanGo - 紫光同创 - FPGA可编程逻辑芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/GMLOGO.webp" alt="Nations - 国民技术 - 通用MCU、安全芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/TDK.webp" alt="TDK - 东电化 - 电容器、电感器、磁性元件"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Renesas.webp" alt="Renesas - 瑞萨电子 - MCU、模拟芯片、功率器件"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/Cypress.webp" alt="Cypress - 赛普拉斯 (英飞凌) - 存储器、MCU、USB控制"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/ROHM.webp" alt="ROHM - 罗姆半导体 - 功率器件、SiC、模拟芯片"></div>
+    <div class="logo-slide"><img src="resources/brand-logos/MAXIM.webp" alt="Maxim - 美信 (ADI) - 模拟信号、电源管理、接口芯片"></div>
+</div>
+
+</div>
+    </div>
+</section>
+
+<section class="bg-quality full-screen-bg">
+    <div id="quality-light-bg" class="quality-bg-layer"></div>
+    
+    <div class="container quality-content-box">
+        <div class="quality-header-wrap">
+            <h2 class="font-heading" data-translate="quality-title">严苛的质量管控体系</h2>
+            <div class="accent-line"></div>
+            <p data-translate="quality-subtitle">三级深度检测流程，确保每一颗交付给客户的芯片均为 100% 原装正品</p>
+        </div>
+
+        <div class="quality-flex">
+            <div class="quality-focus-card">
+                <div class="num" data-translate="quality-step-1">Step 01</div>
+                <div class="quality-mini-flow">
+                    <div class="m-node"><span data-translate="quality-step1-node1">Label核对</span></div>
+                    <div class="m-line"></div>
+                    <div class="m-node"><span data-translate="quality-step1-node2">丝印比对</span></div>
+                    <div class="m-line"></div>
+                    <div class="m-node"><span data-translate="quality-step1-node3">显微镜检</span></div>
+                </div>
+                <h4 class="highlight-title" data-translate="quality-step1-title">外观及包装检查</h4>
+                <p data-translate="quality-step1-desc">严格核对原厂 Label、批次号，并在高清显微镜下进行丝印比对。</p>
+            </div>
+            
+            <div class="quality-focus-card">
+                <div class="num" data-translate="quality-step-2">Step 02</div>
+                <div class="quality-mini-flow">
+                    <div class="m-node"><span data-translate="quality-step2-node1">X-Ray扫描</span></div>
+                    <div class="m-line"></div>
+                    <div class="m-node"><span data-translate="quality-step2-node2">开盖验证</span></div>
+                    <div class="m-line"></div>
+                    <div class="m-node"><span data-translate="quality-step2-node3">晶圆量测</span></div>
+                </div>
+                <h4 class="highlight-title" data-translate="quality-step2-title">实验室深度验证</h4>
+                <p data-translate="quality-step2-desc">进行 X-Ray 内部扫描、开盖 (Decap) 检查晶圆尺寸。</p>
+            </div>
+            
+            <div class="quality-focus-card">
+                <div class="num" data-translate="quality-step-3">Step 03</div>
+                <div class="quality-mini-flow">
+                    <div class="m-node"><span data-translate="quality-step3-node1">恒温恒湿</span></div>
+                    <div class="m-line"></div>
+                    <div class="m-node"><span data-translate="quality-step3-node2">ESD防护</span></div>
+                    <div class="m-line"></div>
+                    <div class="m-node"><span data-translate="quality-step3-node3">真空包装</span></div>
+                </div>
+                <h4 class="highlight-title" data-translate="quality-step3-title">仓储与物流防护</h4>
+                <p data-translate="quality-step3-desc">24H 恒温恒湿仓库存储，执行原厂级 ESD 防静电标准。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-bom full-screen-bg">
+    <div class="container">
+        <div class="bom-flex">
+            <div class="bom-text-content">
+                <h2 class="font-heading bom-title">
+                    <span data-translate="bom-title-line1">BOM</span><br>
+                    <span data-translate="bom-title-line2">快速配单服务</span>
+                </h2>
+                <p class="bom-subtitle" data-translate="bom-subtitle">只需上传您的物料清单，资深采购工程师将在 2 小时内为您提供方案。</p>
+                
+                <div class="bom-list">
+                    <p><span class="check">✔</span> <span data-translate="bom-item1">全球 5000+ 供应商实时库存比价</span></p>
+                    <p><span class="check">✔</span> <span data-translate="bom-item2">停产型号 (EOL) 及紧缺料替代建议</span></p>
+                    <p><span class="check">✔</span> <span data-translate="bom-item3">数字化供应链追踪，降低综合采购成本</span></p>
+                </div>
+            </div>
+
+            <div class="bom-upload-box">
+                <div class="bom-icon">📊</div>
+                <h4 class="upload-title" data-translate="bom-upload-title">立即提交询价清单</h4>
+                <a href="mailto:sales@limchip.com" class="bom-btn" data-translate="bom-btn">立即发送 BOM</a>
+                <p class="upload-formats" data-translate="bom-formats">支持 .xlsx / .pdf / .csv 格式</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="network-section">
+    <div class="container">
+        <div class="network-grid">
+            <div class="visual-box">
+                <div class="radial-glow"></div>
+                <div class="watermark-globe">🌐</div>
+                
+                <div class="visual-content-wrapper">
+                    <div class="title-main" data-translate="network-title-main">GLOBAL LOGISTICS</div>
+                    <div class="title-sub" data-translate="network-title-sub">SUPPLY CHAIN NETWORK</div>
+                </div>
+
+                <div class="map-tag tag-hk">HK</div>
+                <div class="map-tag tag-sz">SZ</div>
+                <div class="map-tag tag-sg">SG</div>
+				<div class="map-tag tag-jp">JP</div>
+				<div class="map-tag tag-us">US</div>
+            </div>
+
+            <div class="info-card">
+                <h3 class="font-heading" data-translate="network-card-title">全球货源 · 极速交付</h3>
+                
+                <div class="info-item">
+                    <h5><span class="blue-bar"></span><span data-translate="network-item1-title">全球服务网络</span></h5>
+                    <p data-translate="network-item1-desc">以深圳、香港、新加坡均据点，辐射全球客户； 设立现代化常备现货仓库，核心城市最快可实现 24 小时极速交付。</p>
+                </div>
+                
+                <div class="info-item">
+                    <h5><span class="blue-bar"></span><span data-translate="network-item2-title">欧美原厂渠道</span></h5>
+                    <p data-translate="network-item2-desc">深耕行业，链动全球。依托 300+ 欧美原厂品牌网络，以渠道核心竞争力，保障紧缺货源的优先配给。</p>
+                </div>
+
+                <div class="stats-panel">
+                    <div class="stat-box">
+                        <div class="stat-num">30+</div>
+                        <p class="stat-label" data-translate="network-stat1-label">覆盖国家</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">24H</div>
+                        <p class="stat-label" data-translate="network-stat2-label">询价响应</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">100%</div>
+                        <p class="stat-label" data-translate="network-stat3-label">原装正品</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer 占位符 -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="language.js?v=20260525-lang1"></script>
+    <script src="load-components.js?v=20260521-recover1"></script>
+    <script src="scroll-utils.js?v=20260525-top1"></script>
+    <script src="navbar-scroll.js?v=20260525-nav4"></script>
+    <script src="pages.js?v=20260525-prod1"></script>
+    <script src="part-search.js?v=20260522-fix4"></script>
+<script src="main.js?v=20260525-motion1"></script>
+
+	<div style="font-size:11px;color:#334155;text-align:center;padding:20px 0 10px;">
+        <a href="part/index.html" style="color:#475569;text-decoration:none;">Component Technical Database</a>
+    </div>
+	
+</body>
+</html>

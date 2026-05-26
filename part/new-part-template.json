@@ -1,0 +1,35 @@
+{
+  "partNumber": "EXAMPLE1234-ABC",
+  "slug": "brand-example1234-abc",
+  "brand": "Brand Name",
+  "manufacturer": "Manufacturer Name",
+  "brandGroup": "Brand Name",
+  "category": "Product Category",
+  "productType": "FPGA / CPLD / DRAM / eMMC / Power IC / MCU",
+  "series": "Series Name",
+  "package": "Package / Case",
+  "stockQty": "RFQ",
+  "dateCode": "Confirm by RFQ",
+  "stockNote": "Contact LimChip for current stock",
+  "marketStatus": "Describe current market demand, shortage, EOL, spot stock or long-lead-time context.",
+  "supplyRisk": "Explain why buyers need sourcing support for this exact suffix or package.",
+  "valueAngle": "Explain the procurement value, application value or redesign-cost reason.",
+  "procurementNote": "LimChip can confirm current price, quantity, date code, batch condition and shipping schedule by RFQ.",
+  "customIntro": "Write one human-readable paragraph about this exact part number and its common use case.",
+  "relatedPartNumbers": [],
+  "specs": [
+    { "name": "Parameter 1", "value": "Value 1" },
+    { "name": "Parameter 2", "value": "Value 2" },
+    { "name": "Parameter 3", "value": "Value 3" }
+  ],
+  "applications": [
+    "Application 1",
+    "Application 2",
+    "Application 3"
+  ],
+  "features": [
+    "Feature or sourcing note 1",
+    "Feature or sourcing note 2",
+    "Feature or sourcing note 3"
+  ]
+}

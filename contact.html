@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 解决语言按钮里文字的闪烁 -->
+	<script>
+        (function() {
+            var supported = ['en', 'zh', 'ru', 'ko', 'es', 'vi'];
+            var langMap = { en: 'en', zh: 'zh-CN', ru: 'ru', ko: 'ko', es: 'es', vi: 'vi' };
+            var savedLang = 'en';
+            try {
+                savedLang = localStorage.getItem('limchip-language') || 'en';
+            } catch (error) {}
+            if (supported.indexOf(savedLang) === -1) savedLang = 'en';
+            document.documentElement.lang = langMap[savedLang] || 'en';
+            window.__INITIAL_LANG__ = savedLang;
+        })();
+    </script>
+	<link rel="icon" href="resources/logo-favicon.svg" type="image/svg+xml">
+    <title data-translate="page-contact-title">Contact LimChip | RFQ for IC Sourcing & Electronic Components</title>
+    <meta name="description" content="Contact LimChip for electronic components sourcing, RFQ support, BOM procurement, spot stock confirmation and global shipping from Hong Kong, Shenzhen and Singapore.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.limchip.com/contact.html">
+    <meta property="og:title" content="Contact LimChip | RFQ for IC Sourcing & Electronic Components">
+    <meta property="og:description" content="Send an RFQ to LimChip for electronic components sourcing, BOM procurement, spot stock confirmation and global shipping.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.limchip.com/contact.html">
+    <meta property="og:site_name" content="LimChip Co., LTD">
+    <meta property="og:image" content="https://www.limchip.com/resources/logopreview.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Contact LimChip | RFQ for IC Sourcing & Electronic Components">
+    <meta name="twitter:description" content="RFQ support for IC sourcing, BOM procurement, spot stock confirmation and global shipping.">
+    <meta name="twitter:image" content="https://www.limchip.com/resources/logopreview.png">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "ContactPage",
+            "@id": "https://www.limchip.com/contact.html#webpage",
+            "url": "https://www.limchip.com/contact.html",
+            "name": "Contact LimChip | RFQ for IC Sourcing & Electronic Components",
+            "description": "Send an RFQ to LimChip for electronic components sourcing, BOM procurement, spot stock confirmation and global shipping.",
+            "isPartOf": { "@id": "https://www.limchip.com/#website" },
+            "about": { "@id": "https://www.limchip.com/#organization" }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.limchip.com/contact.html#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.limchip.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.limchip.com/contact.html" }
+            ]
+        }
+    ]
+}
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Chiron+Hei+HK:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <!-- 统一的CSS文件 -->
+    <link rel="stylesheet" href="style.css?v=20260525-placeholder1">
+    <link rel="stylesheet" href="pages.css?v=20260521-recover1">
+    
+</head>
+<body id="contact-p">
+	
+	
+<!-- Navigation 导航栏代码 -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="resources/logopreview.png" alt="LimChip Logo">
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="index.html" data-translate="nav-home">Home</a></li>
+            <li><a href="products.html" data-translate="nav-products">Products</a></li>
+            <li><a href="services.html" data-translate="nav-services">Services</a></li>
+            <li><a href="applications.html" data-translate="nav-applications">Applications</a></li>
+            <li><a href="about.html" data-translate="nav-about">About</a></li>
+            <li><a href="contact.html" class="active" data-translate="nav-contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="nav-part-search" id="navPartSearch">
+                <button type="button" class="nav-search-toggle" id="navSearchToggle" aria-label="Search component database" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <div class="nav-search-panel" id="navSearchPanel">
+                    <input type="search" id="navPartSearchInput" class="part-search-input" placeholder="Search part number..." data-translate-placeholder="nav-search-placeholder" autocomplete="off">
+                    <div id="navPartSearchResults" class="part-search-results nav-search-results"></div>
+                </div>
+            </div>
+            <div class="lang-toggle-wrapper" id="langToggle">
+                <span id="langText"></span>
+            </div>
+
+            <a href="mailto:sales@limchip.com" class="contact-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
+                     stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span data-translate="btn-contact">Contact Now</span>
+            </a>
+
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+  <!---  Hero Section  区域 -->
+<section id="contact-p" class="hero-section">
+    <div class="hero-bg-layer">
+        <img src="./resources/Hero-BG-Ref/Contact-hero-background.webp" alt="Contact Background">
+    </div>
+
+    <div id="contact-animation-container" class="hero-3d-canvas"></div>
+
+
+    <div class="hero-content-layer">
+        <div class="hero-content">
+            <h1 class="hero-title" data-translate="contact-hero-title">联系我们</h1>
+            <p class="hero-subtitle" data-translate="contact-hero-subtitle">专业的团队随时为您提供咨询和服务支持</p>
+        </div>
+    </div>
+</section>
+
+<section class="rfq-flow-system">
+    <div class="rfq-bg-layer" style="background-image: url('resources/backgrounds/FRQ-BG.webp');"></div>
+    <div class="rfq-overlay"></div>
+
+    <div class="container-fluid rfq-content-inner">
+        <div class="rfq-side-info">
+            <h2 class="system-title" data-translate="contact-rfq-title">快速询价</h2>
+            <div class="response-tag">
+                <span class="pulse-dot"></span> 
+                <span data-translate="contact-rfq-response">2小时极速反馈</span>
+            </div>
+        </div>
+
+        <form class="rfq-console-bar">
+            <div class="console-item">
+                <div class="item-body">
+                    <label data-translate="contact-rfq-label-name">如何称呼您？</label>
+                    <input type="text" placeholder="姓名或公司名称 *" required data-translate-placeholder="contact-rfq-placeholder-name">
+                </div>
+            </div>
+
+            <div class="console-item">
+                <div class="item-body">
+                    <label data-translate="contact-rfq-label-contact">如何联系您？</label>
+                    <input type="text" placeholder="手机、邮箱或微信号 *" required data-translate-placeholder="contact-rfq-placeholder-contact">
+                </div>
+            </div>
+
+            <div class="console-item flex-main">
+                <div class="item-body">
+                    <label data-translate="contact-rfq-label-needs">您的需求信息是？</label>
+                    <input type="text" placeholder="型号、品牌、数量及封装要求... *" required data-translate-placeholder="contact-rfq-placeholder-needs">
+                </div>
+            </div>
+
+            <button type="submit" class="console-submit" data-translate="contact-rfq-submit">获取报价单</button>
+        </form>
+    </div>
+</section>
+
+
+
+
+<section class="limchip-contact-ultimate">
+    <div class="glow-sphere-1"></div>
+    <div class="glow-sphere-2"></div>
+    
+    <div class="layout-wrapper">
+        <div class="side-brand fade-in-up">
+    <div class="v-title" data-translate="contact-side-title">
+        联系信息
+    </div>
+    <div class="v-line"></div>
+</div>
+
+        <div class="main-content">
+            <div class="core-cards-group">
+                <div class="item-card-static fade-in-up">
+                    <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+                    <div class="card-info">
+                        <label data-translate="contact-address-label">地址</label>
+                        <p class="data-text" data-translate="contact-address-value">Unit 26, 11/F, Enterprise Centre, Sha Tin, Hong Kong</p>
+                    </div>
+                </div>
+
+                <a href="tel:+8618688733475" class="item-card-static fade-in-up">
+                    <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2v3a2 2 0 011.51 1.93 11.72 11.72 0 00.42 4.16 2 2 0 01-.46 2.08L3.89 14.92a16 16 0 006.11 6.11l2.75-2.75a2 2 0 012.08-.46 11.73 11.73 0 004.16.42 2 2 0 011.93 1.51z"></path></svg></div>
+                    <div class="card-info">
+                        <label data-translate="contact-phone-label">电话</label>
+                        <p class="data-text" data-translate="contact-phone-value">+86 186 8873 3475</p>
+                    </div>
+                </a>
+
+                <a href="mailto:sales@limchip.com" class="item-card-static fade-in-up">
+                    <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+                    <div class="card-info">
+                        <label data-translate="contact-email-label">邮箱</label>
+                        <p class="data-text" data-translate="contact-email-value">sales@limchip.com</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="group-sep fade-in-up">
+                <span class="sep-tag" data-translate="contact-im-title">即时通讯</span>
+                <div class="sep-line"></div>
+            </div>
+
+            <div class="im-box-grid">
+    <a href="https://wa.me/8618688733475" target="_blank" class="im-btn animate-card fade-in-up">
+        <div class="im-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.623 1.432h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <span data-translate="contact-im-whatsapp">WhatsApp</span>
+    </a>
+
+    <a href="https://web.skype.com/chat/live:.cid.limchip" target="_blank" class="im-btn fade-in-up">
+        <div class="im-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.322 14.594c0-4.665-3.8-8.442-8.487-8.442a8.312 8.312 0 00-1.874.214 8.446 8.446 0 00-12.28 9.043 8.44 8.44 0 008.487 8.44c.642 0 1.267-.071 1.867-.206a8.447 8.447 0 0012.287-9.049zM15.485 18.2c-3.141 0-4.322-1.594-4.322-2.651 0-.613.48-.99 1.011-.99.887 0 .822 1.272 2.21 1.272.71 0 1.15-.367 1.15-.89 0-.58-.517-.796-1.841-1.127-1.928-.484-2.887-1.155-2.887-2.738 0-1.922 1.606-3.003 3.961-3.003 2.193 0 3.935.997 3.935 2.454 0 .587-.432 1.011-1.025 1.011-.8 0-.817-1.033-1.88-1.033-.613 0-.968.29-.968.75 0 .548.517.78 1.953 1.143 2.02.502 2.858 1.233 2.858 2.76.002 1.839-1.55 3.042-4.055 3.042z"/></svg>
+        </div>
+        <span data-translate="contact-im-skype">Skype</span>
+    </a>
+
+    <a href="https://www.linkedin.com/company/limchip" target="_blank" class="im-btn animate-card fade-in-up">
+        <div class="im-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+        </div>
+        <span data-translate="contact-im-linkedin">LinkedIn</span>
+    </a>
+
+    <a href="resources/wechat-qr.webp" target="_blank" class="im-btn wechat-trigger fade-in-up">
+    <div class="im-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.5 4.5c-4.1 0-7.5 2.8-7.5 6.2 0 1.9 1 3.6 2.6 4.7l-.5 1.6 2-1c.4.1.9.2 1.4.2.3 0 .6 0 .9-.1-.2-.5-.4-1-.4-1.6 0-3.1 2.9-5.5 6.5-5.5.3 0 .6 0 .9.1C17.5 6.5 15.2 4.5 12.5 4.5zm-3.5 4c.4 0 .8.4.8.8s-.4.8-.8.8-.8-.4-.8-.8.4-.8.8-.8zm5 0c.4 0 .8.4.8.8 0 .5-.4.8-.8.8s-.8-.4-.8-.8.4-.8.8-.8z" opacity="0.9"/>
+            <path d="M18.5 11c-3.1 0-5.5 2.1-5.5 4.7 0 1 .4 1.9 1 2.6l-.4 1.2 1.5-.8c.5.2 1 .3 1.5.3 3.1 0 5.5-2.1 5.5-4.7s-2.5-4.7-5.6-4.7zm-1.8 3.2c.3 0 .6.3.6.6 0 .3-.3.6-.6.6s-.6-.3-.6-.6c0-.3.3-.6.6-.6zm3.5 0c.3 0 .6.3.6.6 0 .3-.3.6-.6.6s-.6-.3-.6-.6c0-.3.3-.6.6-.6z"/>
+        </svg>
+    </div>
+    <span data-translate="contact-im-wechat">WeChat</span>
+</a>
+</div>
+        </div>
+    </div>
+</section>
+
+	
+	
+
+    <!-- Footer 占位符 -->
+    <div id="footer-container"></div>
+    </footer>
+
+    
+	 <!-- Scripts -->
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<script src="pages.js?v=20260521-recover1"></script>
+
+<script src="language.js?v=20260525-lang1"></script>
+<script src="load-components.js?v=20260521-recover1"></script>
+
+
+<script src="scroll-utils.js?v=20260525-top1"></script>
+<script src="navbar-scroll.js?v=20260525-nav4"></script>
+<script src="part-search.js?v=20260522-fix4"></script>
+<script src="main.js?v=20260525-motion1"></script>
+</body>
+</html>
